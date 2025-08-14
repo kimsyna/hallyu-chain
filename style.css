@@ -15,6 +15,11 @@ html, body {
   font-size: 15px;
   line-height: 1.6;
   color-scheme: dark;
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html {
@@ -44,6 +49,7 @@ html {
   list-style: none;
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
 }
@@ -73,6 +79,15 @@ html {
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
   margin-left: 1rem;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 1.5rem;
+  margin-left: auto;
 }
 
 .hero {
@@ -190,14 +205,23 @@ ul, ol {
 
 @media (max-width: 600px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: block;
   }
 
   .navbar .nav-links {
     flex-direction: column;
     width: 100%;
     gap: 0.5rem;
+    display: none;
+  }
+
+  .navbar.open .nav-links {
+    display: flex;
   }
 
   .hero {

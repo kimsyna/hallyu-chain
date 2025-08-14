@@ -1,7 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 class KPPFancyTitle extends HTMLElement {
-  static get observedAttributes() { return ['text']; }
+  static get observedAttributes() { return ['text', 'size']; }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -14,12 +14,13 @@ class KPPFancyTitle extends HTMLElement {
   }
   render() {
     const text = this.getAttribute('text') || '';
+    const size = this.getAttribute('size') || 'large';
     this.shadowRoot.innerHTML = `
       <style>
         :host { display: inline-block; }
         h1 {
           font-family: 'Poppins', sans-serif;
-          font-size: clamp(2.5rem, 8vw, 4rem);
+          font-size: ${size === 'medium' ? '1.8rem' : 'clamp(2.5rem, 8vw, 4rem)'};
           margin: 0;
           position: relative;
           background: linear-gradient(45deg,#ff0080,#ffcd00,#00f0ff);
@@ -51,6 +52,29 @@ class KPPFancyTitle extends HTMLElement {
 }
 
 customElements.define('kpp-fancy-title', KPPFancyTitle);
+
+function applyFancyTitles() {
+  document.querySelectorAll('h1').forEach(h1 => {
+    if (h1.closest('kpp-fancy-title')) return;
+    const fancy = document.createElement('kpp-fancy-title');
+    fancy.setAttribute('size', 'large');
+    fancy.setAttribute('text', h1.textContent.trim());
+    if (h1.className) fancy.className = h1.className;
+    if (h1.dataset.i18n) fancy.setAttribute('data-i18n', h1.dataset.i18n);
+    h1.replaceWith(fancy);
+  });
+  document.querySelectorAll('h2').forEach(h2 => {
+    const fancy = document.createElement('kpp-fancy-title');
+    fancy.setAttribute('size', 'medium');
+    fancy.setAttribute('text', h2.textContent.trim());
+    if (h2.className) fancy.className = h2.className;
+    if (h2.id) fancy.id = h2.id;
+    if (h2.dataset.i18n) fancy.setAttribute('data-i18n', h2.dataset.i18n);
+    h2.replaceWith(fancy);
+  });
+}
+
+applyFancyTitles();
 
 document.querySelectorAll('section, .wp-section').forEach(section => {
   gsap.from(section, {
@@ -210,6 +234,13 @@ setLanguage(currentLang);
 const select = document.querySelector('.lang-select');
 if (select) {
   select.addEventListener('change', e => setLanguage(e.target.value));
+}
+
+const menuToggle = document.querySelector('.menu-toggle');
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    document.querySelector('.navbar').classList.toggle('open');
+  });
 }
 
 const hero = document.querySelector('.hero');
