@@ -159,6 +159,31 @@ ul, ol {
   margin: 0 auto;
 }
 
+.icon-list {
+  list-style: none;
+  padding: 0;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.icon-list li i {
+  color: var(--accent);
+}
+
+.icon-list li a {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.icon-list li a:hover {
+  color: var(--accent);
+}
+
 .team-grid {
   display: flex;
   flex-wrap: wrap;
