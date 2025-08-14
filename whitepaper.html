@@ -8,7 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
-    body { line-height:1.6; }
+    body { line-height:1.6; padding-top:70px; }
     .lang-select-container { text-align:center; margin:2rem 0; }
     #whitepaper-content { max-width:900px; margin:0 auto; padding:1rem; }
     .lang-block { display:none; }
@@ -17,6 +17,18 @@
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">KPOP Protocol</div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">소개</a></li>
+      <li><a href="index.html#technology">기술</a></li>
+      <li><a href="index.html#tokenomics">토큰 이코노미</a></li>
+      <li><a href="index.html#roadmap">로드맵</a></li>
+      <li><a href="team.html">팀</a></li>
+      <li><a href="whitepaper.html">백서</a></li>
+    </ul>
+    <button class="dark-toggle" aria-label="다크 모드 전환">Dark</button>
+  </nav>
   <div class="lang-select-container">
     <label for="lang-select">Language:</label>
     <select id="lang-select">
