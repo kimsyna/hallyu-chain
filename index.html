@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Codexer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codexer Showcase</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Codexer</h1>
-  <p>A simple placeholder for project documentation.</p>
-  <p>
-    <a href="README.md">Read the README</a>
-  </p>
+  <canvas id="bg"></canvas>
+  <header class="hero">
+    <h1>코덱서</h1>
+    <p>최신 웹 기술의 향연에 오신 것을 환영합니다</p>
+  </header>
+
+  <feature-grid></feature-grid>
+
+  <template id="feature-grid-template">
+    <style>
+      :host { display:block; padding:4rem; background:rgba(0,0,0,0.4); }
+      .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2rem; }
+      .feature { background:rgba(255,255,255,0.1); padding:2rem; border-radius:8px; opacity:0; transform:translateY(20px); transition:opacity .6s, transform .6s; text-align:center; }
+      .feature.show { opacity:1; transform:translateY(0); }
+    </style>
+    <div class="grid">
+      <div class="feature">웹 컴포넌트</div>
+      <div class="feature">WebGL 3D</div>
+      <div class="feature">CSS Grid</div>
+      <div class="feature">반응형 디자인</div>
+    </div>
+  </template>
+
+  <script type="module" src="main.js"></script>
 </body>
 </html>
