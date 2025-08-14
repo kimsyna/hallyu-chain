@@ -5,15 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Codexer Showcase</title>
   <link rel="stylesheet" href="style.css">
+  <!-- GSAP and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
+  <button class="dark-toggle" aria-label="다크 모드 전환">Dark Mode</button>
   <canvas id="bg"></canvas>
-  <header class="hero">
-    <h1>코덱서</h1>
+  <header class="hero reveal">
+    <h1><span>코덱서</span></h1>
     <p>최신 웹 기술의 향연에 오신 것을 환영합니다</p>
   </header>
 
   <feature-grid></feature-grid>
+
+  <div class="card">
+    <div class="card-inner">
+      <div class="card-face card-front">3D CARD</div>
+      <div class="card-face card-back">BACK SIDE</div>
+    </div>
+  </div>
+
+  <section class="parallax">
+    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=1950&q=80" alt="Background">
+    <div class="parallax-content">패럴랙스 스크롤</div>
+  </section>
+
+  <section class="lottie-section">
+    <lottie-player
+      src="https://assets5.lottiefiles.com/packages/lf20_myejiggj.json"
+      background="transparent"
+      speed="1"
+      style="width:300px;height:300px;margin:0 auto;"
+      loop
+      autoplay>
+    </lottie-player>
+    <button id="actionBtn">클릭하면 반짝!</button>
+  </section>
 
   <template id="feature-grid-template">
     <style>

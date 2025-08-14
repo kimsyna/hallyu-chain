@@ -1,5 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
+gsap.registerPlugin(ScrollTrigger);
+
 class FeatureGrid extends HTMLElement {
   constructor() {
     super();
@@ -56,3 +58,33 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+// Text reveal animation
+gsap.to('.reveal span', { y: 0, duration: 1.5, ease: 'power4.out' });
+
+// Parallax background effect
+gsap.to('.parallax img', {
+  scrollTrigger: {
+    trigger: '.parallax',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: true
+  },
+  y: -100
+});
+
+// Micro interaction button
+const btn = document.getElementById('actionBtn');
+if (btn) {
+  btn.addEventListener('click', () => {
+    gsap.fromTo(btn, { scale: 1 }, { scale: 1.2, yoyo: true, repeat: 1, duration: 0.2 });
+  });
+}
+
+// Dark mode toggle
+const toggle = document.querySelector('.dark-toggle');
+if (toggle) {
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+  });
+}
