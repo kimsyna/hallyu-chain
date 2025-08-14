@@ -7,6 +7,6 @@ This repository contains the marketing website for **KPOP Protocol (KPP)**, a co
 - `team.html`: Overview of the core development team.
 - `whitepaper.html`: Multi-language whitepaper.
 
-Assets are styled with `style.css` and animations are handled in `main.js` using GSAP.
+Assets are styled with `style.css` and animations are handled in `main.js` using GSAP and a custom Web Component for the animated hero title.
 
 The site is fully static and can be served by any web server.
