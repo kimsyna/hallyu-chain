@@ -1,5 +1,57 @@
 gsap.registerPlugin(ScrollTrigger);
 
+class KPPFancyTitle extends HTMLElement {
+  static get observedAttributes() { return ['text']; }
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+  connectedCallback() {
+    this.render();
+  }
+  attributeChangedCallback() {
+    this.render();
+  }
+  render() {
+    const text = this.getAttribute('text') || '';
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host { display: inline-block; }
+        h1 {
+          font-family: 'Poppins', sans-serif;
+          font-size: clamp(2.5rem, 8vw, 4rem);
+          margin: 0;
+          position: relative;
+          background: linear-gradient(45deg,#ff0080,#ffcd00,#00f0ff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        h1::before, h1::after {
+          content: attr(data-text);
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          mix-blend-mode: screen;
+          animation: glitch 2s infinite;
+        }
+        h1::before { color: #f0f; clip-path: polygon(0 0,100% 0,100% 45%,0 45%); }
+        h1::after { color: #0ff; clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%); }
+        @keyframes glitch {
+          0% { transform: translate(0); }
+          20% { transform: translate(-2px,-2px); }
+          40% { transform: translate(2px,2px); }
+          60% { transform: translate(-2px,2px); }
+          80% { transform: translate(2px,-2px); }
+          100% { transform: translate(0); }
+        }
+      </style>
+      <h1 data-text="${text}">${text}</h1>
+    `;
+  }
+}
+
+customElements.define('kpp-fancy-title', KPPFancyTitle);
+
 document.querySelectorAll('section, .wp-section').forEach(section => {
   gsap.from(section, {
     opacity: 0,
@@ -132,7 +184,13 @@ function setLanguage(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     const text = translations[lang][key];
-    if (text) el.textContent = text;
+    if (text) {
+      if (el.tagName === 'KPP-FANCY-TITLE') {
+        el.setAttribute('text', text);
+      } else {
+        el.textContent = text;
+      }
+    }
   });
   document.querySelectorAll('.lang-block').forEach(block => {
     block.style.display = block.dataset.lang === lang ? 'block' : 'none';
@@ -152,4 +210,18 @@ setLanguage(currentLang);
 const select = document.querySelector('.lang-select');
 if (select) {
   select.addEventListener('change', e => setLanguage(e.target.value));
+}
+
+const hero = document.querySelector('.hero');
+const fancy = document.querySelector('.hero-title');
+if (hero && fancy) {
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    gsap.to(fancy, { rotationY: x * 30, rotationX: -y * 30, ease: 'power2.out' });
+  });
+  hero.addEventListener('mouseleave', () => {
+    gsap.to(fancy, { rotationY: 0, rotationX: 0, duration: 0.5, ease: 'power2.out' });
+  });
 }
