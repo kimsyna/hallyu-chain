@@ -5,39 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KPOP Protocol 백서</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
     body { line-height:1.6; padding-top:70px; }
-    .lang-select-container { text-align:center; margin:2rem 0; }
     #whitepaper-content { max-width:900px; margin:0 auto; padding:1rem; }
     .lang-block { display:none; }
     .wp-section { margin:2rem 0; padding:1rem; background:rgba(255,255,255,0.05); border-radius:8px; }
     .wp-section h2 { margin-top:0; }
   </style>
 </head>
-<body>
+<body data-page="whitepaper">
   <nav class="navbar">
     <div class="logo">KPOP Protocol</div>
     <ul class="nav-links">
-      <li><a href="index.html#about">소개</a></li>
-      <li><a href="index.html#technology">기술</a></li>
-      <li><a href="index.html#tokenomics">토큰 이코노미</a></li>
-      <li><a href="index.html#roadmap">로드맵</a></li>
-      <li><a href="team.html">팀</a></li>
-      <li><a href="whitepaper.html">백서</a></li>
+      <li><a href="index.html#about"><i class="fa-solid fa-circle-info"></i><span data-i18n="nav_about">소개</span></a></li>
+      <li><a href="index.html#technology"><i class="fa-solid fa-microchip"></i><span data-i18n="nav_technology">기술</span></a></li>
+      <li><a href="index.html#tokenomics"><i class="fa-solid fa-coins"></i><span data-i18n="nav_tokenomics">토큰 이코노미</span></a></li>
+      <li><a href="index.html#roadmap"><i class="fa-solid fa-road"></i><span data-i18n="nav_roadmap">로드맵</span></a></li>
+      <li><a href="team.html"><i class="fa-solid fa-users"></i><span data-i18n="nav_team">팀</span></a></li>
+      <li><a href="whitepaper.html"><i class="fa-solid fa-file-lines"></i><span data-i18n="nav_whitepaper">백서</span></a></li>
     </ul>
-    <button class="dark-toggle" aria-label="다크 모드 전환">Dark</button>
-  </nav>
-  <div class="lang-select-container">
-    <label for="lang-select">Language:</label>
-    <select id="lang-select">
-      <option value="ko">한국어</option>
-      <option value="en">English</option>
-      <option value="zh">中文</option>
-      <option value="ja">日本語</option>
+    <select class="lang-select" aria-label="Change language">
+      <option value="ko">🇰🇷</option>
+      <option value="en">🇺🇸</option>
     </select>
-  </div>
+  </nav>
   <div id="whitepaper-content">
     <div class="lang-block" data-lang="ko">
       <h1 class="wp-section">KPOP Protocol 백서</h1>
@@ -165,147 +159,11 @@
         <p>This document is for informational purposes only and should not be construed as financial advice or an investment solicitation. Cryptocurrency investments carry risks, including potential loss of principal. Always conduct your own research and invest responsibly.</p>
       </section>
     </div>
-    <div class="lang-block" data-lang="zh">
-      <h1 class="wp-section">KPOP协议白皮书</h1>
-      <section class="wp-section">
-        <h2>1. 摘要</h2>
-        <p>KPOP协议（代号：KPP）在新一代去中心化金融（DeFi）的汹涌浪潮中应运而生，乃一款具有创新性的数字资产。它结合先进的加密算法与分布式共识机制，使人人都能够接入可信的金融服务。凭借高可扩展性、强大安全性以及以社区为主导的治理，KPOP协议旨在成为数字经济的全新标准。</p>
-      </section>
-      <section class="wp-section">
-        <h2>2. 愿景与使命</h2>
-        <ul>
-          <li><strong>愿景：</strong> 构建一个自治生态系统，让全球任何人都能自由而公平地开展金融活动</li>
-          <li><strong>使命：</strong> 通过分布式网络和创新智能合约，为所有用户提供透明且值得信赖的金融环境。</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>3. 核心技术</h2>
-        <ol>
-          <li><strong>可扩展共识算法：</strong> 采用权益证明（PoS）与委托权益证明（DPoS）的混合结构，最大化处理速度与能源效率。</li>
-          <li><strong>智能合约平台：</strong> 提供高性能智能合约环境，允许开发者自由构建去中心化应用（DApp）。</li>
-          <li><strong>加密安全层：</strong> 引入抗量子算法，确保长期安全性。</li>
-        </ol>
-      </section>
-      <section class="wp-section">
-        <h2>4. 代币经济</h2>
-        <ul>
-          <li><strong>总发行量：</strong> 10亿 KPP</li>
-          <li><strong>分配结构：</strong>
-            <ul>
-              <li>社区奖励：40%</li>
-              <li>团队与合作伙伴：20%</li>
-              <li>生态发展基金：20%</li>
-              <li>初始流动性与营销：20%</li>
-            </ul>
-          </li>
-          <li><strong>质押奖励：</strong> 根据网络贡献自动分配，长期持有者可享额外福利</li>
-          <li><strong>通缩机制：</strong> 对部分交易手续费进行销毁，以保持代币稀缺性</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>5. 路线图</h2>
-        <ol>
-          <li>2024年第一季度：主网发布并建立初始社区</li>
-          <li>2024年第二季度：发布智能合约功能与DApp开发工具包</li>
-          <li>2024年第三季度：扩大全球合作伙伴并整合去中心化交易所（DEX）</li>
-          <li>2024年第四季度：实现跨链桥接并优化网络</li>
-          <li>2025年及以后：拓展至元宇宙与NFT，并完成治理DAO</li>
-        </ol>
-      </section>
-      <section class="wp-section">
-        <h2>6. 社区与治理</h2>
-        <ul>
-          <li><strong>以社区为中心：</strong> KPOP协议将用户参与置于首位，所有关键决策均通过DAO投票完成，代币持有者均可提案并投票。</li>
-          <li><strong>持续发展：</strong> 通过全球社区的反馈不断改进与创新。</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>7. 结论与未来方向</h2>
-        <p>KPOP协议不仅仅是一种加密货币，更是变革去中心化金融范式的催化剂。在用户积极参与并创造价值的生态系统中，KPOP协议将开启通往更广阔数字世界的大门。未来的金融将在分布式网络之上展开，KPOP协议旨在成为点燃创新之火的核心。</p>
-      </section>
-      <section class="wp-section">
-        <h2>8. 免责声明</h2>
-        <p>本文仅供参考，不应被视为投资建议或募集资金的邀请。投资加密货币存在风险，包括本金可能损失。请自行研究并谨慎投资。</p>
-      </section>
-    </div>
-    <div class="lang-block" data-lang="ja">
-      <h1 class="wp-section">KPOPプロトコル白書</h1>
-      <section class="wp-section">
-        <h2>1. 概要</h2>
-        <p>KPOPプロトコル（ティッカー: KPP）は次世代分散型ファイナンス（DeFi）の巨大な波の上に誕生した革新的なデジタル資産です。高度な暗号アルゴリズムと分散型コンセンサス構造を組み合わせることで、誰もが信頼ベースの金融サービスにアクセスできるよう設計されています。高いスケーラビリティと強力なセキュリティ、そしてコミュニティ主導のガバナンスを備え、KPOPプロトコルはデジタル経済の新たなスタンダードを目指します。</p>
-      </section>
-      <section class="wp-section">
-        <h2>2. ビジョンとミッション</h2>
-        <ul>
-          <li><strong>ビジョン：</strong> 世界中の誰もが自由かつ平等に金融活動を行える自律的エコシステムの構築</li>
-          <li><strong>ミッション：</strong> 分散型ネットワークと革新的スマートコントラクトを通じて、すべてのユーザーに透明性と信頼性の高い金融環境を提供する。</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>3. コア技術</h2>
-        <ol>
-          <li><strong>スケーラブルなコンセンサスアルゴリズム：</strong> Proof-of-Stake（PoS）とDelegated Proof-of-Stake（DPoS）のハイブリッド構造を採用し、処理速度とエネルギー効率を最大化。</li>
-          <li><strong>スマートコントラクトプラットフォーム：</strong> 高性能スマートコントラクトにより、開発者は柔軟に分散型アプリ（DApp）を構築可能。</li>
-          <li><strong>暗号セキュリティ層：</strong> 量子耐性アルゴリズムを導入し、長期的なセキュリティを保証。</li>
-        </ol>
-      </section>
-      <section class="wp-section">
-        <h2>4. トークンエコノミー</h2>
-        <ul>
-          <li><strong>総発行量：</strong> 10億KPP</li>
-          <li><strong>配分構造：</strong>
-            <ul>
-              <li>コミュニティ報酬：40%</li>
-              <li>チームとパートナーシップ：20%</li>
-              <li>エコシステム開発基金：20%</li>
-              <li>初期流動性およびマーケティング：20%</li>
-            </ul>
-          </li>
-          <li><strong>ステーキング報酬：</strong> ネットワークへの貢献度に応じ自動配分され、長期保有者には優遇</li>
-          <li><strong>デフレーションメカニズム：</strong> 取引手数料の一部をバーンし、トークンの希少性を維持</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>5. ロードマップ</h2>
-        <ol>
-          <li>2024年Q1：メインネットをローンチし、初期コミュニティを構築</li>
-          <li>2024年Q2：スマートコントラクト機能とDApp開発ツールキットを公開</li>
-          <li>2024年Q3：グローバルパートナーシップを拡大し、分散型取引所（DEX）を統合</li>
-          <li>2024年Q4：クロスチェーンブリッジを実装し、ネットワークを最適化</li>
-          <li>2025年以降：メタバースとNFTへ拡張し、ガバナンスDAOを完成させる</li>
-        </ol>
-      </section>
-      <section class="wp-section">
-        <h2>6. コミュニティとガバナンス</h2>
-        <ul>
-          <li><strong>コミュニティ重視：</strong> KPOPプロトコルはユーザーの参加を最優先とし、すべての重要な決定はDAO投票を通じて行われ、トークン保有者は提案と意思決定に参加できます。</li>
-          <li><strong>継続的発展：</strong> グローバルコミュニティからのフィードバックを取り入れ、常に改善と革新を追求します。</li>
-        </ul>
-      </section>
-      <section class="wp-section">
-        <h2>7. 結論と将来展望</h2>
-        <p>KPOPプロトコルは単なる仮想通貨にとどまらず、分散型金融のパラダイムを変革する触媒です。ユーザーが積極的に参加し価値を創造するエコシステムの中で、KPOPプロトコルはより広いデジタル世界への扉を開いていくでしょう。未来の金融は分散型ネットワーク上で展開され、KPOPプロトコルはその中心で革新の火花を灯します。</p>
-      </section>
-      <section class="wp-section">
-        <h2>8. 免責事項</h2>
-        <p>本書は情報提供のみを目的としたものであり、投資勧誘や財務アドバイスとして解釈されるべきではありません。暗号資産への投資には元本損失のリスクが伴いますので、投資は自己責任で行ってください。</p>
-      </section>
-    </div>
   </div>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    const select = document.getElementById('lang-select');
-    const blocks = document.querySelectorAll('.lang-block');
-    function showLang(lang){
-      blocks.forEach(b => b.style.display = b.dataset.lang === lang ? 'block' : 'none');
-      ScrollTrigger.refresh();
-    }
-    select.addEventListener('change', e => showLang(e.target.value));
-    showLang('ko');
-    gsap.utils.toArray('.wp-section').forEach(section => {
-      gsap.from(section, {opacity:0, y:50, scrollTrigger:{trigger:section,start:'top 80%'}});
-    });
-  </script>
+  <footer class="footer">
+    <p data-i18n="footer_text">&copy; 2024 KPOP Protocol. 본 사이트의 정보는 투자 권유가 아닙니다.</p>
+  </footer>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
 
