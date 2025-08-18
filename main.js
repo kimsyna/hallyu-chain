@@ -15,8 +15,14 @@ class KPPFancyTitle extends HTMLElement {
   render() {
     const text = this.getAttribute('text') || '';
     const size = this.getAttribute('size') || 'large';
-    this.shadowRoot.innerHTML = `
-      <style>
+    const root = this.shadowRoot;
+
+    while (root.firstChild) {
+      root.removeChild(root.firstChild);
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
         :host { display: inline-block; }
         h1 {
           font-family: 'Poppins', sans-serif;
@@ -45,9 +51,13 @@ class KPPFancyTitle extends HTMLElement {
           80% { transform: translate(2px,-2px); }
           100% { transform: translate(0); }
         }
-      </style>
-      <h1 data-text="${text}">${text}</h1>
     `;
+    root.appendChild(style);
+
+    const h1 = document.createElement('h1');
+    h1.textContent = text;
+    h1.setAttribute('data-text', text);
+    root.appendChild(h1);
   }
 }
 
