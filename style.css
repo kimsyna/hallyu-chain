@@ -290,6 +290,38 @@ ul, ol {
   object-fit: cover;
 }
 
+.ci-section {
+  text-align: center;
+}
+
+.brand-colors .color-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.color-item .swatch {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin: 0 auto 0.5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.typography .font-sample {
+  margin-top: 0.5rem;
+}
+
+.font-sample.heading {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-sample.body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .footer {
   text-align: center;
   padding: 2rem 1rem;
