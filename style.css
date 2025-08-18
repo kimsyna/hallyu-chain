@@ -7,6 +7,12 @@
   --accent: #ff4081;
 }
 
+body.dark-mode {
+  --bg: #121212;
+  --fg: #f5f5f5;
+  color-scheme: dark;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -80,6 +86,15 @@ html {
   color: var(--fg);
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
+  margin-left: 1rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 1.2rem;
+  cursor: pointer;
   margin-left: 1rem;
 }
 
@@ -347,6 +362,18 @@ ul, ol {
   padding: 2rem 1rem;
   background: rgba(0,0,0,0.05);
   margin-top: 4rem;
+}
+
+body.dark-mode .navbar {
+  background: rgba(18,18,18,0.8);
+}
+
+body.dark-mode .wp-section {
+  background: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .footer {
+  background: rgba(255,255,255,0.05);
 }
 
 .btn {
