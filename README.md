@@ -5,6 +5,7 @@ This repository contains the marketing website for **KPOP Protocol (KPP)**, a co
 ## Structure
 - `index.html`: Landing page introducing the protocol, technology and token model.
 - `team.html`: Overview of the core development team.
+- `corporate.html`: Brand overview and corporate identity.
 - `whitepaper.html`: Multi-language whitepaper.
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
 
