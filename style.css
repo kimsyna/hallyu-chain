@@ -217,6 +217,40 @@ ul, ol {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
+#partners {
+  text-align: center;
+  background: rgba(255,255,255,0.03);
+}
+
+.logo-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo-item {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 120px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.logo-item i {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.logo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
 #newsletter {
   text-align: center;
   padding: 4rem 1rem;
