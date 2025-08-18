@@ -210,3 +210,13 @@ if (newsletterForm) {
     newsletterForm.reset();
   });
 }
+
+const backToTop = document.querySelector('.back-to-top');
+if (backToTop) {
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
