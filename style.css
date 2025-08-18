@@ -217,6 +217,27 @@ ul, ol {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
+#newsletter {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: rgba(255,255,255,0.03);
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.newsletter-form input {
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  border: none;
+  min-width: 250px;
+}
+
 .team-grid {
   display: flex;
   flex-wrap: wrap;
