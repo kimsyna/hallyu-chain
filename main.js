@@ -95,6 +95,7 @@ const translations = {
     nav_tokenomics: "토큰 이코노미",
     nav_roadmap: "로드맵",
     nav_resources: "참고 자료",
+    nav_newsletter: "뉴스레터",
     nav_faq: "FAQ",
     nav_team: "팀",
     nav_whitepaper: "백서",
@@ -136,6 +137,11 @@ const translations = {
     res_whitepaper: "백서",
     res_github: "GitHub 저장소",
     res_discord: "Discord 커뮤니티",
+    newsletter_title: "뉴스레터 구독",
+    newsletter_text: "최신 업데이트와 에어드롭 소식을 이메일로 받아보세요.",
+    newsletter_button: "구독하기",
+    newsletter_placeholder: "이메일 주소",
+    newsletter_success: "구독해주셔서 감사합니다!",
     faq_title: "자주 묻는 질문",
     faq_q1: "KPOP Protocol은 무엇인가요?",
     faq_a1: "KPOP Protocol은 K-POP 커뮤니티를 위한 블록체인 기반 디지털 자산입니다.",
@@ -155,6 +161,7 @@ const translations = {
     nav_tokenomics: "Tokenomics",
     nav_roadmap: "Roadmap",
     nav_resources: "Resources",
+    nav_newsletter: "Newsletter",
     nav_faq: "FAQ",
     nav_team: "Team",
     nav_whitepaper: "Whitepaper",
@@ -196,6 +203,11 @@ const translations = {
     res_whitepaper: "Whitepaper",
     res_github: "GitHub Repository",
     res_discord: "Discord Community",
+    newsletter_title: "Subscribe to our Newsletter",
+    newsletter_text: "Get the latest updates and airdrop news straight to your inbox.",
+    newsletter_button: "Subscribe",
+    newsletter_placeholder: "Email address",
+    newsletter_success: "Thank you for subscribing!",
     faq_title: "Frequently Asked Questions",
     faq_q1: "What is KPOP Protocol?",
     faq_a1: "KPOP Protocol is a blockchain-based digital asset for the K-POP community.",
@@ -215,6 +227,7 @@ const translations = {
     nav_tokenomics: "代币经济",
     nav_roadmap: "路线图",
     nav_resources: "参考资料",
+    nav_newsletter: "新闻订阅",
     nav_faq: "常见问题",
     nav_team: "团队",
     nav_whitepaper: "白皮书",
@@ -256,6 +269,11 @@ const translations = {
     res_whitepaper: "白皮书",
     res_github: "GitHub 仓库",
     res_discord: "Discord 社区",
+    newsletter_title: "订阅我们的新闻",
+    newsletter_text: "获取最新更新和空投消息，直接发送到你的邮箱。",
+    newsletter_button: "订阅",
+    newsletter_placeholder: "电子邮件地址",
+    newsletter_success: "感谢订阅！",
     faq_title: "常见问题",
     faq_q1: "KPOP Protocol 是什么？",
     faq_a1: "KPOP Protocol 是面向 K-POP 社区的区块链数字资产。",
@@ -283,6 +301,13 @@ function setLanguage(lang) {
       } else {
         el.textContent = text;
       }
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    const text = translations[lang][key];
+    if (text) {
+      el.setAttribute('placeholder', text);
     }
   });
   document.querySelectorAll('.lang-block').forEach(block => {
@@ -323,5 +348,15 @@ if (hero && fancy) {
   });
   hero.addEventListener('mouseleave', () => {
     gsap.to(fancy, { rotationY: 0, rotationX: 0, duration: 0.5, ease: 'power2.out' });
+  });
+}
+
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const lang = localStorage.getItem('lang') || 'ko';
+    alert(translations[lang].newsletter_success);
+    newsletterForm.reset();
   });
 }
