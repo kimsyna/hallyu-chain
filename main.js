@@ -130,6 +130,13 @@ async function setLanguage(lang) {
       el.setAttribute('placeholder', text);
     }
   });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+    const key = el.getAttribute('data-i18n-aria-label');
+    const text = translations[lang][key];
+    if (text) {
+      el.setAttribute('aria-label', text);
+    }
+  });
   document.querySelectorAll('.lang-block').forEach(block => {
     block.style.display = block.dataset.lang === lang ? 'block' : 'none';
   });
@@ -154,6 +161,28 @@ const menuToggle = document.querySelector('.menu-toggle');
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     document.querySelector('.navbar').classList.toggle('open');
+  });
+}
+
+const themeToggle = document.querySelector('.theme-toggle');
+function updateThemeIcon() {
+  if (!themeToggle) return;
+  themeToggle.innerHTML = document.body.classList.contains('dark-mode')
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
+}
+function setTheme(theme) {
+  document.body.classList.toggle('dark-mode', theme === 'dark');
+  localStorage.setItem('theme', theme);
+  updateThemeIcon();
+}
+if (themeToggle) {
+  const saved = localStorage.getItem('theme');
+  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  setTheme(saved || prefers);
+  themeToggle.addEventListener('click', () => {
+    const next = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+    setTheme(next);
   });
 }
 
