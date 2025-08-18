@@ -7,6 +7,12 @@
   --accent: #ff4081;
 }
 
+:root[data-theme='dark'] {
+  --bg: #121212;
+  --fg: #e0e0e0;
+  --accent: #ff4081;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -17,6 +23,10 @@ html, body {
   line-height: 1.6;
   color-scheme: light;
   overflow-x: hidden;
+}
+
+html[data-theme='dark'], html[data-theme='dark'] body {
+  color-scheme: dark;
 }
 
 *, *::before, *::after {
@@ -40,6 +50,10 @@ html {
   backdrop-filter: blur(5px);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 10;
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(0,0,0,0.8);
 }
 
 .navbar .logo {
@@ -81,6 +95,15 @@ html {
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
   margin-left: 1rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--fg);
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 .menu-toggle {
@@ -335,6 +358,11 @@ ul, ol {
   padding: 1rem;
   background: rgba(0,0,0,0.05);
   border-radius: 8px;
+}
+
+[data-theme='dark'] .wp-section,
+[data-theme='dark'] .footer {
+  background: rgba(255,255,255,0.05);
 }
 
 .wp-section kpp-fancy-title {

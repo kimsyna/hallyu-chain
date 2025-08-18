@@ -1,5 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
 class KPPFancyTitle extends HTMLElement {
   static get observedAttributes() { return ['text', 'size']; }
   constructor() {
@@ -154,6 +157,23 @@ const menuToggle = document.querySelector('.menu-toggle');
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
     document.querySelector('.navbar').classList.toggle('open');
+  });
+}
+
+const themeBtn = document.querySelector('.theme-toggle');
+if (themeBtn) {
+  const setIcon = theme => {
+    themeBtn.innerHTML = theme === 'dark'
+      ? '<i class="fa-solid fa-sun"></i>'
+      : '<i class="fa-solid fa-moon"></i>';
+  };
+  setIcon(savedTheme);
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    setIcon(next);
   });
 }
 
