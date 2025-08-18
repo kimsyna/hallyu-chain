@@ -17,6 +17,7 @@ The site is fully static and can be served by any web server.
 - Animated hero titles implemented as a reusable Web Component.
 - Scroll-triggered section reveals powered by GSAP.
 - Responsive layout driven by modern CSS.
+- Feature cards highlight fan participation, artist support, and global community building.
 
 ## Local Development
 1. Clone the repository and change into the project directory:
