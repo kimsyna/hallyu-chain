@@ -322,6 +322,28 @@ ul, ol {
   font-family: 'Roboto', sans-serif;
 }
 
+#whitepaper-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.lang-block {
+  display: none;
+}
+
+.wp-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+}
+
+.wp-section kpp-fancy-title {
+  display: block;
+  margin-top: 0;
+}
+
 .footer {
   text-align: center;
   padding: 2rem 1rem;
