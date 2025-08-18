@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@600&family=Roboto:wght@400;500&display=swap');
 
+
 :root {
-  --bg: #0a0a0a;
-  --fg: #f5f5f5;
-  --accent: #ffd93d;
+  --bg: #ffffff;
+  --fg: #222222;
+  --accent: #ff4081;
 }
 
 html, body {
@@ -14,7 +15,7 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  color-scheme: dark;
+  color-scheme: light;
   overflow-x: hidden;
 }
 
@@ -35,8 +36,9 @@ html {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.8);
   backdrop-filter: blur(5px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 10;
 }
 
@@ -110,7 +112,7 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg,#ff0080,#ffcd00,#00f0ff,#ff0080);
+  background: linear-gradient(-45deg,#f6d365,#fda085,#a1c4fd,#c2e9fb);
   background-size: 400% 400%;
   animation: heroGradient 15s ease infinite;
   z-index: -1;
@@ -127,13 +129,9 @@ html {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(2.5rem, 8vw, 4rem);
   margin: 0;
-  background: linear-gradient(45deg,#ff0080,#ffcd00,#00f0ff);
+  background: linear-gradient(45deg,#ff4081,#7c4dff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.hero.small {
-  height: 50vh;
 }
 
 .hero p {
@@ -193,7 +191,7 @@ ul, ol {
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.05);
   border-radius: 8px;
   padding: 2rem 1rem;
   text-align: center;
@@ -219,7 +217,7 @@ ul, ol {
 
 #partners {
   text-align: center;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
 }
 
 .logo-grid {
@@ -232,7 +230,7 @@ ul, ol {
 }
 
 .logo-item {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.05);
   border-radius: 8px;
   padding: 1.5rem;
   width: 120px;
@@ -254,7 +252,7 @@ ul, ol {
 #newsletter {
   text-align: center;
   padding: 4rem 1rem;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
 }
 
 .newsletter-form {
@@ -307,7 +305,7 @@ ul, ol {
   height: 80px;
   border-radius: 8px;
   margin: 0 auto 0.5rem;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .typography .font-sample {
@@ -335,7 +333,7 @@ ul, ol {
 .wp-section {
   margin: 2rem 0;
   padding: 1rem;
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.05);
   border-radius: 8px;
 }
 
@@ -347,7 +345,7 @@ ul, ol {
 .footer {
   text-align: center;
   padding: 2rem 1rem;
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.05);
   margin-top: 4rem;
 }
 
@@ -359,7 +357,7 @@ ul, ol {
   border: none;
   border-radius: 6px;
   background: var(--accent);
-  color: #111;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
