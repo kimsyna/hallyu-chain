@@ -36,3 +36,11 @@ Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for p
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Before committing changes to translation files in `locales/`, run the locale consistency check:
+
+```bash
+node scripts/check-locales.js
+```
+
+This script ensures every locale file has the same keys as `locales/en.json` and reports any missing or extra entries.
