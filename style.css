@@ -51,6 +51,14 @@ html {
 .navbar .logo {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar .logo img {
+  width: 24px;
+  height: 24px;
 }
 
 .navbar .nav-links {
