@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <radialGradient id="coinGradient" cx="30%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#fff4e0"/>
-      <stop offset="50%" stop-color="#f0ba45"/>
-      <stop offset="100%" stop-color="#b37e0a"/>
+    <radialGradient id="ringGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff77a9"/>
+      <stop offset="100%" stop-color="#7c4dff"/>
     </radialGradient>
-    <radialGradient id="coreGradient" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0e1e5b"/>
-      <stop offset="100%" stop-color="#1d4ed8"/>
-    </radialGradient>
+    <linearGradient id="swooshGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4081"/>
+      <stop offset="100%" stop-color="#7c4dff"/>
+    </linearGradient>
   </defs>
-  <circle cx="50" cy="50" r="49" fill="url(#coinGradient)"/>
   <g transform="translate(50 50)">
     <rect x="-2" y="-48" width="4" height="8" rx="1" fill="rgba(255,255,255,0.4)"/>
     <rect x="-2" y="-48" width="4" height="8" rx="1" fill="rgba(255,255,255,0.4)" transform="rotate(30)"/>
@@ -25,10 +23,8 @@
     <rect x="-2" y="-48" width="4" height="8" rx="1" fill="rgba(255,255,255,0.4)" transform="rotate(300)"/>
     <rect x="-2" y="-48" width="4" height="8" rx="1" fill="rgba(255,255,255,0.4)" transform="rotate(330)"/>
   </g>
-  <circle cx="50" cy="50" r="38" fill="url(#coreGradient)"/>
-  <rect x="32" y="25" width="10" height="50" fill="#ffffff"/>
-  <polygon points="42,50 62,25 72,25 52,50 72,75 62,75" fill="#ffffff"/>
-  <path d="M42 30 h12 a10 10 0 0 1 0 20 h-12z" fill="#ffffff"/>
-  <path d="M42 50 h12 a10 10 0 0 1 0 20 h-12z" fill="#ffffff"/>
+  <circle cx="50" cy="50" r="38" fill="#222222"/>
+  <path d="M15 60 Q50 20 85 40 L85 60 Q50 80 15 60 Z" fill="url(#swooshGradient)" fill-opacity="0.6"/>
+  <text x="50" y="58" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="700" fill="#ffffff">KPOP</text>
 </svg>
 
