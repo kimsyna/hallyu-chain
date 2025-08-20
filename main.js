@@ -168,8 +168,8 @@ const themeToggle = document.querySelector('.theme-toggle');
 function updateThemeIcon() {
   if (!themeToggle) return;
   themeToggle.innerHTML = document.body.classList.contains('dark-mode')
-    ? '<i class="fa-solid fa-sun"></i>'
-    : '<i class="fa-solid fa-moon"></i>';
+    ? '<i class="material-symbols-outlined">light_mode</i>'
+    : '<i class="material-symbols-outlined">dark_mode</i>';
 }
 function setTheme(theme) {
   document.body.classList.toggle('dark-mode', theme === 'dark');
