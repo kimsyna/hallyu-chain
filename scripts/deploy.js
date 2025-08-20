@@ -7,14 +7,14 @@ async function main() {
   console.log("Deploying with:", deployer.address);
 
   const initialSupply = ethers.parseUnits("1000000", 18);
-  const KPPToken = await ethers.getContractFactory("KPPToken");
-  const token = await KPPToken.deploy(initialSupply);
+  const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
+  const token = await KPOPProtocol.deploy(initialSupply);
   await token.waitForDeployment();
   const address = await token.getAddress();
-  console.log("KPPToken deployed to:", address);
+  console.log("KPOPProtocol deployed to:", address);
 
   const filePath = path.join(__dirname, "..", "token-address.json");
-  fs.writeFileSync(filePath, JSON.stringify({ KPPToken: address }, null, 2));
+  fs.writeFileSync(filePath, JSON.stringify({ KPOPProtocol: address }, null, 2));
 }
 
 main().catch((error) => {
