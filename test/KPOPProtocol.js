@@ -5,7 +5,7 @@ describe("KPOPProtocol", function () {
   it("assigns initial supply to deployer", async function () {
     const [owner] = await ethers.getSigners();
     const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
-    const initialSupply = ethers.parseUnits("1000000", 18);
+    const initialSupply = ethers.parseUnits("202500000000", 18);
     const token = await KPOPProtocol.deploy(initialSupply);
     await token.waitForDeployment();
     expect(await token.balanceOf(owner.address)).to.equal(initialSupply);
@@ -14,7 +14,7 @@ describe("KPOPProtocol", function () {
   it("transfers tokens between accounts", async function () {
     const [owner, addr1, addr2] = await ethers.getSigners();
     const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
-    const initialSupply = ethers.parseUnits("1000000", 18);
+    const initialSupply = ethers.parseUnits("202500000000", 18);
     const token = await KPOPProtocol.deploy(initialSupply);
     await token.waitForDeployment();
 
