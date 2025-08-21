@@ -233,12 +233,21 @@ if (hero && fancy && !prefersReducedMotion) {
 }
 
 const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
+const newsletterMessage = document.querySelector('.newsletter-success');
+let newsletterTimeout;
+
+if (newsletterForm && newsletterMessage) {
   newsletterForm.addEventListener('submit', async e => {
     e.preventDefault();
     const lang = localStorage.getItem('lang') || 'ko';
     await loadLanguage(lang);
-    alert(translations[lang].newsletter_success);
+    newsletterMessage.textContent = translations[lang].newsletter_success;
+    newsletterMessage.hidden = false;
+    clearTimeout(newsletterTimeout);
+    newsletterTimeout = setTimeout(() => {
+      newsletterMessage.hidden = true;
+      newsletterMessage.textContent = '';
+    }, 5000);
     newsletterForm.reset();
   });
 }
