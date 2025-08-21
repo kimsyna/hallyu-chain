@@ -1,6 +1,6 @@
-# KPOP Protocol Website
+# Hallyu Chain Website
 
-This repository contains the marketing website for **KPOP Protocol (KPP)**, a commercial-grade cryptocurrency project built for the global K-POP community.
+This repository contains the marketing website for **Hallyu Chain (HALL)**, a commercial-grade cryptocurrency project built for the global K-POP community.
 
 ## Requirements
 - Node.js >= 18.0.0
@@ -30,6 +30,22 @@ NETWORKS=sepolia,bscTestnet npm run multi-deploy
 ```
 
 RPC URLs and the deployer's private key are read from environment variables (`SEPOLIA_RPC_URL`, `BSC_RPC_URL`, `PRIVATE_KEY`).
+
+## Tokenomics
+- Total supply: 1,000,000 HALL
+- Community rewards: 40%
+- Team & partnerships: 20%
+- Ecosystem development fund: 20%
+- Initial liquidity & marketing: 20%
+
+## Roadmap
+- 2026 Q1: Launch mainnet
+- 2026 Q2: Release smart contract platform
+- 2026 Q3: Expand global partnerships
+- 2026 Q4: Implement cross-chain bridge
+
+## DAO
+Hallyu Chain is governed by a decentralized autonomous organization. HALL token holders can propose and vote on upgrades and community initiatives through on-chain governance.
 
 ## Design Tokens
 The site relies on CSS custom properties for theming. Two key tokens exposed for the hero section are:
