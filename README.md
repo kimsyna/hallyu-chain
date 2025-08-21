@@ -45,6 +45,10 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - 2026 Q2: Release smart contract platform
 - 2026 Q3: Expand global partnerships
 - 2026 Q4: Implement cross-chain bridge
+- 2027 Q1: Launch NFT marketplace
+- 2027 Q2: Introduce mobile wallet
+- 2027 Q3: Expand staking rewards
+- 2027 Q4: Roll out on-chain governance
 
 ## DAO
 Hallyu Chain is governed by a decentralized autonomous organization. HALL token holders can propose and vote on upgrades and community initiatives through on-chain governance.
