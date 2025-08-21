@@ -38,7 +38,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Before committing changes to translation files in `locales/`, run the locale consistency check:
 
 ```bash
-node scripts/check-locales.js
+npm run check-locales
 ```
 
-This script ensures every locale file has the same keys as `locales/en.json` and reports any missing or extra entries.
+This script ensures every locale file has the same keys as `locales/en.json` and reports any missing or extra entries. The check is also executed in the CI pipeline.
