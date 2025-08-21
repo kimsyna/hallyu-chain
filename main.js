@@ -1,7 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Respect users who prefer reduced motion by checking their system setting
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)'
+).matches;
 
 // Reusable notice element for status messages
 const notice = document.createElement('div');
@@ -22,7 +24,9 @@ function showNotice(message, delay = 4000) {
 }
 
 class KPPFancyTitle extends HTMLElement {
-  static get observedAttributes() { return ['text', 'size']; }
+  static get observedAttributes() {
+    return ['text', 'size'];
+  }
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -85,7 +89,7 @@ class KPPFancyTitle extends HTMLElement {
 customElements.define('kpp-fancy-title', KPPFancyTitle);
 
 function applyFancyTitles() {
-  document.querySelectorAll('h1').forEach(h1 => {
+  document.querySelectorAll('h1').forEach((h1) => {
     if (h1.closest('kpp-fancy-title')) return;
     const fancy = document.createElement('kpp-fancy-title');
     fancy.setAttribute('size', 'large');
@@ -94,7 +98,7 @@ function applyFancyTitles() {
     if (h1.dataset.i18n) fancy.setAttribute('data-i18n', h1.dataset.i18n);
     h1.replaceWith(fancy);
   });
-  document.querySelectorAll('h2').forEach(h2 => {
+  document.querySelectorAll('h2').forEach((h2) => {
     if (h2.closest('kpp-fancy-title')) return;
     const fancy = document.createElement('kpp-fancy-title');
     fancy.setAttribute('size', 'medium');
@@ -110,20 +114,20 @@ applyFancyTitles();
 
 // Skip scroll animations when reduced motion is preferred
 if (!prefersReducedMotion) {
-  document.querySelectorAll('section, .wp-section').forEach(section => {
+  document.querySelectorAll('section, .wp-section').forEach((section) => {
     gsap.from(section, {
       opacity: 0,
       y: 40,
       duration: 1,
       scrollTrigger: {
         trigger: section,
-        start: 'top 80%'
-      }
+        start: 'top 80%',
+      },
     });
   });
 } else {
   // Make sure sections remain visible without animation
-  document.querySelectorAll('section, .wp-section').forEach(section => {
+  document.querySelectorAll('section, .wp-section').forEach((section) => {
     section.style.opacity = 1;
     section.style.transform = 'none';
   });
@@ -149,7 +153,6 @@ async function loadLanguage(lang) {
   return lang;
 }
 
-
 async function setLanguage(lang) {
   const loadedLang = await loadLanguage(lang);
   if (!loadedLang) {
@@ -162,7 +165,7 @@ async function setLanguage(lang) {
   lang = loadedLang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
     const text = translations[lang][key];
     if (text) {
@@ -173,21 +176,21 @@ async function setLanguage(lang) {
       }
     }
   });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const key = el.getAttribute('data-i18n-placeholder');
     const text = translations[lang][key];
     if (text) {
       el.setAttribute('placeholder', text);
     }
   });
-  document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
     const key = el.getAttribute('data-i18n-aria-label');
     const text = translations[lang][key];
     if (text) {
       el.setAttribute('aria-label', text);
     }
   });
-  document.querySelectorAll('[data-i18n-meta]').forEach(el => {
+  document.querySelectorAll('[data-i18n-meta]').forEach((el) => {
     const key = el.getAttribute('data-i18n-meta');
     const text = translations[lang][key];
     if (text) {
@@ -234,7 +237,7 @@ handleHash();
 
 const select = document.querySelector('.lang-select');
 if (select) {
-  select.addEventListener('change', e => setLanguage(e.target.value));
+  select.addEventListener('change', (e) => setLanguage(e.target.value));
 }
 
 const menuToggle = document.querySelector('.menu-toggle');
@@ -292,14 +295,23 @@ const hero = document.querySelector('.hero');
 const fancy = document.querySelector('.hero-title');
 // Disable fancy hero animation if reduced motion is requested
 if (hero && fancy && !prefersReducedMotion) {
-  hero.addEventListener('mousemove', e => {
+  hero.addEventListener('mousemove', (e) => {
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(fancy, { rotationY: x * 30, rotationX: -y * 30, ease: 'power2.out' });
+    gsap.to(fancy, {
+      rotationY: x * 30,
+      rotationX: -y * 30,
+      ease: 'power2.out',
+    });
   });
   hero.addEventListener('mouseleave', () => {
-    gsap.to(fancy, { rotationY: 0, rotationX: 0, duration: 0.5, ease: 'power2.out' });
+    gsap.to(fancy, {
+      rotationY: 0,
+      rotationX: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
   });
 }
 
@@ -308,7 +320,7 @@ const newsletterMessage = document.querySelector('.newsletter-success');
 let newsletterTimeout;
 
 if (newsletterForm && newsletterMessage) {
-  newsletterForm.addEventListener('submit', async e => {
+  newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const lang = localStorage.getItem('lang') || DEFAULT_LANG;
     await loadLanguage(lang);
@@ -330,6 +342,25 @@ if (backToTop) {
   });
   // Respect reduced motion setting for scroll behavior
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
   });
 }
+
+async function loadStakingStatus() {
+  try {
+    const resp = await fetch('/api/staking');
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    const total = document.getElementById('total-staked');
+    const rewards = document.getElementById('user-rewards');
+    if (total) total.textContent = data.totalStaked;
+    if (rewards) rewards.textContent = data.userRewards;
+  } catch (err) {
+    console.error('Failed to fetch staking info', err);
+  }
+}
+
+loadStakingStatus();
