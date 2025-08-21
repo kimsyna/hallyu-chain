@@ -162,7 +162,7 @@ function replaceTokenomicsPlaceholders(root, data) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
   while (walker.nextNode()) {
     walker.currentNode.textContent = walker.currentNode.textContent.replace(
-      /\{(supply|dao|community|team|advisors|investors|burn)\}/g,
+      /\{(supply|dao|community|team|advisors|investors)\}/g,
       (_, key) => {
         const value = data[key];
         if (value === undefined) return '';
