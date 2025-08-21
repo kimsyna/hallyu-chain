@@ -504,7 +504,9 @@ body.dark-mode .footer {
 
 @media (max-width: 600px) {
   :root {
-    --space-sm: 1.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1.25rem;
+    --space-lg: 1.75rem;
   }
 
   html, body {
@@ -515,7 +517,7 @@ body.dark-mode .footer {
     .navbar {
       flex-wrap: wrap;
       align-items: center;
-      padding: var(--space-sm);
+      padding: var(--space-md);
       position: relative;
     }
 
@@ -554,7 +556,7 @@ body.dark-mode .footer {
   }
 
   section {
-    padding: calc(var(--space-lg) * 2) var(--space-sm);
+    padding: calc(var(--space-lg) * 2) var(--space-md);
   }
 
   .card-grid {
