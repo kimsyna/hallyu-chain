@@ -83,5 +83,8 @@
   "title_index": "KPOP Protocol",
   "title_team": "KPOP Protocol チーム",
   "title_whitepaper": "KPOP Protocol ホワイトペーパー",
-  "title_corporate": "KPOP Protocol コーポレートアイデンティティ"
+  "title_corporate": "KPOP Protocol コーポレートアイデンティティ",
+  "staking_title": "ステーキングと報酬",
+  "staking_total": "総ステーク量",
+  "staking_rewards": "あなたの報酬"
 }

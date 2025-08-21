@@ -83,5 +83,8 @@
   "title_index": "KPOP Protocol",
   "title_team": "KPOP Protocol 团队",
   "title_whitepaper": "KPOP Protocol 白皮书",
-  "title_corporate": "KPOP Protocol 企业形象"
+  "title_corporate": "KPOP Protocol 企业形象",
+  "staking_title": "质押与奖励",
+  "staking_total": "总质押量",
+  "staking_rewards": "你的奖励"
 }

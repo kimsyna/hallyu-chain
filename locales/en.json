@@ -83,5 +83,8 @@
   "title_index": "KPOP Protocol",
   "title_team": "KPOP Protocol Team",
   "title_whitepaper": "KPOP Protocol Whitepaper",
-  "title_corporate": "KPOP Protocol Corporate Identity"
+  "title_corporate": "KPOP Protocol Corporate Identity",
+  "staking_title": "Staking & Rewards",
+  "staking_total": "Total Staked",
+  "staking_rewards": "Your Rewards"
 }

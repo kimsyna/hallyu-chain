@@ -1,46 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KPOP Protocol</title>
-  <meta name="description" content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크" data-i18n-meta="hero_subtitle">
-  <meta property="og:title" content="KPOP Protocol" data-i18n-meta="title_index">
-  <meta property="og:description" content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크" data-i18n-meta="hero_subtitle">
-  <meta property="og:image" content="https://kpopprotocol.io/assets/kpp-symbol.svg">
-  <meta property="og:url" content="https://kpopprotocol.io/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="KPOP Protocol" data-i18n-meta="title_index">
-  <meta name="twitter:description" content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크" data-i18n-meta="hero_subtitle">
-  <meta name="twitter:image" content="https://kpopprotocol.io/assets/kpp-symbol.svg">
-  <meta name="twitter:url" content="https://kpopprotocol.io/">
-  <link rel="icon" type="image/svg+xml" href="assets/kpp-symbol.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE" crossorigin="anonymous"></script>
-</head>
-<body data-page="index">
-  <nav class="navbar">
-      <a href="index.html" class="logo"><img src="assets/kpp-symbol.svg" alt="KPP logo" width="24" height="24">KPOP Protocol</a>
-    <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false"><i class="material-symbols-outlined">menu</i></button>
-    <ul class="nav-links" id="primary-navigation">
-      <li><a href="#about"><i class="material-symbols-outlined">info</i><span data-i18n="nav_about">소개</span></a></li>
-      <li><a href="#technology"><i class="material-symbols-outlined">memory</i><span data-i18n="nav_technology">기술</span></a></li>
-      <li><a href="#tokenomics"><i class="material-symbols-outlined">paid</i><span data-i18n="nav_tokenomics">토큰 이코노미</span></a></li>
-      <li><a href="#roadmap"><i class="material-symbols-outlined">map</i><span data-i18n="nav_roadmap">로드맵</span></a></li>
-      <li><a href="#partners"><i class="material-symbols-outlined">handshake</i><span data-i18n="nav_partners">파트너</span></a></li>
-      <li><a href="#resources"><i class="material-symbols-outlined">menu_book</i><span data-i18n="nav_resources">참고 자료</span></a></li>
-      <li><a href="#newsletter"><i class="material-symbols-outlined">mail</i><span data-i18n="nav_newsletter">뉴스레터</span></a></li>
-      <li><a href="#faq"><i class="material-symbols-outlined">help</i><span data-i18n="nav_faq">FAQ</span></a></li>
-      <li><a href="#corporate"><i class="material-symbols-outlined">apartment</i><span data-i18n="nav_corporate">기업 아이덴티티</span></a></li>
-      <li><a href="#team"><i class="material-symbols-outlined">group</i><span data-i18n="nav_team">팀</span></a></li>
-      <li><a href="#whitepaper"><i class="material-symbols-outlined">description</i><span data-i18n="nav_whitepaper">백서</span></a></li>
-    </ul>
-    <button class="theme-toggle" aria-label="테마 전환" data-i18n-aria-label="nav_theme"><i class="material-symbols-outlined">dark_mode</i></button>
-    <select class="lang-select" aria-label="Change language">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KPOP Protocol</title>
+    <meta
+      name="description"
+      content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크"
+      data-i18n-meta="hero_subtitle"
+    />
+    <meta
+      property="og:title"
+      content="KPOP Protocol"
+      data-i18n-meta="title_index"
+    />
+    <meta
+      property="og:description"
+      content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크"
+      data-i18n-meta="hero_subtitle"
+    />
+    <meta
+      property="og:image"
+      content="https://kpopprotocol.io/assets/kpp-symbol.svg"
+    />
+    <meta property="og:url" content="https://kpopprotocol.io/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="KPOP Protocol"
+      data-i18n-meta="title_index"
+    />
+    <meta
+      name="twitter:description"
+      content="글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크"
+      data-i18n-meta="hero_subtitle"
+    />
+    <meta
+      name="twitter:image"
+      content="https://kpopprotocol.io/assets/kpp-symbol.svg"
+    />
+    <meta name="twitter:url" content="https://kpopprotocol.io/" />
+    <link rel="icon" type="image/svg+xml" href="assets/kpp-symbol.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity="sha384-d+vyQ0dYcymoP8ndq2hW7FGC50nqGdXUEgoOUGxbbkAJwZqL7h+jKN0GGgn9hFDS"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      integrity="sha384-poC0r6usQOX2Ayt/VGA+t81H6V3iN9L+Irz9iO8o+s0X20tLpzc9DOOtnKxhaQSE"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body data-page="index">
+    <nav class="navbar">
+      <a href="index.html" class="logo"
+        ><img
+          src="assets/kpp-symbol.svg"
+          alt="KPP logo"
+          width="24"
+          height="24"
+        />KPOP Protocol</a
+      >
+      <button
+        class="menu-toggle"
+        aria-label="Toggle navigation"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <i class="material-symbols-outlined">menu</i>
+      </button>
+      <ul class="nav-links" id="primary-navigation">
+        <li>
+          <a href="#about"
+            ><i class="material-symbols-outlined">info</i
+            ><span data-i18n="nav_about">소개</span></a
+          >
+        </li>
+        <li>
+          <a href="#technology"
+            ><i class="material-symbols-outlined">memory</i
+            ><span data-i18n="nav_technology">기술</span></a
+          >
+        </li>
+        <li>
+          <a href="#tokenomics"
+            ><i class="material-symbols-outlined">paid</i
+            ><span data-i18n="nav_tokenomics">토큰 이코노미</span></a
+          >
+        </li>
+        <li>
+          <a href="#roadmap"
+            ><i class="material-symbols-outlined">map</i
+            ><span data-i18n="nav_roadmap">로드맵</span></a
+          >
+        </li>
+        <li>
+          <a href="#partners"
+            ><i class="material-symbols-outlined">handshake</i
+            ><span data-i18n="nav_partners">파트너</span></a
+          >
+        </li>
+        <li>
+          <a href="#resources"
+            ><i class="material-symbols-outlined">menu_book</i
+            ><span data-i18n="nav_resources">참고 자료</span></a
+          >
+        </li>
+        <li>
+          <a href="#newsletter"
+            ><i class="material-symbols-outlined">mail</i
+            ><span data-i18n="nav_newsletter">뉴스레터</span></a
+          >
+        </li>
+        <li>
+          <a href="#faq"
+            ><i class="material-symbols-outlined">help</i
+            ><span data-i18n="nav_faq">FAQ</span></a
+          >
+        </li>
+        <li>
+          <a href="#corporate"
+            ><i class="material-symbols-outlined">apartment</i
+            ><span data-i18n="nav_corporate">기업 아이덴티티</span></a
+          >
+        </li>
+        <li>
+          <a href="#team"
+            ><i class="material-symbols-outlined">group</i
+            ><span data-i18n="nav_team">팀</span></a
+          >
+        </li>
+        <li>
+          <a href="#whitepaper"
+            ><i class="material-symbols-outlined">description</i
+            ><span data-i18n="nav_whitepaper">백서</span></a
+          >
+        </li>
+      </ul>
+      <button
+        class="theme-toggle"
+        aria-label="테마 전환"
+        data-i18n-aria-label="nav_theme"
+      >
+        <i class="material-symbols-outlined">dark_mode</i>
+      </button>
+      <select class="lang-select" aria-label="Change language">
         <option value="ko">🇰🇷</option>
         <option value="en">🇺🇸</option>
         <option value="zh">🇨🇳</option>
@@ -53,190 +166,355 @@
         <option value="ar">🇸🇦</option>
         <option value="hi">🇮🇳</option>
       </select>
-  </nav>
+    </nav>
 
-  <header class="hero">
-    <kpp-fancy-title class="hero-title" text="KPOP Protocol" data-i18n="hero_title"></kpp-fancy-title>
-    <p data-i18n="hero_subtitle">글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크</p>
-    <a href="#whitepaper" class="btn" data-i18n="hero_button">백서 보기</a>
-  </header>
+    <header class="hero">
+      <kpp-fancy-title
+        class="hero-title"
+        text="KPOP Protocol"
+        data-i18n="hero_title"
+      ></kpp-fancy-title>
+      <p data-i18n="hero_subtitle">
+        글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크
+      </p>
+      <a href="#whitepaper" class="btn" data-i18n="hero_button">백서 보기</a>
+    </header>
 
-  <section id="about">
-    <h2 data-i18n="about_title">프로토콜 소개</h2>
-    <p data-i18n="about_text">KPOP Protocol(KPP)은 전 세계 K-POP 팬덤 경제를 지원하는 디지털 자산입니다. 투명하고 안전한 거래를 제공하며, 팬과 아티스트가 직접 상호작용할 수 있는 분산형 생태계를 지향합니다.</p>
-    <p data-i18n="about_text2">KPP는 사용자 친화적인 지갑과 크로스체인 브리지를 통해 팬들이 손쉽게 참여할 수 있는 환경을 제공합니다.</p>
-    <p data-i18n="about_text3">탈중앙화 거버넌스 구조를 통해 팬과 투자자가 프로젝트 의사 결정에 직접 참여합니다.</p>
-  </section>
+    <section id="about">
+      <h2 data-i18n="about_title">프로토콜 소개</h2>
+      <p data-i18n="about_text">
+        KPOP Protocol(KPP)은 전 세계 K-POP 팬덤 경제를 지원하는 디지털
+        자산입니다. 투명하고 안전한 거래를 제공하며, 팬과 아티스트가 직접
+        상호작용할 수 있는 분산형 생태계를 지향합니다.
+      </p>
+      <p data-i18n="about_text2">
+        KPP는 사용자 친화적인 지갑과 크로스체인 브리지를 통해 팬들이 손쉽게
+        참여할 수 있는 환경을 제공합니다.
+      </p>
+      <p data-i18n="about_text3">
+        탈중앙화 거버넌스 구조를 통해 팬과 투자자가 프로젝트 의사 결정에 직접
+        참여합니다.
+      </p>
+    </section>
 
-  <section id="technology">
-    <h2 data-i18n="technology_title">핵심 기술</h2>
-    <ul class="icon-list">
-      <li><i class="material-symbols-outlined">layers</i><span data-i18n="tech_list1">하이브리드 PoS/DPoS 합의 알고리즘</span></li>
-      <li><i class="material-symbols-outlined">gavel</i><span data-i18n="tech_list2">스마트 컨트랙트 기반 팬 서비스</span></li>
-      <li><i class="material-symbols-outlined">shield</i><span data-i18n="tech_list3">양자 내성 암호화 기법</span></li>
-    </ul>
-  </section>
-
-  <section id="features">
-    <h2 data-i18n="features_title">주요 기능</h2>
-    <div class="card-grid">
-      <div class="card">
-        <i class="material-symbols-outlined">group</i>
-        <h3 data-i18n="feat1_title">팬 참여</h3>
-        <p data-i18n="feat1_text">팬이 직접 프로젝트에 참여하고 의견을 제시할 수 있는 플랫폼</p>
-      </div>
-      <div class="card">
-        <i class="material-symbols-outlined">volunteer_activism</i>
-        <h3 data-i18n="feat2_title">아티스트 지원</h3>
-        <p data-i18n="feat2_text">팬이 좋아하는 아티스트를 직접 후원할 수 있는 투명한 시스템</p>
-      </div>
-      <div class="card">
-        <i class="material-symbols-outlined">public</i>
-        <h3 data-i18n="feat3_title">글로벌 커뮤니티</h3>
-        <p data-i18n="feat3_text">언어와 국경을 초월한 글로벌 팬 커뮤니티 형성</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="tokenomics">
-    <h2 data-i18n="tokenomics_title">토큰 이코노미</h2>
-    <ul class="icon-list">
-      <li><i class="material-symbols-outlined">pie_chart</i><span data-i18n="tok_list1">총 발행량: 100만 KPP</span></li>
-      <li><i class="material-symbols-outlined">card_giftcard</i><span data-i18n="tok_list2">커뮤니티 리워드: 40%</span></li>
-      <li><i class="material-symbols-outlined">groups</i><span data-i18n="tok_list3">팀 및 파트너십: 20%</span></li>
-      <li><i class="material-symbols-outlined">eco</i><span data-i18n="tok_list4">생태계 개발 기금: 20%</span></li>
-      <li><i class="material-symbols-outlined">campaign</i><span data-i18n="tok_list5">초기 유동성 및 마케팅: 20%</span></li>
-    </ul>
-  </section>
-
-  <section id="roadmap">
-    <h2 data-i18n="roadmap_title">로드맵</h2>
-    <ol class="icon-list">
-        <li><i class="material-symbols-outlined">rocket_launch</i><span data-i18n="road_q1">2026 Q1: 메인넷 런칭</span></li>
-        <li><i class="material-symbols-outlined">code</i><span data-i18n="road_q2">2026 Q2: 스마트 컨트랙트 플랫폼 공개</span></li>
-        <li><i class="material-symbols-outlined">handshake</i><span data-i18n="road_q3">2026 Q3: 글로벌 파트너십 확대</span></li>
-        <li><i class="material-symbols-outlined">link</i><span data-i18n="road_q4">2026 Q4: 크로스체인 브리지 구현</span></li>
-    </ol>
-  </section>
-
-  <section id="partners">
-    <h2 data-i18n="partners_title">파트너</h2>
-    <div class="logo-grid">
-      <div class="logo-item"><i class="material-symbols-outlined">music_note</i><span data-i18n="partner1">뮤직체인</span></div>
-      <div class="logo-item"><i class="material-symbols-outlined">sports_esports</i><span data-i18n="partner2">게임월드</span></div>
-      <div class="logo-item"><i class="material-symbols-outlined">movie</i><span data-i18n="partner3">엔터미디어</span></div>
-    </div>
-  </section>
-
-  <section id="resources">
-    <h2 data-i18n="resources_title">참고 자료</h2>
+    <section id="technology">
+      <h2 data-i18n="technology_title">핵심 기술</h2>
       <ul class="icon-list">
-        <li><i class="material-symbols-outlined">insert_drive_file</i><a href="#whitepaper"><span data-i18n="res_whitepaper">백서</span></a></li>
-      <li><i class="material-symbols-outlined">code</i><a href="https://github.com/kpop-protocol" target="_blank" rel="noopener noreferrer"><span data-i18n="res_github">GitHub 저장소</span></a></li>
-      <li><i class="material-symbols-outlined">chat</i><a href="https://discord.gg/example" target="_blank" rel="noopener noreferrer"><span data-i18n="res_discord">Discord 커뮤니티</span></a></li>
-    </ul>
-  </section>
+        <li>
+          <i class="material-symbols-outlined">layers</i
+          ><span data-i18n="tech_list1">하이브리드 PoS/DPoS 합의 알고리즘</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">gavel</i
+          ><span data-i18n="tech_list2">스마트 컨트랙트 기반 팬 서비스</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">shield</i
+          ><span data-i18n="tech_list3">양자 내성 암호화 기법</span>
+        </li>
+      </ul>
+    </section>
 
-  <section id="newsletter">
-    <h2 data-i18n="newsletter_title">뉴스레터 구독</h2>
-    <p data-i18n="newsletter_text">최신 업데이트와 에어드롭 소식을 이메일로 받아보세요.</p>
-    <form class="newsletter-form">
-      <input type="email" required data-i18n-placeholder="newsletter_placeholder" placeholder="이메일 주소">
-      <button type="submit" class="btn" data-i18n="newsletter_button">구독하기</button>
-    </form>
-    <p class="newsletter-success" role="status" hidden></p>
-  </section>
+    <section id="features">
+      <h2 data-i18n="features_title">주요 기능</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="material-symbols-outlined">group</i>
+          <h3 data-i18n="feat1_title">팬 참여</h3>
+          <p data-i18n="feat1_text">
+            팬이 직접 프로젝트에 참여하고 의견을 제시할 수 있는 플랫폼
+          </p>
+        </div>
+        <div class="card">
+          <i class="material-symbols-outlined">volunteer_activism</i>
+          <h3 data-i18n="feat2_title">아티스트 지원</h3>
+          <p data-i18n="feat2_text">
+            팬이 좋아하는 아티스트를 직접 후원할 수 있는 투명한 시스템
+          </p>
+        </div>
+        <div class="card">
+          <i class="material-symbols-outlined">public</i>
+          <h3 data-i18n="feat3_title">글로벌 커뮤니티</h3>
+          <p data-i18n="feat3_text">
+            언어와 국경을 초월한 글로벌 팬 커뮤니티 형성
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <section id="faq">
-    <h2 data-i18n="faq_title">자주 묻는 질문</h2>
-    <details>
-      <summary data-i18n="faq_q1">KPOP Protocol은 무엇인가요?</summary>
-      <p data-i18n="faq_a1">KPOP Protocol은 K-POP 커뮤니티를 위한 블록체인 기반 디지털 자산입니다.</p>
-    </details>
-    <details>
-      <summary data-i18n="faq_q2">토큰은 어떻게 얻을 수 있나요?</summary>
-      <p data-i18n="faq_a2">공식 에어드롭이나 파트너 거래소에서 KPP 토큰을 획득할 수 있습니다.</p>
-    </details>
-  </section>
+    <section id="tokenomics">
+      <h2 data-i18n="tokenomics_title">토큰 이코노미</h2>
+      <ul class="icon-list">
+        <li>
+          <i class="material-symbols-outlined">pie_chart</i
+          ><span data-i18n="tok_list1">총 발행량: 100만 KPP</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">card_giftcard</i
+          ><span data-i18n="tok_list2">커뮤니티 리워드: 40%</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">groups</i
+          ><span data-i18n="tok_list3">팀 및 파트너십: 20%</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">eco</i
+          ><span data-i18n="tok_list4">생태계 개발 기금: 20%</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">campaign</i
+          ><span data-i18n="tok_list5">초기 유동성 및 마케팅: 20%</span>
+        </li>
+      </ul>
+    </section>
 
-  <header id="corporate" class="hero">
-    <h1 class="hero-title" data-i18n="corporate_hero_title">기업 아이덴티티</h1>
-    <p data-i18n="corporate_hero_subtitle">브랜드 가치와 시각적 정체성</p>
-  </header>
+    <section id="roadmap">
+      <h2 data-i18n="roadmap_title">로드맵</h2>
+      <ol class="icon-list">
+        <li>
+          <i class="material-symbols-outlined">rocket_launch</i
+          ><span data-i18n="road_q1">2026 Q1: 메인넷 런칭</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">code</i
+          ><span data-i18n="road_q2">2026 Q2: 스마트 컨트랙트 플랫폼 공개</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">handshake</i
+          ><span data-i18n="road_q3">2026 Q3: 글로벌 파트너십 확대</span>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">link</i
+          ><span data-i18n="road_q4">2026 Q4: 크로스체인 브리지 구현</span>
+        </li>
+      </ol>
+    </section>
 
-  <section class="ci-section">
-    <h2 data-i18n="corporate_brand_title">브랜드 본질</h2>
-    <p data-i18n="corporate_brand_text">KPOP Protocol의 정체성은 활기찬 K-POP 문화와 최첨단 블록체인 혁신의 조화를 담고 있습니다.</p>
-  </section>
+    <section id="partners">
+      <h2 data-i18n="partners_title">파트너</h2>
+      <div class="logo-grid">
+        <div class="logo-item">
+          <i class="material-symbols-outlined">music_note</i
+          ><span data-i18n="partner1">뮤직체인</span>
+        </div>
+        <div class="logo-item">
+          <i class="material-symbols-outlined">sports_esports</i
+          ><span data-i18n="partner2">게임월드</span>
+        </div>
+        <div class="logo-item">
+          <i class="material-symbols-outlined">movie</i
+          ><span data-i18n="partner3">엔터미디어</span>
+        </div>
+      </div>
+    </section>
 
-  <section class="ci-section brand-colors">
-    <h2 data-i18n="corporate_color_title">브랜드 컬러</h2>
-    <div class="color-grid">
+    <section id="resources">
+      <h2 data-i18n="resources_title">참고 자료</h2>
+      <ul class="icon-list">
+        <li>
+          <i class="material-symbols-outlined">insert_drive_file</i
+          ><a href="#whitepaper"
+            ><span data-i18n="res_whitepaper">백서</span></a
+          >
+        </li>
+        <li>
+          <i class="material-symbols-outlined">code</i
+          ><a
+            href="https://github.com/kpop-protocol"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span data-i18n="res_github">GitHub 저장소</span></a
+          >
+        </li>
+        <li>
+          <i class="material-symbols-outlined">chat</i
+          ><a
+            href="https://discord.gg/example"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span data-i18n="res_discord">Discord 커뮤니티</span></a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <section id="staking">
+      <h2 data-i18n="staking_title">Staking & Rewards</h2>
+      <p>
+        <span data-i18n="staking_total">Total Staked:</span>
+        <span id="total-staked">-</span>
+      </p>
+      <p>
+        <span data-i18n="staking_rewards">Your Rewards:</span>
+        <span id="user-rewards">-</span>
+      </p>
+    </section>
+
+    <section id="newsletter">
+      <h2 data-i18n="newsletter_title">뉴스레터 구독</h2>
+      <p data-i18n="newsletter_text">
+        최신 업데이트와 에어드롭 소식을 이메일로 받아보세요.
+      </p>
+      <form class="newsletter-form">
+        <input
+          type="email"
+          required
+          data-i18n-placeholder="newsletter_placeholder"
+          placeholder="이메일 주소"
+        />
+        <button type="submit" class="btn" data-i18n="newsletter_button">
+          구독하기
+        </button>
+      </form>
+      <p class="newsletter-success" role="status" hidden></p>
+    </section>
+
+    <section id="faq">
+      <h2 data-i18n="faq_title">자주 묻는 질문</h2>
+      <details>
+        <summary data-i18n="faq_q1">KPOP Protocol은 무엇인가요?</summary>
+        <p data-i18n="faq_a1">
+          KPOP Protocol은 K-POP 커뮤니티를 위한 블록체인 기반 디지털 자산입니다.
+        </p>
+      </details>
+      <details>
+        <summary data-i18n="faq_q2">토큰은 어떻게 얻을 수 있나요?</summary>
+        <p data-i18n="faq_a2">
+          공식 에어드롭이나 파트너 거래소에서 KPP 토큰을 획득할 수 있습니다.
+        </p>
+      </details>
+    </section>
+
+    <header id="corporate" class="hero">
+      <h1 class="hero-title" data-i18n="corporate_hero_title">
+        기업 아이덴티티
+      </h1>
+      <p data-i18n="corporate_hero_subtitle">브랜드 가치와 시각적 정체성</p>
+    </header>
+
+    <section class="ci-section">
+      <h2 data-i18n="corporate_brand_title">브랜드 본질</h2>
+      <p data-i18n="corporate_brand_text">
+        KPOP Protocol의 정체성은 활기찬 K-POP 문화와 최첨단 블록체인 혁신의
+        조화를 담고 있습니다.
+      </p>
+    </section>
+
+    <section class="ci-section brand-colors">
+      <h2 data-i18n="corporate_color_title">브랜드 컬러</h2>
+      <div class="color-grid">
         <div class="color-item">
-          <div class="swatch" style="background:#ff4081;"></div>
+          <div class="swatch" style="background: #ff4081"></div>
           <p data-i18n="corporate_color_accent">강조 색상 #FF4081</p>
         </div>
         <div class="color-item">
-          <div class="swatch" style="background:#ffffff;"></div>
+          <div class="swatch" style="background: #ffffff"></div>
           <p data-i18n="corporate_color_bg">배경 색상 #FFFFFF</p>
         </div>
         <div class="color-item">
-          <div class="swatch" style="background:#222222;"></div>
+          <div class="swatch" style="background: #222222"></div>
           <p data-i18n="corporate_color_fg">전경 색상 #222222</p>
         </div>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <section class="ci-section typography">
-    <h2 data-i18n="corporate_typography_title">타이포그래피</h2>
-    <p class="font-sample heading" data-i18n="corporate_typography_heading">헤딩: Montserrat</p>
-    <p class="font-sample body" data-i18n="corporate_typography_body">본문: Roboto</p>
-  </section>
+    <section class="ci-section typography">
+      <h2 data-i18n="corporate_typography_title">타이포그래피</h2>
+      <p class="font-sample heading" data-i18n="corporate_typography_heading">
+        헤딩: Montserrat
+      </p>
+      <p class="font-sample body" data-i18n="corporate_typography_body">
+        본문: Roboto
+      </p>
+    </section>
 
-  <header id="team" class="hero">
-    <h1 class="hero-title" data-i18n="team_hero_title">팀 소개</h1>
-    <p data-i18n="team_hero_subtitle">KPOP Protocol을 이끄는 전문가들</p>
-  </header>
+    <header id="team" class="hero">
+      <h1 class="hero-title" data-i18n="team_hero_title">팀 소개</h1>
+      <p data-i18n="team_hero_subtitle">KPOP Protocol을 이끄는 전문가들</p>
+    </header>
 
-  <section class="team-section">
-    <div class="team-grid">
+    <section class="team-section">
+      <div class="team-grid">
         <div class="member">
-          <img src="assets/team-daniel-kim.svg" alt="Portrait of Daniel Kim, CEO &amp; Co-Founder" loading="lazy">
+          <img
+            src="assets/team-daniel-kim.svg"
+            alt="Portrait of Daniel Kim, CEO &amp; Co-Founder"
+            loading="lazy"
+          />
           <h3>Daniel Kim</h3>
           <p data-i18n="role_ceo">CEO &amp; Co-Founder</p>
         </div>
         <div class="member">
-          <img src="assets/team-emily-lee.svg" alt="Portrait of Emily Lee, CTO" loading="lazy">
+          <img
+            src="assets/team-emily-lee.svg"
+            alt="Portrait of Emily Lee, CTO"
+            loading="lazy"
+          />
           <h3>Emily Lee</h3>
           <p data-i18n="role_cto">CTO</p>
         </div>
         <div class="member">
-          <img src="assets/team-michael-park.svg" alt="Portrait of Michael Park, Lead Blockchain Engineer" loading="lazy">
+          <img
+            src="assets/team-michael-park.svg"
+            alt="Portrait of Michael Park, Lead Blockchain Engineer"
+            loading="lazy"
+          />
           <h3>Michael Park</h3>
           <p data-i18n="role_lead">Lead Blockchain Engineer</p>
         </div>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <section class="team-links">
-    <h2 data-i18n="team_links_title">팀 소셜</h2>
-    <ul class="icon-list">
-      <li><i class="material-symbols-outlined">public</i><a href="https://twitter.com/kpop_protocol" target="_blank" rel="noopener noreferrer"><span data-i18n="team_link_twitter">Twitter</span></a></li>
-      <li><i class="material-symbols-outlined">chat</i><a href="https://discord.gg/example" target="_blank" rel="noopener noreferrer"><span data-i18n="team_link_discord">Discord</span></a></li>
-      <li><i class="material-symbols-outlined">code</i><a href="https://github.com/kpop-protocol" target="_blank" rel="noopener noreferrer"><span data-i18n="team_link_github">GitHub</span></a></li>
-    </ul>
-  </section>
-  <section id="whitepaper">
-  <div id="whitepaper-content"></div>
-  </section>
+    <section class="team-links">
+      <h2 data-i18n="team_links_title">팀 소셜</h2>
+      <ul class="icon-list">
+        <li>
+          <i class="material-symbols-outlined">public</i
+          ><a
+            href="https://twitter.com/kpop_protocol"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span data-i18n="team_link_twitter">Twitter</span></a
+          >
+        </li>
+        <li>
+          <i class="material-symbols-outlined">chat</i
+          ><a
+            href="https://discord.gg/example"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span data-i18n="team_link_discord">Discord</span></a
+          >
+        </li>
+        <li>
+          <i class="material-symbols-outlined">code</i
+          ><a
+            href="https://github.com/kpop-protocol"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><span data-i18n="team_link_github">GitHub</span></a
+          >
+        </li>
+      </ul>
+    </section>
+    <section id="whitepaper">
+      <div id="whitepaper-content"></div>
+    </section>
 
-
-  <footer class="footer">
-      <p data-i18n="footer_text">&copy; 2026 KPOP Protocol. 본 사이트의 정보는 투자 권유가 아닙니다.</p>
+    <footer class="footer">
+      <p data-i18n="footer_text">
+        &copy; 2026 KPOP Protocol. 본 사이트의 정보는 투자 권유가 아닙니다.
+      </p>
     </footer>
 
-  <button class="back-to-top" aria-label="맨 위로" data-i18n-aria-label="back_to_top"><i class="material-symbols-outlined">arrow_upward</i></button>
+    <button
+      class="back-to-top"
+      aria-label="맨 위로"
+      data-i18n-aria-label="back_to_top"
+    >
+      <i class="material-symbols-outlined">arrow_upward</i>
+    </button>
 
-  <script type="module" src="main.js"></script>
-</body>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>

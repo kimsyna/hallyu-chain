@@ -83,5 +83,8 @@
   "title_index": "KPOP Protocol",
   "title_team": "KPOP Protocol 팀",
   "title_whitepaper": "KPOP Protocol 백서",
-  "title_corporate": "KPOP Protocol 기업 아이덴티티"
+  "title_corporate": "KPOP Protocol 기업 아이덴티티",
+  "staking_title": "스테이킹 및 리워드",
+  "staking_total": "총 스테이킹",
+  "staking_rewards": "내 보상"
 }
