@@ -2,6 +2,9 @@
 
 This repository contains the marketing website for **KPOP Protocol (KPP)**, a commercial-grade cryptocurrency project built for the global K-POP community.
 
+## Requirements
+- Node.js >= 18.0.0
+
 ## Structure
 - `index.html`: Single-page layout introducing the protocol, technology and token model, with sections for the Team, Corporate Identity, and Whitepaper.
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
