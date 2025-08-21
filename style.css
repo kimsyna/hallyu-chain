@@ -494,6 +494,7 @@ body.dark-mode .footer {
     flex-wrap: wrap;
     align-items: center;
     padding: 1rem;
+    position: relative;
   }
 
   .menu-toggle {
@@ -505,11 +506,20 @@ body.dark-mode .footer {
     width: 100%;
     gap: 1rem;
     padding: 1rem 0;
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: inherit;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
   .navbar.open .nav-links {
-    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .navbar a {
@@ -532,6 +542,12 @@ body.dark-mode .footer {
   .btn {
     padding: 0.9rem 1.8rem;
     font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 600px) and (prefers-reduced-motion: reduce) {
+  .navbar .nav-links {
+    transition: none;
   }
 }
 
