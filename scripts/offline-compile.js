@@ -2,13 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const solc = require('solc');
 
-const sourcePath = path.join(__dirname, '..', 'contracts', 'KPOPProtocol.sol');
+const sourcePath = path.join(__dirname, '..', 'contracts', 'HallyuToken.sol');
 const source = fs.readFileSync(sourcePath, 'utf8');
 
 const input = {
   language: 'Solidity',
   sources: {
-    'contracts/KPOPProtocol.sol': { content: source },
+    'contracts/HallyuToken.sol': { content: source },
   },
   settings: {
     optimizer: { enabled: false, runs: 200 },
@@ -42,10 +42,10 @@ if (output.errors) {
   }
 }
 
-const contract = output.contracts['contracts/KPOPProtocol.sol']['KPOPProtocol'];
+const contract = output.contracts['contracts/HallyuToken.sol']['HallyuToken'];
 const artifact = {
-  contractName: 'KPOPProtocol',
-  sourceName: 'contracts/KPOPProtocol.sol',
+  contractName: 'HallyuToken',
+  sourceName: 'contracts/HallyuToken.sol',
   abi: contract.abi,
   bytecode: contract.evm.bytecode.object
     ? '0x' + contract.evm.bytecode.object
@@ -62,10 +62,10 @@ const artifactsDir = path.join(
   '..',
   'artifacts',
   'contracts',
-  'KPOPProtocol.sol'
+  'HallyuToken.sol'
 );
 fs.mkdirSync(artifactsDir, { recursive: true });
 fs.writeFileSync(
-  path.join(artifactsDir, 'KPOPProtocol.json'),
+  path.join(artifactsDir, 'HallyuToken.json'),
   JSON.stringify(artifact, null, 2)
 );

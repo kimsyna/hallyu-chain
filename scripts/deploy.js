@@ -6,16 +6,14 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying with:", deployer.address);
 
-  const initialSupply = ethers.parseUnits("1000000", 18);
-  const cap = ethers.parseUnits("2000000", 18);
-  const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
-  const token = await KPOPProtocol.deploy(initialSupply, cap);
+  const HallyuToken = await ethers.getContractFactory("HallyuToken");
+  const token = await HallyuToken.deploy(deployer.address);
   await token.waitForDeployment();
   const address = await token.getAddress();
-  console.log("KPOPProtocol deployed to:", address);
+  console.log("HallyuToken deployed to:", address);
 
   const filePath = path.join(__dirname, "..", "token-address.json");
-  fs.writeFileSync(filePath, JSON.stringify({ KPOPProtocol: address }, null, 2));
+  fs.writeFileSync(filePath, JSON.stringify({ HallyuToken: address }, null, 2));
 }
 
 main().catch((error) => {
