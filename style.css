@@ -560,7 +560,7 @@ body.dark-mode .footer {
   }
 
   .card-grid {
-    gap: calc(var(--space-lg) + var(--space-xs));
+    gap: var(--space-md);
   }
 
   .btn {
