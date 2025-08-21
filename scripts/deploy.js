@@ -7,8 +7,9 @@ async function main() {
   console.log("Deploying with:", deployer.address);
 
   const initialSupply = ethers.parseUnits("1000000", 18);
+  const cap = ethers.parseUnits("2000000", 18);
   const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
-  const token = await KPOPProtocol.deploy(initialSupply);
+  const token = await KPOPProtocol.deploy(initialSupply, cap);
   await token.waitForDeployment();
   const address = await token.getAddress();
   console.log("KPOPProtocol deployed to:", address);
