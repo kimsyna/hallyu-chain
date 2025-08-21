@@ -206,7 +206,8 @@ body {
 }
 
 .hero h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   font-size: clamp(2.5rem, 8vw, 4rem);
   margin: 0;
   background: linear-gradient(45deg,#ff4081,#7c4dff);
@@ -226,7 +227,8 @@ section {
 }
 
 section h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   text-align: center;
   margin-bottom: var(--space-lg);
   font-size: 1.8rem;
@@ -285,7 +287,8 @@ ul, ol {
 }
 
 .card h3 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   margin: 0 0 var(--space-xs);
   font-size: 1.2rem;
 }
