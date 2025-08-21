@@ -95,6 +95,7 @@ function applyFancyTitles() {
     h1.replaceWith(fancy);
   });
   document.querySelectorAll('h2').forEach(h2 => {
+    if (h2.closest('kpp-fancy-title')) return;
     const fancy = document.createElement('kpp-fancy-title');
     fancy.setAttribute('size', 'medium');
     fancy.setAttribute('text', h2.textContent.trim());
