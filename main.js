@@ -205,7 +205,7 @@ async function setLanguage(lang) {
   if (select) select.value = lang;
 }
 
-const currentLang = localStorage.getItem('lang') || 'ko';
+const currentLang = localStorage.getItem('lang') || DEFAULT_LANG;
 setLanguage(currentLang);
 
 async function loadWhitepaper(lang) {
@@ -309,7 +309,7 @@ let newsletterTimeout;
 if (newsletterForm && newsletterMessage) {
   newsletterForm.addEventListener('submit', async e => {
     e.preventDefault();
-    const lang = localStorage.getItem('lang') || 'ko';
+    const lang = localStorage.getItem('lang') || DEFAULT_LANG;
     await loadLanguage(lang);
     newsletterMessage.textContent = translations[lang].newsletter_success;
     newsletterMessage.hidden = false;
