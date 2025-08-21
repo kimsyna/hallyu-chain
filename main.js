@@ -237,9 +237,16 @@ if (select) {
 }
 
 const menuToggle = document.querySelector('.menu-toggle');
-if (menuToggle) {
+const navLinks = document.getElementById('primary-navigation');
+if (menuToggle && navLinks) {
   menuToggle.addEventListener('click', () => {
-    document.querySelector('.navbar').classList.toggle('open');
+    const navbar = document.querySelector('.navbar');
+    const open = navbar.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+    if (open) {
+      const firstLink = navLinks.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
   });
 }
 
