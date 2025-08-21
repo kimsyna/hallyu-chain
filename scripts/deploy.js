@@ -12,11 +12,18 @@ async function main() {
   ] = await ethers.getSigners();
   console.log('Deploying with:', deployer.address);
 
+  const HallyuDAO = await ethers.getContractFactory('HallyuDAO');
+  const dao = await HallyuDAO.deploy();
+  await dao.waitForDeployment();
+  const daoAddress = await dao.getAddress();
+  console.log('HallyuDAO deployed to:', daoAddress);
+
   const HallyuToken = await ethers.getContractFactory('HallyuToken');
-  const token = await HallyuToken.deploy(deployer.address);
+  const token = await HallyuToken.deploy(daoAddress);
   await token.waitForDeployment();
   const tokenAddress = await token.getAddress();
   console.log('HallyuToken deployed to:', tokenAddress);
+  await dao.setToken(tokenAddress);
 
   const VestingVault = await ethers.getContractFactory('VestingVault');
   const now = Math.floor(Date.now() / 1000);
@@ -59,12 +66,14 @@ async function main() {
   console.log('InvestorVesting deployed to:', investorVestingAddress);
 
   const allocations = {
-    communityRewards: ethers.parseUnits('4000000000', 18),
+    dao: ethers.parseUnits('100000000', 18),
+    communityRewards: ethers.parseUnits('3900000000', 18),
     team: ethers.parseUnits('2000000000', 18),
     advisors: ethers.parseUnits('1000000000', 18),
     investors: ethers.parseUnits('3000000000', 18),
   };
 
+  await token.transfer(daoAddress, allocations.dao);
   await token.transfer(communityRewards.address, allocations.communityRewards);
   await token.transfer(teamVestingAddress, allocations.team);
   await token.transfer(advisorVestingAddress, allocations.advisors);
@@ -74,6 +83,7 @@ async function main() {
   const filePath = path.join(__dirname, '..', 'token-address.json');
   const addresses = {
     HallyuToken: tokenAddress,
+    HallyuDAO: daoAddress,
     TeamVesting: teamVestingAddress,
     AdvisorVesting: advisorVestingAddress,
     InvestorVesting: investorVestingAddress,
