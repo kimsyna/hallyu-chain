@@ -6,7 +6,7 @@ async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying with:", deployer.address);
 
-  const initialSupply = ethers.parseUnits("202500000000", 18);
+  const initialSupply = ethers.parseUnits("1000000", 18);
   const KPOPProtocol = await ethers.getContractFactory("KPOPProtocol");
   const token = await KPOPProtocol.deploy(initialSupply);
   await token.waitForDeployment();
