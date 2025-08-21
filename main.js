@@ -287,6 +287,13 @@ if (menuToggle && navLinks) {
       if (firstLink) firstLink.focus();
     }
   });
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.closest('a')) {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
 }
 
 const themeToggle = document.querySelector('.theme-toggle');
