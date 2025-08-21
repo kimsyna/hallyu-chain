@@ -135,6 +135,39 @@ if (!prefersReducedMotion) {
 
 const translations = {};
 const DEFAULT_LANG = 'en';
+let tokenomicsCache = null;
+
+async function loadTokenomics() {
+  if (!tokenomicsCache) {
+    const resp = await fetch('tokenomics.json');
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    tokenomicsCache = await resp.json();
+  }
+  return tokenomicsCache;
+}
+
+function replaceTokenomicsPlaceholders(root, data) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  while (walker.nextNode()) {
+    walker.currentNode.textContent = walker.currentNode.textContent.replace(
+      /\{(supply|dao|community|team|advisors|investors)\}/g,
+      (_, key) => {
+        const value = data[key];
+        if (value === undefined) return '';
+        return key === 'supply' ? Number(value).toLocaleString() : String(value);
+      },
+    );
+  }
+}
+
+async function applyTokenomics(root = document) {
+  try {
+    const data = await loadTokenomics();
+    replaceTokenomicsPlaceholders(root, data);
+  } catch (err) {
+    console.error('Failed to load tokenomics:', err);
+  }
+}
 
 async function loadLanguage(lang) {
   if (!translations[lang]) {
@@ -200,6 +233,7 @@ async function setLanguage(lang) {
   if (location.hash === '#whitepaper') {
     await loadWhitepaper(lang);
   }
+  await applyTokenomics();
   const page = document.body.dataset.page;
   const titleKey = `title_${page}`;
   if (translations[lang][titleKey]) {
@@ -219,6 +253,7 @@ async function loadWhitepaper(lang) {
     const resp = await fetch(`whitepaper/${lang}/index.html`);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     container.innerHTML = await resp.text();
+    await applyTokenomics(container);
     applyFancyTitles();
   } catch (err) {
     console.error('Failed to load whitepaper:', err);
