@@ -1,5 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
+// Respect users who prefer reduced motion by checking their system setting
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 class KPPFancyTitle extends HTMLElement {
   static get observedAttributes() { return ['text', 'size']; }
   constructor() {
@@ -86,17 +89,26 @@ function applyFancyTitles() {
 
 applyFancyTitles();
 
-document.querySelectorAll('section, .wp-section').forEach(section => {
-  gsap.from(section, {
-    opacity: 0,
-    y: 40,
-    duration: 1,
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 80%'
-    }
+// Skip scroll animations when reduced motion is preferred
+if (!prefersReducedMotion) {
+  document.querySelectorAll('section, .wp-section').forEach(section => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%'
+      }
+    });
   });
-});
+} else {
+  // Make sure sections remain visible without animation
+  document.querySelectorAll('section, .wp-section').forEach(section => {
+    section.style.opacity = 1;
+    section.style.transform = 'none';
+  });
+}
 
 const translations = {};
 const DEFAULT_LANG = 'en';
@@ -207,7 +219,8 @@ if (themeToggle) {
 
 const hero = document.querySelector('.hero');
 const fancy = document.querySelector('.hero-title');
-if (hero && fancy) {
+// Disable fancy hero animation if reduced motion is requested
+if (hero && fancy && !prefersReducedMotion) {
   hero.addEventListener('mousemove', e => {
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -235,7 +248,8 @@ if (backToTop) {
   window.addEventListener('scroll', () => {
     backToTop.classList.toggle('visible', window.scrollY > 400);
   });
+  // Respect reduced motion setting for scroll behavior
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
 }
