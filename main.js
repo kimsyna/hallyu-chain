@@ -175,9 +175,9 @@ async function setLanguage(lang) {
       el.setAttribute('content', text);
     }
   });
-  document.querySelectorAll('.lang-block').forEach(block => {
-    block.style.display = block.dataset.lang === lang ? 'block' : 'none';
-  });
+  if (location.hash === '#whitepaper') {
+    await loadWhitepaper(lang);
+  }
   const page = document.body.dataset.page;
   const titleKey = `title_${page}`;
   if (translations[lang][titleKey]) {
@@ -189,6 +189,29 @@ async function setLanguage(lang) {
 
 const currentLang = localStorage.getItem('lang') || 'ko';
 setLanguage(currentLang);
+
+async function loadWhitepaper(lang) {
+  const container = document.getElementById('whitepaper-content');
+  if (!container) return;
+  try {
+    const resp = await fetch(`whitepaper/${lang}/index.html`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    container.innerHTML = await resp.text();
+    applyFancyTitles();
+  } catch (err) {
+    console.error('Failed to load whitepaper:', err);
+    container.innerHTML = '<p>Whitepaper not available.</p>';
+  }
+}
+
+function handleHash() {
+  if (location.hash === '#whitepaper') {
+    loadWhitepaper(localStorage.getItem('lang') || currentLang);
+  }
+}
+
+window.addEventListener('hashchange', handleHash);
+handleHash();
 
 const select = document.querySelector('.lang-select');
 if (select) {
