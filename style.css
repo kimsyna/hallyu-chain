@@ -65,7 +65,6 @@ html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  overflow-x: hidden;
 }
 
 *, *::before, *::after {
