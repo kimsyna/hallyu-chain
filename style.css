@@ -3,6 +3,7 @@
   --bg: #ffffff;
   --fg: #222222;
   --accent: #ff4081;
+  --surface: rgba(0,0,0,0.05);
 }
 
 /* dark theme variables via media query */
@@ -10,6 +11,7 @@
   :root {
     --bg: #121212;
     --fg: #f5f5f5;
+    --surface: rgba(255,255,255,0.1);
   }
 }
 
@@ -26,12 +28,14 @@ body {
 body.dark-mode {
   --bg: #121212;
   --fg: #f5f5f5;
+  --surface: rgba(255,255,255,0.1);
   color-scheme: dark;
 }
 
 body.light-mode {
   --bg: #ffffff;
   --fg: #222222;
+  --surface: rgba(0,0,0,0.05);
   color-scheme: light;
 }
 
@@ -250,7 +254,7 @@ ul, ol {
 }
 
 .card {
-  background: rgba(0,0,0,0.05);
+  background: var(--surface);
   border-radius: 8px;
   padding: 2rem 1rem;
   text-align: center;
@@ -276,7 +280,7 @@ ul, ol {
 
 #partners {
   text-align: center;
-  background: rgba(0,0,0,0.03);
+  background: var(--surface);
 }
 
 .logo-grid {
@@ -289,7 +293,7 @@ ul, ol {
 }
 
 .logo-item {
-  background: rgba(0,0,0,0.05);
+  background: var(--surface);
   border-radius: 8px;
   padding: 1.5rem;
   width: 120px;
@@ -311,7 +315,7 @@ ul, ol {
 #newsletter {
   text-align: center;
   padding: 4rem 1rem;
-  background: rgba(0,0,0,0.03);
+  background: var(--surface);
 }
 
 .newsletter-form {
