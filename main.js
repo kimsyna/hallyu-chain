@@ -168,6 +168,13 @@ async function setLanguage(lang) {
       el.setAttribute('aria-label', text);
     }
   });
+  document.querySelectorAll('[data-i18n-meta]').forEach(el => {
+    const key = el.getAttribute('data-i18n-meta');
+    const text = translations[lang][key];
+    if (text) {
+      el.setAttribute('content', text);
+    }
+  });
   document.querySelectorAll('.lang-block').forEach(block => {
     block.style.display = block.dataset.lang === lang ? 'block' : 'none';
   });
