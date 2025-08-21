@@ -179,7 +179,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
+  min-height: calc(100vh - var(--nav-height));
   padding: 0 1rem;
   position: relative;
   overflow: hidden;
@@ -551,7 +551,7 @@ body.dark-mode .footer {
     }
 
   .hero {
-    height: auto;
+    min-height: calc(100vh - var(--nav-height));
     padding: calc(var(--space-lg) * 3) var(--space-md) calc(var(--space-lg) * 2);
   }
 
