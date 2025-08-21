@@ -54,4 +54,47 @@ describe("KPOPProtocol", function () {
     await token.burn(burnAmount);
     expect(await token.totalSupply()).to.equal(initialSupply - burnAmount);
   });
+
+  it("reverts transfers when balance is insufficient", async function () {
+    const amount = ethers.parseUnits("1", 18);
+    await expect(
+      token.connect(addr1).transfer(addr2.address, amount)
+    )
+      .to.be.revertedWithCustomError(token, "ERC20InsufficientBalance")
+      .withArgs(addr1.address, 0n, amount);
+  });
+
+  it("handles allowance and transferFrom flows", async function () {
+    const approveAmount = ethers.parseUnits("100", 18);
+    await token.approve(addr1.address, approveAmount);
+    expect(await token.allowance(owner.address, addr1.address)).to.equal(
+      approveAmount
+    );
+
+    const transferAmount = ethers.parseUnits("50", 18);
+    await token
+      .connect(addr1)
+      .transferFrom(owner.address, addr2.address, transferAmount);
+
+    expect(await token.balanceOf(addr2.address)).to.equal(transferAmount);
+    expect(await token.allowance(owner.address, addr1.address)).to.equal(
+      approveAmount - transferAmount
+    );
+  });
+
+  it("emits Transfer events", async function () {
+    const amount = ethers.parseUnits("10", 18);
+    await expect(token.transfer(addr1.address, amount))
+      .to.emit(token, "Transfer")
+      .withArgs(owner.address, addr1.address, amount);
+
+    await token.approve(addr1.address, amount);
+    await expect(
+      token
+        .connect(addr1)
+        .transferFrom(owner.address, addr2.address, amount)
+    )
+      .to.emit(token, "Transfer")
+      .withArgs(owner.address, addr2.address, amount);
+  });
 });
