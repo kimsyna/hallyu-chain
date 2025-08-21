@@ -98,18 +98,37 @@ document.querySelectorAll('section, .wp-section').forEach(section => {
   });
 });
 
-const translations = {}
+const translations = {};
+const DEFAULT_LANG = 'en';
 
 async function loadLanguage(lang) {
   if (!translations[lang]) {
-    const response = await fetch(`locales/${lang}.json`);
-    translations[lang] = await response.json();
+    try {
+      const response = await fetch(`locales/${lang}.json`);
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      translations[lang] = await response.json();
+    } catch (err) {
+      console.error(`Failed to load language '${lang}':`, err);
+      if (lang !== DEFAULT_LANG) {
+        return await loadLanguage(DEFAULT_LANG);
+      }
+      return null;
+    }
   }
+  return lang;
 }
 
 
 async function setLanguage(lang) {
-  await loadLanguage(lang);
+  const loadedLang = await loadLanguage(lang);
+  if (!loadedLang) {
+    alert('Localization failed to load.');
+    return;
+  }
+  if (loadedLang !== lang) {
+    alert('Selected language unavailable. Using default language.');
+  }
+  lang = loadedLang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => {
