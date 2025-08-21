@@ -1,4 +1,4 @@
-const { ethers } = require('hardhat');
+const { ethers, network } = require('hardhat');
 const fs = require('fs');
 const path = require('path');
 
@@ -24,6 +24,12 @@ async function main() {
   const tokenAddress = await token.getAddress();
   console.log('HallyuToken deployed to:', tokenAddress);
   await dao.setToken(tokenAddress);
+
+  const Bridge = await ethers.getContractFactory('Bridge');
+  const bridge = await Bridge.deploy(tokenAddress, 100, 5000); // 1% fee, 50% burn
+  await bridge.waitForDeployment();
+  const bridgeAddress = await bridge.getAddress();
+  console.log('Bridge deployed to:', bridgeAddress);
 
   const VestingVault = await ethers.getContractFactory('VestingVault');
   const now = Math.floor(Date.now() / 1000);
@@ -80,10 +86,12 @@ async function main() {
   await token.transfer(investorVestingAddress, allocations.investors);
   console.log('Tokens distributed to allocation addresses');
 
-  const filePath = path.join(__dirname, '..', 'token-address.json');
+  const filePath = path.join(__dirname, '..', 'deployments', `${network.name}.json`);
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
   const addresses = {
     HallyuToken: tokenAddress,
     HallyuDAO: daoAddress,
+    Bridge: bridgeAddress,
     TeamVesting: teamVestingAddress,
     AdvisorVesting: advisorVestingAddress,
     InvestorVesting: investorVestingAddress,

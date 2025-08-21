@@ -21,6 +21,16 @@ The site is fully static and can be served by any web server.
 - Responsive layout driven by modern CSS.
 - Feature cards highlight fan participation, artist support, and global community building.
 
+## Bridge and Multi-chain Deployment
+- `contracts/Bridge.sol` locks HALL for cross-chain transfers. Bridge fees are applied and a configurable portion is burned automatically.
+- Deploy contracts to multiple networks by providing a comma-separated list of network names:
+
+```bash
+NETWORKS=sepolia,bscTestnet npm run multi-deploy
+```
+
+RPC URLs and the deployer's private key are read from environment variables (`SEPOLIA_RPC_URL`, `BSC_RPC_URL`, `PRIVATE_KEY`).
+
 ## Design Tokens
 The site relies on CSS custom properties for theming. Two key tokens exposed for the hero section are:
 
