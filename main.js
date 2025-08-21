@@ -5,6 +5,18 @@ const prefersReducedMotion = window.matchMedia(
   '(prefers-reduced-motion: reduce)'
 ).matches;
 
+function updateNavHeight() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  const height = navbar.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--nav-height', `${height}px`);
+  document.documentElement.style.scrollPaddingTop = `${height}px`;
+  document.body.style.paddingTop = `${height}px`;
+}
+
+updateNavHeight();
+window.addEventListener('resize', updateNavHeight);
+
 // Reusable notice element for status messages
 const notice = document.createElement('div');
 notice.className = 'notice';
