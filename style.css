@@ -291,6 +291,11 @@ ul, ol {
   margin-top: 1.5rem;
 }
 
+.newsletter-success {
+  margin-top: 1rem;
+  color: #2e7d32;
+}
+
 .newsletter-form input {
   padding: 0.7rem 1rem;
   border-radius: 6px;
