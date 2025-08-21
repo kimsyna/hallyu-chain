@@ -501,7 +501,7 @@ body.dark-mode .footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   :root {
     --space-sm: 0.75rem;
     --space-md: 1.25rem;
@@ -568,7 +568,7 @@ body.dark-mode .footer {
   }
 }
 
-@media (max-width: 600px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .navbar .nav-links {
     transition: none;
   }
