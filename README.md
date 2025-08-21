@@ -32,11 +32,12 @@ NETWORKS=sepolia,bscTestnet npm run multi-deploy
 RPC URLs and the deployer's private key are read from environment variables (`SEPOLIA_RPC_URL`, `BSC_RPC_URL`, `PRIVATE_KEY`).
 
 ## Tokenomics
-- Total supply: 1,000,000 HALL
-- Community rewards: 40%
-- Team & partnerships: 20%
-- Ecosystem development fund: 20%
-- Initial liquidity & marketing: 20%
+- Total supply: 10,000,000,000 HALL
+- DAO treasury: 50%
+- Community rewards: 20%
+- Team: 15%
+- Advisors: 5%
+- Investors: 10%
 
 ## Roadmap
 - 2026 Q1: Launch mainnet
