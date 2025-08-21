@@ -23,7 +23,7 @@ function showNotice(message, delay = 4000) {
   }, delay);
 }
 
-class KPPFancyTitle extends HTMLElement {
+class HCFancyTitle extends HTMLElement {
   static get observedAttributes() {
     return ['text', 'size'];
   }
@@ -86,12 +86,12 @@ class KPPFancyTitle extends HTMLElement {
   }
 }
 
-customElements.define('kpp-fancy-title', KPPFancyTitle);
+customElements.define('hc-fancy-title', HCFancyTitle);
 
 function applyFancyTitles() {
   document.querySelectorAll('h1').forEach((h1) => {
-    if (h1.closest('kpp-fancy-title')) return;
-    const fancy = document.createElement('kpp-fancy-title');
+    if (h1.closest('hc-fancy-title')) return;
+    const fancy = document.createElement('hc-fancy-title');
     fancy.setAttribute('size', 'large');
     fancy.setAttribute('text', h1.textContent.trim());
     if (h1.className) fancy.className = h1.className;
@@ -99,8 +99,8 @@ function applyFancyTitles() {
     h1.replaceWith(fancy);
   });
   document.querySelectorAll('h2').forEach((h2) => {
-    if (h2.closest('kpp-fancy-title')) return;
-    const fancy = document.createElement('kpp-fancy-title');
+    if (h2.closest('hc-fancy-title')) return;
+    const fancy = document.createElement('hc-fancy-title');
     fancy.setAttribute('size', 'medium');
     fancy.setAttribute('text', h2.textContent.trim());
     if (h2.className) fancy.className = h2.className;
@@ -169,7 +169,7 @@ async function setLanguage(lang) {
     const key = el.getAttribute('data-i18n');
     const text = translations[lang][key];
     if (text) {
-      if (el.tagName === 'KPP-FANCY-TITLE') {
+      if (el.tagName === 'HC-FANCY-TITLE') {
         el.setAttribute('text', text);
       } else {
         el.textContent = text;
