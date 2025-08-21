@@ -21,6 +21,12 @@ The site is fully static and can be served by any web server.
 - Responsive layout driven by modern CSS.
 - Feature cards highlight fan participation, artist support, and global community building.
 
+## Design Tokens
+The site relies on CSS custom properties for theming. Two key tokens exposed for the hero section are:
+
+- `--hero-gradient`: controls the animated gradient backdrop of the hero. Defaults to a light pastel gradient and shifts to a deeper palette in dark mode.
+- `--hero-blur`: sets the blur radius applied to the hero backdrop, enabling easy refinement of the effect.
+
 ## Local Development
 1. Clone the repository and change into the project directory:
    ```bash
