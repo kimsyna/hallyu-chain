@@ -7,6 +7,8 @@
     "compile": "npx hardhat compile",
     "test": "npx hardhat test",
     "deploy": "npx hardhat run scripts/deploy.js --network hardhat",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
+    "format": "prettier --write ."
     "check-locales": "node scripts/check-locales.js"
   },
   "keywords": [],
@@ -18,7 +20,9 @@
   "type": "commonjs",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "hardhat": "^2.26.3"
+    "eslint": "^9.33.0",
+    "hardhat": "^2.26.3",
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0"
