@@ -47,7 +47,7 @@ contract HallyuToken is ERC20Capped, ERC20Burnable, Ownable {
         override(ERC20, ERC20Capped)
     {
         if (from != address(0) && to != address(0)) {
-            uint256 burnAmount = (value * 30) / 100;
+            uint256 burnAmount = (value * 3) / 100;
             uint256 sendAmount = value - burnAmount;
             super._update(from, address(0), burnAmount);
             super._update(from, to, sendAmount);

@@ -37,6 +37,7 @@
   "tok_list4": "팀: {team}%",
   "tok_list5": "자문단: {advisors}%",
   "tok_list6": "투자자: {investors}%",
+  "tok_list7": "전송 소각: {burn}%",
   "roadmap_title": "로드맵",
   "road_q1": "2026 Q1: 메인넷 런칭",
   "road_q2": "2026 Q2: 스마트 컨트랙트 플랫폼 공개",

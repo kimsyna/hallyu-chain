@@ -32,14 +32,14 @@ describe("VestingVault", function () {
     await vault.release();
     const block1 = await ethers.provider.getBlock("latest");
     const vested1 = (deposited * BigInt(block1.timestamp - start)) / BigInt(year);
-    const firstRelease = (vested1 * 70n) / 100n;
+    const firstRelease = (vested1 * 97n) / 100n;
     expect(await token.balanceOf(beneficiary.address)).to.equal(firstRelease);
 
     await ethers.provider.send("evm_setNextBlockTimestamp", [start + year]);
     await vault.release();
     const block2 = await ethers.provider.getBlock("latest");
     const vested2 = (deposited * BigInt(block2.timestamp - start)) / BigInt(year);
-    const total = (vested2 * 70n) / 100n;
+    const total = (vested2 * 97n) / 100n;
     expect(await token.balanceOf(beneficiary.address)).to.equal(total);
   });
 });

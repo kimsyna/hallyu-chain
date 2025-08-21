@@ -21,7 +21,7 @@ describe("HallyuDAO", function () {
   });
 
   it("mints tokens via passed proposal", async function () {
-    const amount = ethers.parseUnits("10", 18);
+    const amount = ethers.parseUnits("5", 18);
     const tx = await dao
       .connect(voter1)
       .proposeMint(voter1.address, amount, "mint");
@@ -36,7 +36,7 @@ describe("HallyuDAO", function () {
 
     await dao.execute(proposalId);
     expect(await token.balanceOf(voter1.address)).to.equal(
-      ethers.parseUnits("80", 18)
+      ethers.parseUnits("102", 18)
     );
   });
 });

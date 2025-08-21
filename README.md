@@ -38,6 +38,7 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - Team: 15%
 - Advisors: 5%
 - Investors: 10%
+- Transfer burn: 3%
 
 ## Roadmap
 - 2026 Q1: Launch mainnet
