@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "compile": "npx hardhat compile",
-    "test": "npx hardhat test",
+    "pretest": "node scripts/offline-compile.js",
+    "test": "npx hardhat test --no-compile",
     "deploy": "npx hardhat run scripts/deploy.js --network hardhat",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
     "format": "prettier --write .",
