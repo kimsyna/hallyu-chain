@@ -27,6 +27,16 @@ The site relies on CSS custom properties for theming. Two key tokens exposed for
 - `--hero-gradient`: controls the animated gradient backdrop of the hero. Defaults to a light pastel gradient and shifts to a deeper palette in dark mode.
 - `--hero-blur`: sets the blur radius applied to the hero backdrop, enabling easy refinement of the effect.
 
+### Spacing Scale
+To maintain consistent spacing across the site, a small scale of custom properties is defined in `style.css`:
+
+- `--space-xs` – `0.5rem`
+- `--space-sm` – `1rem`
+- `--space-md` – `1.5rem`
+- `--space-lg` – `2rem`
+
+These tokens drive margins, paddings and gaps for common layout components. The values adjust in media queries to keep spacing proportional on smaller screens.
+
 ## Local Development
 1. Clone the repository and change into the project directory:
    ```bash
