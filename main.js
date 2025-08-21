@@ -3,6 +3,24 @@ gsap.registerPlugin(ScrollTrigger);
 // Respect users who prefer reduced motion by checking their system setting
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Reusable notice element for status messages
+const notice = document.createElement('div');
+notice.className = 'notice';
+notice.setAttribute('role', 'status');
+notice.setAttribute('aria-live', 'polite');
+notice.hidden = true;
+document.body.appendChild(notice);
+let noticeTimeout;
+function showNotice(message, delay = 4000) {
+  notice.textContent = message;
+  notice.hidden = false;
+  clearTimeout(noticeTimeout);
+  noticeTimeout = setTimeout(() => {
+    notice.hidden = true;
+    notice.textContent = '';
+  }, delay);
+}
+
 class KPPFancyTitle extends HTMLElement {
   static get observedAttributes() { return ['text', 'size']; }
   constructor() {
@@ -134,11 +152,11 @@ async function loadLanguage(lang) {
 async function setLanguage(lang) {
   const loadedLang = await loadLanguage(lang);
   if (!loadedLang) {
-    alert('Localization failed to load.');
+    showNotice('Localization failed to load.');
     return;
   }
   if (loadedLang !== lang) {
-    alert('Selected language unavailable. Using default language.');
+    showNotice('Selected language unavailable. Using default language.');
   }
   lang = loadedLang;
   localStorage.setItem('lang', lang);
