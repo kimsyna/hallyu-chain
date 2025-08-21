@@ -1,5 +1,8 @@
 gsap.registerPlugin(ScrollTrigger);
 
+// Respect users who prefer reduced motion by checking their system setting
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 class KPPFancyTitle extends HTMLElement {
   static get observedAttributes() { return ['text', 'size']; }
   constructor() {
@@ -86,30 +89,58 @@ function applyFancyTitles() {
 
 applyFancyTitles();
 
-document.querySelectorAll('section, .wp-section').forEach(section => {
-  gsap.from(section, {
-    opacity: 0,
-    y: 40,
-    duration: 1,
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 80%'
-    }
+// Skip scroll animations when reduced motion is preferred
+if (!prefersReducedMotion) {
+  document.querySelectorAll('section, .wp-section').forEach(section => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%'
+      }
+    });
   });
-});
+} else {
+  // Make sure sections remain visible without animation
+  document.querySelectorAll('section, .wp-section').forEach(section => {
+    section.style.opacity = 1;
+    section.style.transform = 'none';
+  });
+}
 
-const translations = {}
+const translations = {};
+const DEFAULT_LANG = 'en';
 
 async function loadLanguage(lang) {
   if (!translations[lang]) {
-    const response = await fetch(`locales/${lang}.json`);
-    translations[lang] = await response.json();
+    try {
+      const response = await fetch(`locales/${lang}.json`);
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      translations[lang] = await response.json();
+    } catch (err) {
+      console.error(`Failed to load language '${lang}':`, err);
+      if (lang !== DEFAULT_LANG) {
+        return await loadLanguage(DEFAULT_LANG);
+      }
+      return null;
+    }
   }
+  return lang;
 }
 
 
 async function setLanguage(lang) {
-  await loadLanguage(lang);
+  const loadedLang = await loadLanguage(lang);
+  if (!loadedLang) {
+    alert('Localization failed to load.');
+    return;
+  }
+  if (loadedLang !== lang) {
+    alert('Selected language unavailable. Using default language.');
+  }
+  lang = loadedLang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -188,7 +219,8 @@ if (themeToggle) {
 
 const hero = document.querySelector('.hero');
 const fancy = document.querySelector('.hero-title');
-if (hero && fancy) {
+// Disable fancy hero animation if reduced motion is requested
+if (hero && fancy && !prefersReducedMotion) {
   hero.addEventListener('mousemove', e => {
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
@@ -201,12 +233,21 @@ if (hero && fancy) {
 }
 
 const newsletterForm = document.querySelector('.newsletter-form');
-if (newsletterForm) {
+const newsletterMessage = document.querySelector('.newsletter-success');
+let newsletterTimeout;
+
+if (newsletterForm && newsletterMessage) {
   newsletterForm.addEventListener('submit', async e => {
     e.preventDefault();
     const lang = localStorage.getItem('lang') || 'ko';
     await loadLanguage(lang);
-    alert(translations[lang].newsletter_success);
+    newsletterMessage.textContent = translations[lang].newsletter_success;
+    newsletterMessage.hidden = false;
+    clearTimeout(newsletterTimeout);
+    newsletterTimeout = setTimeout(() => {
+      newsletterMessage.hidden = true;
+      newsletterMessage.textContent = '';
+    }, 5000);
     newsletterForm.reset();
   });
 }
@@ -216,7 +257,8 @@ if (backToTop) {
   window.addEventListener('scroll', () => {
     backToTop.classList.toggle('visible', window.scrollY > 400);
   });
+  // Respect reduced motion setting for scroll behavior
   backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   });
 }
