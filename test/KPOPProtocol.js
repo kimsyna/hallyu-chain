@@ -44,9 +44,9 @@ describe("KPOPProtocol", function () {
 
     const remaining = cap - (initialSupply + mintAmount);
     await token.mint(owner.address, remaining);
-    await expect(token.mint(owner.address, 1n)).to.be.revertedWith(
-      "cap exceeded"
-    );
+    await expect(token.mint(owner.address, 1n))
+      .to.be.revertedWithCustomError(token, "ERC20ExceededCap")
+      .withArgs(cap + 1n, cap);
   });
 
   it("burn reduces total supply", async function () {
