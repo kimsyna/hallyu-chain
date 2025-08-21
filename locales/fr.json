@@ -37,6 +37,7 @@
   "tok_list4": "Équipe : {team}%",
   "tok_list5": "Conseillers : {advisors}%",
   "tok_list6": "Investisseurs : {investors}%",
+  "tok_list7": "Brûlure par transfert : {burn}%",
   "roadmap_title": "Feuille de route",
   "road_q1": "2026 T1 : Lancer le mainnet",
   "road_q2": "2026 T2 : Publier la plateforme de contrats intelligents",

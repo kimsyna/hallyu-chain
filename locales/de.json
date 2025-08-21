@@ -37,6 +37,7 @@
   "tok_list4": "Team: {team}%",
   "tok_list5": "Berater: {advisors}%",
   "tok_list6": "Investoren: {investors}%",
+  "tok_list7": "Verbrennung bei Übertragungen: {burn}%",
   "roadmap_title": "Fahrplan",
   "road_q1": "2026 Q1: Mainnet starten",
   "road_q2": "2026 Q2: Smart-Contract-Plattform veröffentlichen",

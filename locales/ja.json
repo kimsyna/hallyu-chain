@@ -37,6 +37,7 @@
   "tok_list4": "チーム：{team}%",
   "tok_list5": "アドバイザー：{advisors}%",
   "tok_list6": "投資家：{investors}%",
+  "tok_list7": "送金時バーン: {burn}%",
   "roadmap_title": "ロードマップ",
   "road_q1": "2026年第1四半期：メインネットローンチ",
   "road_q2": "2026年第2四半期：スマートコントラクトプラットフォーム公開",

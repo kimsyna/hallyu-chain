@@ -25,7 +25,7 @@ describe('Bridge', function () {
     const supplyAfter = await token.totalSupply();
 
     const expectedBurn =
-      (amount * 30n) / 100n + // token's internal burn
+      (amount * 3n) / 100n + // token's internal burn
       ((amount * BigInt(feeRate)) / 10000n * BigInt(burnRate)) / 10000n; // fee burn
     expect(supplyBefore - supplyAfter).to.equal(expectedBurn);
   });
