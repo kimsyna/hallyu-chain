@@ -1,21 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import Module from 'module';
+import { applyLruCacheShim } from './test-helpers/lru-cache-shim.js';
 
-// JSDOM depends on a CommonJS module that requires `lru-cache`.
-// Node 22 ships `lru-cache` as ESM only, so we shim the require
-// to return an object with the expected `LRUCache` export.
-const originalLoad = Module._load;
-Module._load = function (request, parent, isMain) {
-  if (request === 'lru-cache') {
-    const mod = originalLoad(request, parent, isMain);
-    if (mod && typeof mod === 'function') return { LRUCache: mod };
-    if (mod && typeof mod === 'object' && 'default' in mod)
-      return { LRUCache: mod.default };
-    return mod;
-  }
-  return originalLoad(request, parent, isMain);
-};
+applyLruCacheShim();
 
 async function setupDom(html = '') {
   const { JSDOM } = await import('jsdom');
