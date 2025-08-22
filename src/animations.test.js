@@ -18,7 +18,7 @@ Module._load = function (request, parent, isMain) {
 const require = Module.createRequire(import.meta.url);
 const { JSDOM } = require('jsdom');
 
-function setupDom(prefers) {
+function setupDom(prefers, withGSAP = true) {
   const dom = new JSDOM('<section id="a"></section>');
   global.window = dom.window;
   global.document = dom.window.document;
@@ -29,18 +29,29 @@ function setupDom(prefers) {
   global.matchMedia = global.window.matchMedia;
 
   const calls = [];
-  global.ScrollTrigger = {
-    getAll: () => [],
-  };
-  global.gsap = {
-    registerPlugin: () => {},
-    from: (el, vars) => {
-      el.style.opacity = String(vars.opacity);
-      el.style.transform = `translate(0, ${vars.y}px)`;
-      calls.push({ el, vars });
-    },
-    to: () => {},
-  };
+  if (withGSAP) {
+    const ScrollTrigger = {
+      getAll: () => [],
+    };
+    const gsap = {
+      registerPlugin: () => {},
+      from: (el, vars) => {
+        el.style.opacity = String(vars.opacity);
+        el.style.transform = `translate(0, ${vars.y}px)`;
+        calls.push({ el, vars });
+      },
+      to: () => {},
+    };
+    global.window.ScrollTrigger = ScrollTrigger;
+    global.window.gsap = gsap;
+    global.ScrollTrigger = ScrollTrigger;
+    global.gsap = gsap;
+  } else {
+    delete global.gsap;
+    delete global.ScrollTrigger;
+    delete global.window.gsap;
+    delete global.window.ScrollTrigger;
+  }
   return { section: dom.window.document.querySelector('section'), calls };
 }
 
@@ -60,4 +71,17 @@ test('sections remain visible without animation when motion reduced', async () =
   assert.equal(calls.length, 0);
   assert.equal(section.style.opacity, '1');
   assert.equal(section.style.transform, 'none');
+});
+
+test('skips setup and warns when GSAP is missing', async () => {
+  const { section } = setupDom(false, false);
+  const warnings = [];
+  const originalWarn = console.warn;
+  console.warn = (msg) => warnings.push(msg);
+  const { initAnimations } = await import('./animations.ts?test=2');
+  assert.doesNotThrow(() => initAnimations());
+  assert.equal(warnings.length, 1);
+  assert.equal(section.style.opacity, '');
+  assert.equal(section.style.transform, '');
+  console.warn = originalWarn;
 });

@@ -1,7 +1,17 @@
-declare const gsap: any;
-declare const ScrollTrigger: any;
+let gsap: any;
+let ScrollTrigger: any;
+let hasGSAP = false;
 
-gsap.registerPlugin(ScrollTrigger);
+if (
+  typeof window !== 'undefined' &&
+  (window as any).gsap &&
+  (window as any).ScrollTrigger
+) {
+  gsap = (window as any).gsap;
+  ScrollTrigger = (window as any).ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+  hasGSAP = true;
+}
 
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 export let prefersReducedMotion = reduceMotionQuery.matches;
@@ -10,7 +20,9 @@ function applyAnimations() {
   // Remove any existing ScrollTriggers to avoid duplicates
   ScrollTrigger.getAll().forEach((t: any) => t.kill());
 
-  const sections = document.querySelectorAll<HTMLElement>('section, .wp-section');
+  const sections = document.querySelectorAll<HTMLElement>(
+    'section, .wp-section'
+  );
   if (!prefersReducedMotion) {
     sections.forEach((section) => {
       // Clear inline styles that may have been set when motion was reduced
@@ -62,6 +74,10 @@ function initHeroAnimation() {
 }
 
 export function initAnimations() {
+  if (!hasGSAP) {
+    console.warn('GSAP or ScrollTrigger not found. Animations disabled.');
+    return;
+  }
   applyAnimations();
   initHeroAnimation();
   reduceMotionQuery.addEventListener('change', (event) => {
