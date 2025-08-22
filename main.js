@@ -443,8 +443,11 @@ if (newsletterForm && newsletterMessage) {
   newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const lang = localStorage.getItem('lang') || DEFAULT_LANG;
-    await loadLanguage(lang);
-    newsletterMessage.textContent = translations[lang].newsletter_success;
+    // Load the selected language and use the resolved value to handle fallbacks
+    const resolvedLang = (await loadLanguage(lang)) || DEFAULT_LANG;
+    newsletterMessage.textContent =
+      translations[resolvedLang]?.newsletter_success ||
+      translations[DEFAULT_LANG].newsletter_success;
     newsletterMessage.hidden = false;
     clearTimeout(newsletterTimeout);
     newsletterTimeout = setTimeout(() => {
