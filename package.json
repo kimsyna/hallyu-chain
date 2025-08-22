@@ -9,7 +9,7 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "pretest": "node scripts/offline-compile.js",
-    "test": "npx hardhat test --no-compile && TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/animations.test.js",
+    "test": "npx hardhat test --no-compile && TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.js src/*.test.ts",
     "deploy": "npx hardhat run scripts/deploy.js --network hardhat",
     "multi-deploy": "node scripts/multichain-deploy.js",
     "lint": "eslint .",
@@ -20,7 +20,7 @@
     "dev": "npm run dev:backend & npm run dev:frontend",
     "serve": "npm run serve --workspace frontend",
     "build:web": "esbuild src/index.ts --bundle --format=esm --outfile=bundle.js",
-    "test:frontend": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.ts"
+    "test:frontend": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.js src/*.test.ts"
   },
   "keywords": [],
   "author": "",
