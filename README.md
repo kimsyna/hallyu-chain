@@ -78,6 +78,16 @@ To maintain consistent spacing across the site, a small scale of custom properti
 
 These tokens drive margins, paddings and gaps for common layout components. The values adjust in media queries to keep spacing proportional on smaller screens.
 
+## Build
+
+Bundle the TypeScript entry point for the static site:
+
+```bash
+npm run build:web
+```
+
+This command outputs `bundle.js` from `src/index.ts`, and the static site loads that file.
+
 ## Local Development
 
 1. Clone the repository and change into the project directory:
