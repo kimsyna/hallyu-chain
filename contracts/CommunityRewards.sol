@@ -12,6 +12,7 @@ contract CommunityRewards is Ownable {
 
     mapping(address => uint256) public points;
 
+    event ConversionRateUpdated(uint256 newRate);
     event PointsAdded(address indexed user, uint256 amount);
     event Redeemed(address indexed user, uint256 points, uint256 hallAmount);
 
@@ -22,6 +23,7 @@ contract CommunityRewards is Ownable {
 
     function setConversionRate(uint256 rate) external onlyOwner {
         conversionRate = rate;
+        emit ConversionRateUpdated(rate);
     }
 
     function addPoints(address user, uint256 amount) external onlyOwner {
