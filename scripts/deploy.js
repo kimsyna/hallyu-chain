@@ -72,11 +72,11 @@ async function main() {
   console.log('InvestorVesting deployed to:', investorVestingAddress);
 
   const allocations = {
-    dao: ethers.parseUnits('100000000', 18),
-    communityRewards: ethers.parseUnits('3900000000', 18),
-    team: ethers.parseUnits('2000000000', 18),
-    advisors: ethers.parseUnits('1000000000', 18),
-    investors: ethers.parseUnits('3000000000', 18),
+    dao: ethers.parseUnits('5000000000', 18),
+    communityRewards: ethers.parseUnits('2000000000', 18),
+    team: ethers.parseUnits('1500000000', 18),
+    advisors: ethers.parseUnits('500000000', 18),
+    investors: ethers.parseUnits('1000000000', 18),
   };
 
   await token.transfer(daoAddress, allocations.dao);
