@@ -91,6 +91,9 @@ class HCFancyTitle extends HTMLElement {
     `;
     root.appendChild(style);
 
+    this.setAttribute('role', 'heading');
+    this.setAttribute('aria-level', size === 'medium' ? '2' : '1');
+
     const h1 = document.createElement('h1');
     h1.textContent = text;
     h1.setAttribute('data-text', text);
