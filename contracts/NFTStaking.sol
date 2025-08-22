@@ -3,11 +3,14 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title NFT Staking for Hallyu NFT holders
 /// @notice Stake NFTs to earn HALL token rewards and gain metaverse privileges
 contract NFTStaking is Ownable {
+    using SafeERC20 for IERC20;
+
     IERC721 public immutable nft;
     IERC20 public immutable rewardToken;
     uint256 public rewardRate; // reward per second per NFT (in token wei)
@@ -24,6 +27,7 @@ contract NFTStaking is Ownable {
     event Staked(address indexed user, uint256 indexed tokenId);
     event Unstaked(address indexed user, uint256 indexed tokenId);
     event RewardPaid(address indexed user, uint256 reward);
+    event RewardRateUpdated(uint256 newRate);
 
     constructor(address _nft, address _rewardToken, uint256 _rewardRate) Ownable(msg.sender) {
         nft = IERC721(_nft);
@@ -58,7 +62,7 @@ contract NFTStaking is Ownable {
     function claim() external updateReward(msg.sender) {
         uint256 reward = stakers[msg.sender].rewards;
         stakers[msg.sender].rewards = 0;
-        rewardToken.transfer(msg.sender, reward);
+        rewardToken.safeTransfer(msg.sender, reward);
         emit RewardPaid(msg.sender, reward);
     }
 
@@ -74,6 +78,7 @@ contract NFTStaking is Ownable {
 
     function setRewardRate(uint256 _rate) external onlyOwner {
         rewardRate = _rate;
+        emit RewardRateUpdated(_rate);
     }
 }
 
