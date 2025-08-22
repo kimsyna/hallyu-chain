@@ -29,6 +29,8 @@ contract StakingPool is Ownable, ReentrancyGuard {
     event Withdrawn(address indexed user, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
     event InterestRateUpdated(uint256 newRate);
+    event RewardsDeposited(address indexed owner, uint256 amount);
+    event ExcessWithdrawn(address indexed owner, uint256 amount);
 
     constructor(address token_, uint256 rate_) Ownable(msg.sender) {
         token = IERC20(token_);
@@ -60,6 +62,12 @@ contract StakingPool is Ownable, ReentrancyGuard {
         emit Staked(msg.sender, amount);
     }
 
+    function depositRewards(uint256 amount) external onlyOwner {
+        require(amount > 0, "amount zero");
+        token.safeTransferFrom(msg.sender, address(this), amount);
+        emit RewardsDeposited(msg.sender, amount);
+    }
+
     function withdraw(uint256 amount) external nonReentrant {
         StakeInfo storage s = stakes[msg.sender];
         require(s.amount >= amount, "insufficient stake");
@@ -69,6 +77,16 @@ contract StakingPool is Ownable, ReentrancyGuard {
         totalStaked -= amount;
         token.safeTransfer(msg.sender, amount);
         emit Withdrawn(msg.sender, amount);
+    }
+
+    function withdrawExcess(uint256 amount) external onlyOwner {
+        require(amount > 0, "amount zero");
+        uint256 balance = token.balanceOf(address(this));
+        require(balance > totalStaked, "no excess");
+        uint256 available = balance - totalStaked;
+        require(amount <= available, "amount exceeds excess");
+        token.safeTransfer(msg.sender, amount);
+        emit ExcessWithdrawn(msg.sender, amount);
     }
 
     function claim() external nonReentrant {
