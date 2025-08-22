@@ -2,7 +2,7 @@
   "name": "codexer",
   "version": "1.0.0",
   "description": "This repository contains the marketing website for **Hallyu Chain (HALL)**, a commercial-grade cryptocurrency project built for the global K-POP community.",
-  "main": "main.js",
+  "main": "bundle.js",
   "workspaces": ["frontend"],
   "scripts": {
     "compile": "npx hardhat compile",
@@ -16,7 +16,9 @@
     "dev:frontend": "npm run dev --workspace frontend",
     "dev:backend": "npx hardhat node",
     "dev": "npm run dev:backend & npm run dev:frontend",
-    "serve": "npm run serve --workspace frontend"
+    "serve": "npm run serve --workspace frontend",
+    "build:web": "esbuild src/index.js --bundle --format=esm --outfile=bundle.js",
+    "test:frontend": "node --test src/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +32,9 @@
     "eslint": "^9.33.0",
     "hardhat": "^2.26.3",
     "prettier": "^3.6.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "esbuild": "^0.21.5",
+    "jsdom": "^24.0.0"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0"

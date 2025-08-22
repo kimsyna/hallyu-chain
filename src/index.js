@@ -1,3 +1,7 @@
+import { initTheme } from './theme.js';
+import { loadStakingStatus } from './staking.js';
+import { initI18n, loadLanguage, translate, DEFAULT_LANG } from './i18n.js';
+
 gsap.registerPlugin(ScrollTrigger);
 
 // Respect users who prefer reduced motion by checking their system setting
@@ -20,33 +24,6 @@ window.addEventListener('resize', updateNavHeight);
 document
   .querySelectorAll('.material-symbols-outlined')
   .forEach((icon) => icon.setAttribute('aria-hidden', 'true'));
-
-// Reusable notice element for status messages
-const notice = document.createElement('div');
-notice.className = 'notice';
-notice.setAttribute('role', 'status');
-notice.setAttribute('aria-live', 'polite');
-notice.hidden = true;
-document.body.appendChild(notice);
-let noticeTimeout;
-export function showNotice(key, delay = 4000, lang = currentLang) {
-  const message =
-    translations[lang]?.[key] ||
-    translations[DEFAULT_LANG]?.[key] ||
-    FALLBACK_NOTICES[key] ||
-    key;
-  notice.textContent = message;
-  notice.hidden = false;
-  clearTimeout(noticeTimeout);
-  noticeTimeout = setTimeout(() => {
-    notice.hidden = true;
-    notice.textContent = '';
-  }, delay);
-}
-// Expose for non-module scripts if needed
-if (typeof window !== 'undefined') {
-  window.showNotice = showNotice;
-}
 
 class HCFancyTitle extends HTMLElement {
   static get observedAttributes() {
@@ -137,6 +114,7 @@ function applyFancyTitles() {
     h2.replaceWith(fancy);
   });
 }
+window.applyFancyTitles = applyFancyTitles;
 
 applyFancyTitles();
 
@@ -175,156 +153,6 @@ reduceMotionQuery.addEventListener('change', (event) => {
   prefersReducedMotion = event.matches;
   applyAnimations();
 });
-
-const translations = {};
-const DEFAULT_LANG = 'en';
-const FALLBACK_NOTICES = {
-  notice_load_fail: 'Localization failed to load.',
-  notice_lang_unavailable:
-    'Selected language unavailable. Using default language.',
-};
-let tokenomicsCache = null;
-
-async function loadTokenomics() {
-  if (!tokenomicsCache) {
-    const resp = await fetch('tokenomics.json');
-    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-    tokenomicsCache = await resp.json();
-  }
-  return tokenomicsCache;
-}
-
-function replaceTokenomicsPlaceholders(root, data) {
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
-  while (walker.nextNode()) {
-    walker.currentNode.textContent = walker.currentNode.textContent.replace(
-      /\{(supply|dao|community|team|advisors|investors)\}/g,
-      (_, key) => {
-        const value = data[key];
-        if (value === undefined) return '';
-        return key === 'supply'
-          ? Number(value).toLocaleString()
-          : String(value);
-      }
-    );
-  }
-}
-
-async function applyTokenomics(root = document) {
-  try {
-    const data = await loadTokenomics();
-    replaceTokenomicsPlaceholders(root, data);
-  } catch (err) {
-    console.error('Failed to load tokenomics:', err);
-  }
-}
-
-async function loadLanguage(lang) {
-  if (!translations[lang]) {
-    try {
-      const response = await fetch(`locales/${lang}.json`);
-      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-      translations[lang] = await response.json();
-    } catch (err) {
-      console.error(`Failed to load language '${lang}':`, err);
-      if (lang !== DEFAULT_LANG) {
-        return await loadLanguage(DEFAULT_LANG);
-      }
-      return null;
-    }
-  }
-  return lang;
-}
-
-async function setLanguage(lang) {
-  const loadedLang = await loadLanguage(lang);
-  if (!loadedLang) {
-    showNotice('notice_load_fail', 4000, DEFAULT_LANG);
-    return;
-  }
-  if (loadedLang !== lang) {
-    showNotice('notice_lang_unavailable', 4000, loadedLang);
-  }
-  lang = loadedLang;
-  currentLang = lang;
-  localStorage.setItem('lang', lang);
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
-    const key = el.getAttribute('data-i18n');
-    const text = translations[lang][key];
-    if (text) {
-      if (el.tagName === 'HC-FANCY-TITLE') {
-        el.setAttribute('text', text);
-      } else {
-        el.textContent = text;
-      }
-    }
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    const text = translations[lang][key];
-    if (text) {
-      el.setAttribute('placeholder', text);
-    }
-  });
-  document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-aria-label');
-    const text = translations[lang][key];
-    if (text) {
-      el.setAttribute('aria-label', text);
-    }
-  });
-  document.querySelectorAll('[data-i18n-meta]').forEach((el) => {
-    const key = el.getAttribute('data-i18n-meta');
-    const text = translations[lang][key];
-    if (text) {
-      el.setAttribute('content', text);
-    }
-  });
-  if (location.hash === '#whitepaper') {
-    await loadWhitepaper(lang);
-  }
-  await applyTokenomics();
-  const page = document.body.dataset.page;
-  const titleKey = `title_${page}`;
-  if (translations[lang][titleKey]) {
-    document.title = translations[lang][titleKey];
-  }
-  const select = document.querySelector('.lang-select');
-  if (select) select.value = lang;
-}
-
-let currentLang = localStorage.getItem('lang') || DEFAULT_LANG;
-setLanguage(currentLang);
-
-async function loadWhitepaper(lang) {
-  const container = document.getElementById('whitepaper-content');
-  if (!container) return;
-  try {
-    const resp = await fetch(`whitepaper/${lang}/index.html`);
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    container.innerHTML = await resp.text();
-    await applyTokenomics(container);
-    applyFancyTitles();
-  } catch (err) {
-    console.error('Failed to load whitepaper:', err);
-    container.innerHTML = '<p>Whitepaper not available.</p>';
-  }
-}
-
-function handleHash() {
-  if (location.hash === '#whitepaper') {
-    loadWhitepaper(localStorage.getItem('lang') || currentLang);
-  }
-}
-
-window.addEventListener('hashchange', handleHash);
-handleHash();
-
-const select = document.querySelector('.lang-select');
-if (select) {
-  select.addEventListener('change', (e) => setLanguage(e.target.value));
-}
 
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.getElementById('primary-navigation');
@@ -374,43 +202,6 @@ document.addEventListener('keydown', (e) => {
   if (navLinks) navLinks.setAttribute('aria-hidden', 'true');
 });
 
-const themeToggle = document.querySelector('.theme-toggle');
-
-function isDark() {
-  return (
-    document.body.classList.contains('dark-mode') ||
-    (!document.body.classList.contains('light-mode') &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
-  );
-}
-
-function updateThemeIcon() {
-  if (!themeToggle) return;
-  themeToggle.innerHTML = isDark()
-    ? '<i class="material-symbols-outlined" aria-hidden="true">light_mode</i>'
-    : '<i class="material-symbols-outlined" aria-hidden="true">dark_mode</i>';
-}
-
-function setTheme(theme) {
-  document.body.classList.toggle('dark-mode', theme === 'dark');
-  document.body.classList.toggle('light-mode', theme === 'light');
-  if (theme) {
-    localStorage.setItem('theme', theme);
-  }
-  updateThemeIcon();
-}
-
-if (themeToggle) {
-  const saved = localStorage.getItem('theme');
-  if (saved) setTheme(saved);
-  else updateThemeIcon();
-
-  themeToggle.addEventListener('click', () => {
-    const next = isDark() ? 'light' : 'dark';
-    setTheme(next);
-  });
-}
-
 const hero = document.querySelector('.hero');
 const fancy = document.querySelector('.hero-title');
 // Disable fancy hero animation if reduced motion is requested
@@ -446,8 +237,7 @@ if (newsletterForm && newsletterMessage) {
     // Load the selected language and use the resolved value to handle fallbacks
     const resolvedLang = (await loadLanguage(lang)) || DEFAULT_LANG;
     newsletterMessage.textContent =
-      translations[resolvedLang]?.newsletter_success ||
-      translations[DEFAULT_LANG].newsletter_success;
+      translate('newsletter_success', resolvedLang);
     newsletterMessage.hidden = false;
     clearTimeout(newsletterTimeout);
     newsletterTimeout = setTimeout(() => {
@@ -472,25 +262,8 @@ if (backToTop) {
   });
 }
 
-async function loadStakingStatus() {
-  const total = document.getElementById('total-staked');
-  const rewards = document.getElementById('user-rewards');
-  const errorEl = document.getElementById('staking-error');
-  try {
-    const resp = await fetch('staking.json');
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
-    if (total) total.textContent = data.totalStaked;
-    if (rewards) rewards.textContent = data.userRewards;
-  } catch (err) {
-    console.error('Failed to fetch staking info', err);
-    if (total) total.textContent = 'N/A';
-    if (rewards) rewards.textContent = 'N/A';
-    if (errorEl) {
-      errorEl.textContent = 'Failed to load staking info.';
-      errorEl.hidden = false;
-    }
-  }
-}
 
+
+initTheme();
+initI18n();
 loadStakingStatus();
