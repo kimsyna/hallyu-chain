@@ -95,5 +95,7 @@
   "title_corporate": "Hallyu Chain コーポレートアイデンティティ",
   "staking_title": "ステーキングと報酬",
   "staking_total": "総ステーク量",
-  "staking_rewards": "あなたの報酬"
+  "staking_rewards": "あなたの報酬",
+  "notice_load_fail": "ローカライゼーションの読み込みに失敗しました。",
+  "notice_lang_unavailable": "選択した言語は利用できません。デフォルトの言語を使用します。"
 }

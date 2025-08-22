@@ -95,5 +95,7 @@
   "title_corporate": "Hallyu Chain 企业形象",
   "staking_title": "质押与奖励",
   "staking_total": "总质押量",
-  "staking_rewards": "你的奖励"
+  "staking_rewards": "你的奖励",
+  "notice_load_fail": "加载本地化失败。",
+  "notice_lang_unavailable": "所选语言不可用，已使用默认语言。"
 }

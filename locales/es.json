@@ -95,5 +95,7 @@
   "title_corporate": "Identidad corporativa de Hallyu Chain",
   "staking_title": "Staking y Recompensas",
   "staking_total": "Total Acumulado",
-  "staking_rewards": "Tus Recompensas"
+  "staking_rewards": "Tus Recompensas",
+  "notice_load_fail": "No se pudo cargar la localización.",
+  "notice_lang_unavailable": "El idioma seleccionado no está disponible. Se usará el idioma predeterminado."
 }
