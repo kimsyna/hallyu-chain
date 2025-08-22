@@ -1,11 +1,15 @@
-export async function loadStakingStatus() {
+export async function fetchStakingData(fetchFn = fetch, url = 'staking.json') {
+  const resp = await fetchFn(url);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function loadStakingStatus(fetchFn = fetch) {
   const total = document.getElementById('total-staked');
   const rewards = document.getElementById('user-rewards');
   const errorEl = document.getElementById('staking-error');
   try {
-    const resp = await fetch('staking.json');
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
+    const data = await fetchStakingData(fetchFn);
     if (total) total.textContent = data.totalStaked;
     if (rewards) rewards.textContent = data.userRewards;
   } catch (err) {
