@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Tokenomics from './components/Tokenomics'
+import BackToTop from './components/BackToTop'
 import './style.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Hero />
       <Tokenomics />
+      <BackToTop />
     </>
   )
 }

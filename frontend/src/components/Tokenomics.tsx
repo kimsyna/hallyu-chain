@@ -1,6 +1,30 @@
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 function Tokenomics() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const ctx = gsap.context(() => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+        },
+      })
+    }, el)
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <section id="tokenomics">
+    <section id="tokenomics" ref={sectionRef}>
       <h2 data-i18n="tokenomics_title">토큰 이코노미</h2>
       <ul className="icon-list">
         <li>

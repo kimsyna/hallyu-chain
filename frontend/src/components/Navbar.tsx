@@ -1,6 +1,21 @@
+import { useRef } from 'react'
+import { useNavHeight } from '../hooks/useNavHeight'
+import { useTheme } from '../hooks/useTheme'
+import { useNotice } from './NoticeProvider'
+
 function Navbar() {
+  const navRef = useRef<HTMLElement>(null)
+  useNavHeight(navRef)
+  const { theme, toggleTheme } = useTheme()
+  const showNotice = useNotice()
+
+  const handleTheme = () => {
+    toggleTheme()
+    showNotice(`Switched to ${theme === 'dark' ? 'light' : 'dark'} mode`)
+  }
+
   return (
-    <nav className="navbar">
+    <nav className="navbar" ref={navRef}>
       <a href="index.html" className="logo">
         <img src="/assets/hall-symbol.svg" alt="HALL logo" width="24" height="24" />
         Hallyu Chain
@@ -91,8 +106,11 @@ function Navbar() {
         className="theme-toggle"
         aria-label="테마 전환"
         data-i18n-aria-label="nav_theme"
+        onClick={handleTheme}
       >
-        <i className="material-symbols-outlined">dark_mode</i>
+        <i className="material-symbols-outlined">
+          {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+        </i>
       </button>
       <select className="lang-select" aria-label="Change language">
         <option value="ko">🇰🇷</option>
