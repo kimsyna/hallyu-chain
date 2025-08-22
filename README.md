@@ -88,6 +88,24 @@ npm run build:web
 
 This command outputs `bundle.js` from `src/index.ts`, and the static site loads that file.
 
+## Testing
+
+Run contract and frontend tests together:
+
+```bash
+npm test
+```
+
+This runs the Hardhat suite for smart contracts and then executes all frontend tests in `src/*.test.{js,ts}` using Node's test runner.
+
+To run only the frontend tests:
+
+```bash
+npm run test:frontend
+```
+
+Both scripts support JavaScript and TypeScript test files.
+
 ## Local Development
 
 1. Clone the repository and change into the project directory:
