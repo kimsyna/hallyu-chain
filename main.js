@@ -1,9 +1,10 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Respect users who prefer reduced motion by checking their system setting
-const prefersReducedMotion = window.matchMedia(
+const reduceMotionQuery = window.matchMedia(
   '(prefers-reduced-motion: reduce)'
-).matches;
+);
+let prefersReducedMotion = reduceMotionQuery.matches;
 
 function updateNavHeight() {
   const navbar = document.querySelector('.navbar');
@@ -132,26 +133,41 @@ function applyFancyTitles() {
 
 applyFancyTitles();
 
-// Skip scroll animations when reduced motion is preferred
-if (!prefersReducedMotion) {
-  document.querySelectorAll('section, .wp-section').forEach((section) => {
-    gsap.from(section, {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-      },
+function applyAnimations() {
+  // Remove any existing ScrollTriggers to avoid duplicates
+  ScrollTrigger.getAll().forEach((t) => t.kill());
+
+  const sections = document.querySelectorAll('section, .wp-section');
+  if (!prefersReducedMotion) {
+    sections.forEach((section) => {
+      // Clear inline styles that may have been set when motion was reduced
+      section.style.opacity = '';
+      section.style.transform = '';
+      gsap.from(section, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+        },
+      });
     });
-  });
-} else {
-  // Make sure sections remain visible without animation
-  document.querySelectorAll('section, .wp-section').forEach((section) => {
-    section.style.opacity = 1;
-    section.style.transform = 'none';
-  });
+  } else {
+    // Make sure sections remain visible without animation
+    sections.forEach((section) => {
+      section.style.opacity = 1;
+      section.style.transform = 'none';
+    });
+  }
 }
+
+applyAnimations();
+
+reduceMotionQuery.addEventListener('change', (event) => {
+  prefersReducedMotion = event.matches;
+  applyAnimations();
+});
 
 const translations = {};
 const DEFAULT_LANG = 'en';
