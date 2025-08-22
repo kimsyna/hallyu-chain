@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { useTranslation, Trans } from 'react-i18next'
+import styles from './Hero.module.css'
 
 function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -35,16 +36,16 @@ function Hero() {
   }, [])
 
   return (
-    <header className="hero" ref={heroRef}>
+    <header className={styles.hero} ref={heroRef}>
       <hc-fancy-title
-        className="hero-title"
+        className={styles.heroTitle}
         ref={titleRef as any}
         text={t('hero_title')}
       ></hc-fancy-title>
       <p>
         <Trans i18nKey="hero_subtitle" />
       </p>
-      <a href="#whitepaper" className="btn">
+      <a href="#whitepaper" className={styles.btn}>
         <Trans i18nKey="hero_button" />
       </a>
     </header>

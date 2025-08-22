@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
 import { useNavHeight } from '../hooks/useNavHeight'
 import { useTheme } from '../hooks/useTheme'
 import { useNotice } from './NoticeProvider'
 import { useLanguage } from './LanguageProvider'
+import styles from './Navbar.module.css'
 
 function Navbar() {
   const navRef = useRef<HTMLElement>(null)
@@ -12,6 +13,7 @@ function Navbar() {
   const showNotice = useNotice()
   const { t } = useTranslation()
   const { lang, changeLang } = useLanguage()
+  const [open, setOpen] = useState(false)
 
   const handleTheme = () => {
     toggleTheme()
@@ -19,20 +21,24 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar" ref={navRef}>
-      <a href="index.html" className="logo">
+    <nav className={styles.navbar} ref={navRef}>
+      <a href="index.html" className={styles.logo}>
         <img src="/assets/hall-symbol.svg" alt="HALL logo" width="24" height="24" />
         Hallyu Chain
       </a>
       <button
-        className="menu-toggle"
+        className={styles.menuToggle}
         aria-label="Toggle navigation"
         aria-controls="primary-navigation"
-        aria-expanded="false"
+        aria-expanded={open}
+        onClick={() => setOpen((o) => !o)}
       >
         <i className="material-symbols-outlined">menu</i>
       </button>
-      <ul className="nav-links" id="primary-navigation">
+      <ul
+        className={`${styles.navLinks} ${open ? styles.navLinksOpen : ''}`}
+        id="primary-navigation"
+      >
         <li>
           <a href="#about">
             <i className="material-symbols-outlined">info</i>
@@ -131,7 +137,7 @@ function Navbar() {
         </li>
       </ul>
       <button
-        className="theme-toggle"
+        className={styles.themeToggle}
         aria-label={t('nav_theme')}
         onClick={handleTheme}
       >
@@ -140,7 +146,7 @@ function Navbar() {
         </i>
       </button>
       <select
-        className="lang-select"
+        className={styles.langSelect}
         aria-label="Change language"
         value={lang}
         onChange={(e) => changeLang(e.target.value)}
