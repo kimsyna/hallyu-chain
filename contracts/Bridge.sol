@@ -3,6 +3,8 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {SafeERC20} from '@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol';
+import {ReentrancyGuard} from '@openzeppelin/contracts/utils/ReentrancyGuard.sol';
 
 interface IERC20Burnable is IERC20 {
     function burn(uint256 value) external;
@@ -10,7 +12,9 @@ interface IERC20Burnable is IERC20 {
 
 /// @title Simple HALL cross-chain bridge
 /// @notice Locks HALL tokens for bridging to other chains and burns a portion of the bridge fee
-contract Bridge is Ownable {
+contract Bridge is Ownable, ReentrancyGuard {
+    using SafeERC20 for IERC20Burnable;
+
     IERC20Burnable public immutable token;
 
     // fee in basis points (parts per 10,000)
@@ -51,14 +55,14 @@ contract Bridge is Ownable {
     /// @param amount amount of tokens user is willing to send (before fee)
     /// @param dstChainId destination chain identifier
     /// @param recipient address on the destination chain
-    function bridge(uint256 amount, uint256 dstChainId, address recipient) external {
+    function bridge(uint256 amount, uint256 dstChainId, address recipient) external nonReentrant {
         require(recipient != address(0), "invalid recipient");
         uint256 fee = (amount * feeRate) / 10_000;
         uint256 burnAmount = (fee * burnRate) / 10_000;
         uint256 amountAfterFee = amount - fee;
 
         // pull tokens from user
-        require(token.transferFrom(msg.sender, address(this), amount), "transfer failed");
+        token.safeTransferFrom(msg.sender, address(this), amount);
 
         if (burnAmount > 0) {
             token.burn(burnAmount);
@@ -68,8 +72,8 @@ contract Bridge is Ownable {
     }
 
     /// @notice release bridged tokens on this chain
-    function release(address to, uint256 amount) external onlyOwner {
-        require(token.transfer(to, amount), "transfer failed");
+    function release(address to, uint256 amount) external onlyOwner nonReentrant {
+        token.safeTransfer(to, amount);
         emit TokensReleased(to, amount);
     }
 }
