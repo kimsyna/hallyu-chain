@@ -15,7 +15,8 @@
     "check-locales": "node scripts/check-locales.js",
     "dev:frontend": "npm run dev --workspace frontend",
     "dev:backend": "npx hardhat node",
-    "dev": "npm run dev:backend & npm run dev:frontend"
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "serve": "npm run serve --workspace frontend"
   },
   "keywords": [],
   "author": "",
