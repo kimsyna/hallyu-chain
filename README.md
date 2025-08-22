@@ -12,7 +12,7 @@ This repository contains the marketing website for **Hallyu Chain (HALL)**, a co
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
 - Navigation within the page is handled through in-page anchors.
 
-Assets are styled with `style.css` and animations are handled in `main.js` using GSAP and a custom Web Component for the animated hero title.
+Assets are styled with `style.css` and animations are handled in `bundle.js` using GSAP and a custom Web Component for the animated hero title.
 
 The site is fully static and can be served by any web server.
 
