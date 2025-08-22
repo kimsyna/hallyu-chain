@@ -25,7 +25,12 @@ notice.setAttribute('aria-live', 'polite');
 notice.hidden = true;
 document.body.appendChild(notice);
 let noticeTimeout;
-function showNotice(message, delay = 4000) {
+function showNotice(key, delay = 4000, lang = currentLang) {
+  const message =
+    translations[lang]?.[key] ||
+    translations[DEFAULT_LANG]?.[key] ||
+    FALLBACK_NOTICES[key] ||
+    key;
   notice.textContent = message;
   notice.hidden = false;
   clearTimeout(noticeTimeout);
@@ -150,6 +155,10 @@ if (!prefersReducedMotion) {
 
 const translations = {};
 const DEFAULT_LANG = 'en';
+const FALLBACK_NOTICES = {
+  notice_load_fail: 'Localization failed to load.',
+  notice_lang_unavailable: 'Selected language unavailable. Using default language.',
+};
 let tokenomicsCache = null;
 
 async function loadTokenomics() {
@@ -204,13 +213,14 @@ async function loadLanguage(lang) {
 async function setLanguage(lang) {
   const loadedLang = await loadLanguage(lang);
   if (!loadedLang) {
-    showNotice('Localization failed to load.');
+    showNotice('notice_load_fail', 4000, DEFAULT_LANG);
     return;
   }
   if (loadedLang !== lang) {
-    showNotice('Selected language unavailable. Using default language.');
+    showNotice('notice_lang_unavailable', 4000, loadedLang);
   }
   lang = loadedLang;
+  currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -258,7 +268,7 @@ async function setLanguage(lang) {
   if (select) select.value = lang;
 }
 
-const currentLang = localStorage.getItem('lang') || DEFAULT_LANG;
+let currentLang = localStorage.getItem('lang') || DEFAULT_LANG;
 setLanguage(currentLang);
 
 async function loadWhitepaper(lang) {

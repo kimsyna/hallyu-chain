@@ -95,5 +95,7 @@
   "title_corporate": "Hallyu Chain Corporate Identity",
   "staking_title": "Staking & Belohnungen",
   "staking_total": "Gesamt gestaket",
-  "staking_rewards": "Deine Belohnungen"
+  "staking_rewards": "Deine Belohnungen",
+  "notice_load_fail": "Lokalisierung konnte nicht geladen werden.",
+  "notice_lang_unavailable": "Ausgewählte Sprache nicht verfügbar. Standardsprache wird verwendet."
 }
