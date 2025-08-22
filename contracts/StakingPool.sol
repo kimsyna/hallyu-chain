@@ -2,11 +2,15 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title StakingPool
 /// @notice Simple HALL staking with interest and voting power
-contract StakingPool is Ownable {
+contract StakingPool is Ownable, ReentrancyGuard {
+    using SafeERC20 for IERC20;
+
     IERC20 public immutable token;
     uint256 public interestRate; // per year, scaled by 1e18
     uint256 public constant YEAR = 365 days;
@@ -46,32 +50,32 @@ contract StakingPool is Ownable {
         s.lastUpdated = block.timestamp;
     }
 
-    function stake(uint256 amount) external {
+    function stake(uint256 amount) external nonReentrant {
         require(amount > 0, "amount zero");
         updateRewards(msg.sender);
-        require(token.transferFrom(msg.sender, address(this), amount), "transfer failed");
+        token.safeTransferFrom(msg.sender, address(this), amount);
         stakes[msg.sender].amount += amount;
         votingPower[msg.sender] += amount;
         totalStaked += amount;
         emit Staked(msg.sender, amount);
     }
 
-    function withdraw(uint256 amount) external {
+    function withdraw(uint256 amount) external nonReentrant {
         StakeInfo storage s = stakes[msg.sender];
         require(s.amount >= amount, "insufficient stake");
         updateRewards(msg.sender);
         s.amount -= amount;
         votingPower[msg.sender] -= amount;
         totalStaked -= amount;
-        require(token.transfer(msg.sender, amount), "transfer failed");
+        token.safeTransfer(msg.sender, amount);
         emit Withdrawn(msg.sender, amount);
     }
 
-    function claim() external {
+    function claim() external nonReentrant {
         updateRewards(msg.sender);
         uint256 reward = stakes[msg.sender].reward;
         stakes[msg.sender].reward = 0;
-        require(token.transfer(msg.sender, reward), "transfer failed");
+        token.safeTransfer(msg.sender, reward);
         emit RewardPaid(msg.sender, reward);
     }
 

@@ -2,11 +2,15 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title CommunityRewards
 /// @notice Converts off-chain activity points to HALL tokens
-contract CommunityRewards is Ownable {
+contract CommunityRewards is Ownable, ReentrancyGuard {
+    using SafeERC20 for IERC20;
+
     IERC20 public immutable token;
     uint256 public conversionRate; // HALL per point (in wei)
 
@@ -31,11 +35,11 @@ contract CommunityRewards is Ownable {
         emit PointsAdded(user, amount);
     }
 
-    function redeem(uint256 amount) external {
+    function redeem(uint256 amount) external nonReentrant {
         require(points[msg.sender] >= amount, "not enough points");
         uint256 hallAmount = amount * conversionRate;
         points[msg.sender] -= amount;
-        require(token.transfer(msg.sender, hallAmount), "transfer failed");
+        token.safeTransfer(msg.sender, hallAmount);
         emit Redeemed(msg.sender, amount, hallAmount);
     }
 }

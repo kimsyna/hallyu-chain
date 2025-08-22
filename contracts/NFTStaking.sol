@@ -4,11 +4,12 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title NFT Staking for Hallyu NFT holders
 /// @notice Stake NFTs to earn HALL token rewards and gain metaverse privileges
-contract NFTStaking is Ownable {
+contract NFTStaking is Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     IERC721 public immutable nft;
@@ -44,7 +45,7 @@ contract NFTStaking is Ownable {
         _;
     }
 
-    function stake(uint256 tokenId) external updateReward(msg.sender) {
+    function stake(uint256 tokenId) external nonReentrant updateReward(msg.sender) {
         nft.transferFrom(msg.sender, address(this), tokenId);
         stakers[msg.sender].balance += 1;
         tokenOwner[tokenId] = msg.sender;
@@ -59,7 +60,7 @@ contract NFTStaking is Ownable {
         emit Unstaked(msg.sender, tokenId);
     }
 
-    function claim() external updateReward(msg.sender) {
+    function claim() external nonReentrant updateReward(msg.sender) {
         uint256 reward = stakers[msg.sender].rewards;
         stakers[msg.sender].rewards = 0;
         rewardToken.safeTransfer(msg.sender, reward);
