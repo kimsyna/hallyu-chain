@@ -1,4 +1,12 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+  useRef,
+  type ReactNode,
+} from 'react'
 import { createPortal } from 'react-dom'
 import styles from './NoticeProvider.module.css'
 
@@ -10,11 +18,23 @@ export function useNotice() {
 
 export function NoticeProvider({ children }: { children: ReactNode }) {
   const [message, setMessage] = useState<string | null>(null)
+  const timeoutId = useRef<number | null>(null)
 
   const showNotice = useCallback((msg: string, delay = 4000) => {
     setMessage(msg)
     if (delay > 0) {
-      setTimeout(() => setMessage(null), delay)
+      if (timeoutId.current !== null) {
+        clearTimeout(timeoutId.current)
+      }
+      timeoutId.current = window.setTimeout(() => setMessage(null), delay)
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (timeoutId.current !== null) {
+        clearTimeout(timeoutId.current)
+      }
     }
   }, [])
 
