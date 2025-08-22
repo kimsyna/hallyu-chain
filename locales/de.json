@@ -97,5 +97,6 @@
   "staking_total": "Gesamt gestaket",
   "staking_rewards": "Deine Belohnungen",
   "notice_load_fail": "Lokalisierung konnte nicht geladen werden.",
-  "notice_lang_unavailable": "Ausgewählte Sprache nicht verfügbar. Standardsprache wird verwendet."
+  "notice_lang_unavailable": "Ausgewählte Sprache nicht verfügbar. Standardsprache wird verwendet.",
+  "notice_whitepaper_unavailable": "Whitepaper nicht verfügbar."
 }

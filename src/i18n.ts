@@ -140,7 +140,7 @@ export async function loadWhitepaper(lang) {
     window.applyFancyTitles?.();
   } catch (err) {
     console.error('Failed to load whitepaper:', err);
-    container.innerHTML = '<p>Whitepaper not available.</p>';
+    container.innerHTML = `<p>${translate('notice_whitepaper_unavailable', lang)}</p>`;
   }
 }
 

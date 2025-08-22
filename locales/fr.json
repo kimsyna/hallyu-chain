@@ -97,5 +97,6 @@
   "staking_total": "Total Staké",
   "staking_rewards": "Vos Récompenses",
   "notice_load_fail": "Échec du chargement de la localisation.",
-  "notice_lang_unavailable": "Langue sélectionnée indisponible. Utilisation de la langue par défaut."
+  "notice_lang_unavailable": "Langue sélectionnée indisponible. Utilisation de la langue par défaut.",
+  "notice_whitepaper_unavailable": "Livre blanc non disponible."
 }
