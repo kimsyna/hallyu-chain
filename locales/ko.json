@@ -97,5 +97,6 @@
   "staking_total": "총 스테이킹",
   "staking_rewards": "내 보상",
   "notice_load_fail": "로컬라이제이션을 불러오지 못했습니다.",
-  "notice_lang_unavailable": "선택한 언어를 사용할 수 없습니다. 기본 언어로 표시됩니다."
+  "notice_lang_unavailable": "선택한 언어를 사용할 수 없습니다. 기본 언어로 표시됩니다.",
+  "notice_whitepaper_unavailable": "백서를 사용할 수 없습니다."
 }
