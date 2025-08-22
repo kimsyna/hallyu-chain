@@ -27,14 +27,17 @@ function initTheme() {
 }
 
 // src/staking.js
-async function loadStakingStatus() {
+async function fetchStakingData(fetchFn = fetch, url = "staking.json") {
+  const resp = await fetchFn(url);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+async function loadStakingStatus(fetchFn = fetch) {
   const total = document.getElementById("total-staked");
   const rewards = document.getElementById("user-rewards");
   const errorEl = document.getElementById("staking-error");
   try {
-    const resp = await fetch("staking.json");
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const data = await resp.json();
+    const data = await fetchStakingData(fetchFn);
     if (total) total.textContent = data.totalStaked;
     if (rewards) rewards.textContent = data.userRewards;
   } catch (err) {
@@ -215,21 +218,67 @@ if (typeof window !== "undefined") {
   window.translate = translate;
 }
 
-// src/index.js
-gsap.registerPlugin(ScrollTrigger);
-var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-var prefersReducedMotion = reduceMotionQuery.matches;
-function updateNavHeight() {
-  const navbar = document.querySelector(".navbar");
-  if (!navbar) return;
-  const height = navbar.getBoundingClientRect().height;
-  document.documentElement.style.setProperty("--nav-height", `${height}px`);
-  document.documentElement.style.scrollPaddingTop = `${height}px`;
-  document.body.style.paddingTop = `${height}px`;
+// src/nav.js
+function initNav() {
+  function updateNavHeight() {
+    const navbar = document.querySelector(".navbar");
+    if (!navbar) return;
+    const height = navbar.getBoundingClientRect().height;
+    document.documentElement.style.setProperty("--nav-height", `${height}px`);
+    document.documentElement.style.scrollPaddingTop = `${height}px`;
+    document.body.style.paddingTop = `${height}px`;
+  }
+  updateNavHeight();
+  window.addEventListener("resize", updateNavHeight);
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.getElementById("primary-navigation");
+  if (navLinks) navLinks.setAttribute("aria-hidden", "true");
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const navbar = document.querySelector(".navbar");
+      const open = navbar.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open);
+      navLinks.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) {
+        const firstLink = navLinks.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
+    });
+    navLinks.addEventListener("click", (e) => {
+      if (e.target.closest("a")) {
+        const navbar = document.querySelector(".navbar");
+        navbar.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        navLinks.setAttribute("aria-hidden", "true");
+      }
+    });
+    navLinks.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
+      const navbar = document.querySelector(".navbar");
+      if (!navbar.classList.contains("open")) return;
+      const links = navLinks.querySelectorAll("a");
+      const firstLink = links[0];
+      const lastLink = links[links.length - 1];
+      if (!e.shiftKey && document.activeElement === lastLink) {
+        e.preventDefault();
+        firstLink.focus();
+      } else if (e.shiftKey && document.activeElement === firstLink) {
+        e.preventDefault();
+        lastLink.focus();
+      }
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const navbar = document.querySelector(".navbar");
+    if (!navbar.classList.contains("open")) return;
+    navbar.classList.remove("open");
+    if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+    if (navLinks) navLinks.setAttribute("aria-hidden", "true");
+  });
 }
-updateNavHeight();
-window.addEventListener("resize", updateNavHeight);
-document.querySelectorAll(".material-symbols-outlined").forEach((icon) => icon.setAttribute("aria-hidden", "true"));
+
+// src/fancy-title.js
 var HCFancyTitle = class extends HTMLElement {
   static get observedAttributes() {
     return ["text", "size"];
@@ -295,26 +344,30 @@ customElements.define("hc-fancy-title", HCFancyTitle);
 function applyFancyTitles() {
   document.querySelectorAll("h1").forEach((h1) => {
     if (h1.closest("hc-fancy-title")) return;
-    const fancy2 = document.createElement("hc-fancy-title");
-    fancy2.setAttribute("size", "large");
-    fancy2.setAttribute("text", h1.textContent.trim());
-    if (h1.className) fancy2.className = h1.className;
-    if (h1.dataset.i18n) fancy2.setAttribute("data-i18n", h1.dataset.i18n);
-    h1.replaceWith(fancy2);
+    const fancy = document.createElement("hc-fancy-title");
+    fancy.setAttribute("size", "large");
+    fancy.setAttribute("text", h1.textContent.trim());
+    if (h1.className) fancy.className = h1.className;
+    if (h1.dataset.i18n) fancy.setAttribute("data-i18n", h1.dataset.i18n);
+    h1.replaceWith(fancy);
   });
   document.querySelectorAll("h2").forEach((h2) => {
     if (h2.closest("hc-fancy-title")) return;
-    const fancy2 = document.createElement("hc-fancy-title");
-    fancy2.setAttribute("size", "medium");
-    fancy2.setAttribute("text", h2.textContent.trim());
-    if (h2.className) fancy2.className = h2.className;
-    if (h2.id) fancy2.id = h2.id;
-    if (h2.dataset.i18n) fancy2.setAttribute("data-i18n", h2.dataset.i18n);
-    h2.replaceWith(fancy2);
+    const fancy = document.createElement("hc-fancy-title");
+    fancy.setAttribute("size", "medium");
+    fancy.setAttribute("text", h2.textContent.trim());
+    if (h2.className) fancy.className = h2.className;
+    if (h2.id) fancy.id = h2.id;
+    if (h2.dataset.i18n) fancy.setAttribute("data-i18n", h2.dataset.i18n);
+    h2.replaceWith(fancy);
   });
 }
 window.applyFancyTitles = applyFancyTitles;
-applyFancyTitles();
+
+// src/animations.js
+gsap.registerPlugin(ScrollTrigger);
+var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+var prefersReducedMotion = reduceMotionQuery.matches;
 function applyAnimations() {
   ScrollTrigger.getAll().forEach((t) => t.kill());
   const sections = document.querySelectorAll("section, .wp-section");
@@ -339,79 +392,45 @@ function applyAnimations() {
     });
   }
 }
-applyAnimations();
-reduceMotionQuery.addEventListener("change", (event) => {
-  prefersReducedMotion = event.matches;
+function initHeroAnimation() {
+  const hero = document.querySelector(".hero");
+  const fancy = document.querySelector(".hero-title");
+  if (hero && fancy && !prefersReducedMotion) {
+    hero.addEventListener("mousemove", (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      gsap.to(fancy, {
+        rotationY: x * 30,
+        rotationX: -y * 30,
+        ease: "power2.out"
+      });
+    });
+    hero.addEventListener("mouseleave", () => {
+      gsap.to(fancy, {
+        rotationY: 0,
+        rotationX: 0,
+        duration: 0.5,
+        ease: "power2.out"
+      });
+    });
+  }
+}
+function initAnimations() {
   applyAnimations();
-});
-var menuToggle = document.querySelector(".menu-toggle");
-var navLinks = document.getElementById("primary-navigation");
-if (navLinks) navLinks.setAttribute("aria-hidden", "true");
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener("click", () => {
-    const navbar = document.querySelector(".navbar");
-    const open = navbar.classList.toggle("open");
-    menuToggle.setAttribute("aria-expanded", open);
-    navLinks.setAttribute("aria-hidden", open ? "false" : "true");
-    if (open) {
-      const firstLink = navLinks.querySelector("a");
-      if (firstLink) firstLink.focus();
-    }
-  });
-  navLinks.addEventListener("click", (e) => {
-    if (e.target.closest("a")) {
-      const navbar = document.querySelector(".navbar");
-      navbar.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-      navLinks.setAttribute("aria-hidden", "true");
-    }
-  });
-  navLinks.addEventListener("keydown", (e) => {
-    if (e.key !== "Tab") return;
-    const navbar = document.querySelector(".navbar");
-    if (!navbar.classList.contains("open")) return;
-    const links = navLinks.querySelectorAll("a");
-    const firstLink = links[0];
-    const lastLink = links[links.length - 1];
-    if (!e.shiftKey && document.activeElement === lastLink) {
-      e.preventDefault();
-      firstLink.focus();
-    } else if (e.shiftKey && document.activeElement === firstLink) {
-      e.preventDefault();
-      lastLink.focus();
-    }
+  initHeroAnimation();
+  reduceMotionQuery.addEventListener("change", (event) => {
+    prefersReducedMotion = event.matches;
+    applyAnimations();
+    initHeroAnimation();
   });
 }
-document.addEventListener("keydown", (e) => {
-  if (e.key !== "Escape") return;
-  const navbar = document.querySelector(".navbar");
-  if (!navbar.classList.contains("open")) return;
-  navbar.classList.remove("open");
-  if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
-  if (navLinks) navLinks.setAttribute("aria-hidden", "true");
-});
-var hero = document.querySelector(".hero");
-var fancy = document.querySelector(".hero-title");
-if (hero && fancy && !prefersReducedMotion) {
-  hero.addEventListener("mousemove", (e) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    gsap.to(fancy, {
-      rotationY: x * 30,
-      rotationX: -y * 30,
-      ease: "power2.out"
-    });
-  });
-  hero.addEventListener("mouseleave", () => {
-    gsap.to(fancy, {
-      rotationY: 0,
-      rotationX: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  });
-}
+
+// src/index.js
+document.querySelectorAll(".material-symbols-outlined").forEach((icon) => icon.setAttribute("aria-hidden", "true"));
+applyFancyTitles();
+initNav();
+initAnimations();
 var newsletterForm = document.querySelector(".newsletter-form");
 var newsletterMessage = document.querySelector(".newsletter-success");
 var newsletterTimeout;
@@ -420,7 +439,10 @@ if (newsletterForm && newsletterMessage) {
     e.preventDefault();
     const lang = localStorage.getItem("lang") || DEFAULT_LANG;
     const resolvedLang = await loadLanguage(lang) || DEFAULT_LANG;
-    newsletterMessage.textContent = translate("newsletter_success", resolvedLang);
+    newsletterMessage.textContent = translate(
+      "newsletter_success",
+      resolvedLang
+    );
     newsletterMessage.hidden = false;
     clearTimeout(newsletterTimeout);
     newsletterTimeout = setTimeout(() => {
