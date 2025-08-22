@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { useTranslation, Trans } from 'react-i18next'
 
 function Hero() {
   const heroRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLElement>(null)
+  const { t } = useTranslation()
 
   useEffect(() => {
     const hero = heroRef.current
@@ -37,14 +39,13 @@ function Hero() {
       <hc-fancy-title
         className="hero-title"
         ref={titleRef as any}
-        text="Hallyu Chain"
-        data-i18n="hero_title"
+        text={t('hero_title')}
       ></hc-fancy-title>
-      <p data-i18n="hero_subtitle">
-        글로벌 K-POP 커뮤니티를 위한 차세대 블록체인 네트워크
+      <p>
+        <Trans i18nKey="hero_subtitle" />
       </p>
-      <a href="#whitepaper" className="btn" data-i18n="hero_button">
-        백서 보기
+      <a href="#whitepaper" className="btn">
+        <Trans i18nKey="hero_button" />
       </a>
     </header>
   )

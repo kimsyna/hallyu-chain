@@ -1,13 +1,17 @@
 import { useRef } from 'react'
+import { useTranslation, Trans } from 'react-i18next'
 import { useNavHeight } from '../hooks/useNavHeight'
 import { useTheme } from '../hooks/useTheme'
 import { useNotice } from './NoticeProvider'
+import { useLanguage } from './LanguageProvider'
 
 function Navbar() {
   const navRef = useRef<HTMLElement>(null)
   useNavHeight(navRef)
   const { theme, toggleTheme } = useTheme()
   const showNotice = useNotice()
+  const { t } = useTranslation()
+  const { lang, changeLang } = useLanguage()
 
   const handleTheme = () => {
     toggleTheme()
@@ -32,87 +36,115 @@ function Navbar() {
         <li>
           <a href="#about">
             <i className="material-symbols-outlined">info</i>
-            <span data-i18n="nav_about">소개</span>
+            <span>
+              <Trans i18nKey="nav_about" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#technology">
             <i className="material-symbols-outlined">memory</i>
-            <span data-i18n="nav_technology">기술</span>
+            <span>
+              <Trans i18nKey="nav_technology" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#tokenomics">
             <i className="material-symbols-outlined">paid</i>
-            <span data-i18n="nav_tokenomics">토큰 이코노미</span>
+            <span>
+              <Trans i18nKey="nav_tokenomics" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#roadmap">
             <i className="material-symbols-outlined">map</i>
-            <span data-i18n="nav_roadmap">로드맵</span>
+            <span>
+              <Trans i18nKey="nav_roadmap" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#dao">
             <i className="material-symbols-outlined">groups</i>
-            <span data-i18n="nav_dao">DAO</span>
+            <span>
+              <Trans i18nKey="nav_dao" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#partners">
             <i className="material-symbols-outlined">handshake</i>
-            <span data-i18n="nav_partners">파트너</span>
+            <span>
+              <Trans i18nKey="nav_partners" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#resources">
             <i className="material-symbols-outlined">menu_book</i>
-            <span data-i18n="nav_resources">참고 자료</span>
+            <span>
+              <Trans i18nKey="nav_resources" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#newsletter">
             <i className="material-symbols-outlined">mail</i>
-            <span data-i18n="nav_newsletter">뉴스레터</span>
+            <span>
+              <Trans i18nKey="nav_newsletter" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#faq">
             <i className="material-symbols-outlined">help</i>
-            <span data-i18n="nav_faq">FAQ</span>
+            <span>
+              <Trans i18nKey="nav_faq" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#corporate">
             <i className="material-symbols-outlined">apartment</i>
-            <span data-i18n="nav_corporate">기업 아이덴티티</span>
+            <span>
+              <Trans i18nKey="nav_corporate" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#team">
             <i className="material-symbols-outlined">group</i>
-            <span data-i18n="nav_team">팀</span>
+            <span>
+              <Trans i18nKey="nav_team" />
+            </span>
           </a>
         </li>
         <li>
           <a href="#whitepaper">
             <i className="material-symbols-outlined">description</i>
-            <span data-i18n="nav_whitepaper">백서</span>
+            <span>
+              <Trans i18nKey="nav_whitepaper" />
+            </span>
           </a>
         </li>
       </ul>
       <button
         className="theme-toggle"
-        aria-label="테마 전환"
-        data-i18n-aria-label="nav_theme"
+        aria-label={t('nav_theme')}
         onClick={handleTheme}
       >
         <i className="material-symbols-outlined">
           {theme === 'dark' ? 'light_mode' : 'dark_mode'}
         </i>
       </button>
-      <select className="lang-select" aria-label="Change language">
+      <select
+        className="lang-select"
+        aria-label="Change language"
+        value={lang}
+        onChange={(e) => changeLang(e.target.value)}
+      >
         <option value="ko">🇰🇷</option>
         <option value="en">🇺🇸</option>
         <option value="zh">🇨🇳</option>
