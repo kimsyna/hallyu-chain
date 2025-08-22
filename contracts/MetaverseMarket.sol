@@ -2,11 +2,14 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title MetaverseMarket
 /// @notice Simple marketplace for virtual items using HALL tokens as payment
 contract MetaverseMarket is Ownable {
+    using SafeERC20 for IERC20;
+
     IERC20 public immutable paymentToken;
 
     mapping(uint256 => uint256) public itemPrices;
@@ -28,7 +31,7 @@ contract MetaverseMarket is Ownable {
     function purchase(uint256 itemId) external {
         uint256 price = itemPrices[itemId];
         require(price > 0, "Item not for sale");
-        paymentToken.transferFrom(msg.sender, owner(), price);
+        paymentToken.safeTransferFrom(msg.sender, owner(), price);
         emit ItemPurchased(msg.sender, itemId, price);
     }
 }
