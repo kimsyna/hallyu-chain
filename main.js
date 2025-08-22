@@ -1,9 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Respect users who prefer reduced motion by checking their system setting
-const reduceMotionQuery = window.matchMedia(
-  '(prefers-reduced-motion: reduce)'
-);
+const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 let prefersReducedMotion = reduceMotionQuery.matches;
 
 function updateNavHeight() {
@@ -17,6 +15,11 @@ function updateNavHeight() {
 
 updateNavHeight();
 window.addEventListener('resize', updateNavHeight);
+
+// Hide decorative icons from screen readers
+document
+  .querySelectorAll('.material-symbols-outlined')
+  .forEach((icon) => icon.setAttribute('aria-hidden', 'true'));
 
 // Reusable notice element for status messages
 const notice = document.createElement('div');
@@ -177,7 +180,8 @@ const translations = {};
 const DEFAULT_LANG = 'en';
 const FALLBACK_NOTICES = {
   notice_load_fail: 'Localization failed to load.',
-  notice_lang_unavailable: 'Selected language unavailable. Using default language.',
+  notice_lang_unavailable:
+    'Selected language unavailable. Using default language.',
 };
 let tokenomicsCache = null;
 
@@ -198,8 +202,10 @@ function replaceTokenomicsPlaceholders(root, data) {
       (_, key) => {
         const value = data[key];
         if (value === undefined) return '';
-        return key === 'supply' ? Number(value).toLocaleString() : String(value);
-      },
+        return key === 'supply'
+          ? Number(value).toLocaleString()
+          : String(value);
+      }
     );
   }
 }
@@ -381,8 +387,8 @@ function isDark() {
 function updateThemeIcon() {
   if (!themeToggle) return;
   themeToggle.innerHTML = isDark()
-    ? '<i class="material-symbols-outlined">light_mode</i>'
-    : '<i class="material-symbols-outlined">dark_mode</i>';
+    ? '<i class="material-symbols-outlined" aria-hidden="true">light_mode</i>'
+    : '<i class="material-symbols-outlined" aria-hidden="true">dark_mode</i>';
 }
 
 function setTheme(theme) {
