@@ -1,18 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import Module from 'module';
+import { applyLruCacheShim } from './test-helpers/lru-cache-shim.js';
 
-// Shim lru-cache for jsdom on Node 22
-const originalLoad = Module._load;
-Module._load = function (request, parent, isMain) {
-  if (request === 'lru-cache') {
-    const mod = originalLoad(request, parent, isMain);
-    if (mod && typeof mod === 'function') return { LRUCache: mod };
-    if (mod && typeof mod === 'object' && 'default' in mod) return { LRUCache: mod.default };
-    return mod;
-  }
-  return originalLoad(request, parent, isMain);
-};
+applyLruCacheShim();
 
 const require = Module.createRequire(import.meta.url);
 const { JSDOM } = require('jsdom');
