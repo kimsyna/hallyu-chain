@@ -1,5 +1,6 @@
 import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.esm.min.js";
-import { showNotice } from "./main.js";
+
+const showNotice = window.showNotice;
 
 const marketAbi = ["function purchase(uint256 itemId) external"];
 
