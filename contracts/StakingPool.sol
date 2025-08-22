@@ -24,6 +24,7 @@ contract StakingPool is Ownable {
     event Staked(address indexed user, uint256 amount);
     event Withdrawn(address indexed user, uint256 amount);
     event RewardPaid(address indexed user, uint256 reward);
+    event InterestRateUpdated(uint256 newRate);
 
     constructor(address token_, uint256 rate_) Ownable(msg.sender) {
         token = IERC20(token_);
@@ -32,6 +33,7 @@ contract StakingPool is Ownable {
 
     function setInterestRate(uint256 rate) external onlyOwner {
         interestRate = rate;
+        emit InterestRateUpdated(rate);
     }
 
     function updateRewards(address user) internal {
