@@ -93,6 +93,14 @@ These tokens drive margins, paddings and gaps for common layout components. The 
 
 Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for production use.
 
+## Configuration
+
+`metaverse.js` requires the deployed marketplace address. Provide it at build
+time through the `METAVERSE_MARKET_ADDRESS` (or `VITE_METAVERSE_MARKET_ADDRESS`)
+environment variable, or update `token-address.json` with the
+`MetaverseMarket` field. If the address is missing, the UI will display
+"Market address not configured" and purchases will not be possible.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
