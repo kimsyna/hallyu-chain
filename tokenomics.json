@@ -1,8 +1,9 @@
 {
   "supply": 10000000000,
-  "dao": 50,
+  "dao": 47,
   "community": 20,
   "team": 15,
   "advisors": 5,
-  "investors": 10
+  "investors": 10,
+  "burn": 3
 }

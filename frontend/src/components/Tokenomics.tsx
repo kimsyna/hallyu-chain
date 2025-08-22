@@ -68,6 +68,12 @@ function Tokenomics() {
             <Trans i18nKey="tok_list6" values={{ investors: tok.investors }} />
           </span>
         </li>
+        <li>
+          <i className="material-symbols-outlined">local_fire_department</i>
+          <span>
+            <Trans i18nKey="tok_list7" values={{ burn: tok.burn }} />
+          </span>
+        </li>
       </ul>
     </section>
   )

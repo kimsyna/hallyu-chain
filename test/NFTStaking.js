@@ -38,7 +38,7 @@ describe("NFTStaking", function () {
   });
 
   it("reverts when reward token transfer fails", async function () {
-    const [owner, user] = await ethers.getSigners();
+    const [, user] = await ethers.getSigners();
 
     const NFT = await ethers.getContractFactory("HallyuNFT");
     const nft = await NFT.deploy();
