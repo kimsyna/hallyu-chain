@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This repository contains the marketing website for **Hallyu Chain (HALL)**, a commercial-grade cryptocurrency project built for the global K-POP community.",
   "main": "main.js",
+  "workspaces": ["frontend"],
   "scripts": {
     "compile": "npx hardhat compile",
     "pretest": "node scripts/offline-compile.js",
@@ -11,7 +12,10 @@
     "multi-deploy": "node scripts/multichain-deploy.js",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "check-locales": "node scripts/check-locales.js"
+    "check-locales": "node scripts/check-locales.js",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev:backend": "npx hardhat node",
+    "dev": "npm run dev:backend & npm run dev:frontend"
   },
   "keywords": [],
   "author": "",
