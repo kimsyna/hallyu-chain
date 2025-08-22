@@ -26,7 +26,7 @@ notice.setAttribute('aria-live', 'polite');
 notice.hidden = true;
 document.body.appendChild(notice);
 let noticeTimeout;
-function showNotice(key, delay = 4000, lang = currentLang) {
+export function showNotice(key, delay = 4000, lang = currentLang) {
   const message =
     translations[lang]?.[key] ||
     translations[DEFAULT_LANG]?.[key] ||
@@ -39,6 +39,10 @@ function showNotice(key, delay = 4000, lang = currentLang) {
     notice.hidden = true;
     notice.textContent = '';
   }, delay);
+}
+// Expose for non-module scripts if needed
+if (typeof window !== 'undefined') {
+  window.showNotice = showNotice;
 }
 
 class HCFancyTitle extends HTMLElement {
