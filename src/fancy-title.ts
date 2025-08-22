@@ -15,7 +15,7 @@ class HCFancyTitle extends HTMLElement {
   render() {
     const text = this.getAttribute('text') || '';
     const size = this.getAttribute('size') || 'large';
-    const root = this.shadowRoot;
+    const root = this.shadowRoot!;
 
     while (root.firstChild) {
       root.removeChild(root.firstChild);
@@ -86,6 +86,12 @@ export function applyFancyTitles() {
     if (h2.dataset.i18n) fancy.setAttribute('data-i18n', h2.dataset.i18n);
     h2.replaceWith(fancy);
   });
+}
+
+declare global {
+  interface Window {
+    applyFancyTitles?: typeof applyFancyTitles;
+  }
 }
 
 window.applyFancyTitles = applyFancyTitles;

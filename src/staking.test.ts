@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { loadStakingStatus, fetchStakingData } from './staking.js';
+import { loadStakingStatus, fetchStakingData } from './staking.ts';
 
 const dom = new JSDOM('<!doctype html><body><span id="total-staked"></span><span id="user-rewards"></span><div id="staking-error" hidden></div></body>', { url: 'http://localhost' });
 global.window = dom.window;
