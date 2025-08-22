@@ -1,4 +1,4 @@
-import { showNotice } from './notice.js';
+import { showNotice } from './notice.ts';
 
 export const translations = {};
 export const DEFAULT_LANG = 'en';

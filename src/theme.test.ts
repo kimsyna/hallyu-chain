@@ -9,7 +9,7 @@ global.localStorage = dom.window.localStorage;
 window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
 
 test('setTheme applies dark mode', async () => {
-  const { setTheme } = await import('./theme.js');
+  const { setTheme } = await import('./theme.ts');
   const btn = document.querySelector('.theme-toggle');
   setTheme('dark', btn);
   assert.ok(document.body.classList.contains('dark-mode'));

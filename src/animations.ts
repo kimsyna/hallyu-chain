@@ -1,3 +1,6 @@
+declare const gsap: any;
+declare const ScrollTrigger: any;
+
 gsap.registerPlugin(ScrollTrigger);
 
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -5,9 +8,9 @@ export let prefersReducedMotion = reduceMotionQuery.matches;
 
 function applyAnimations() {
   // Remove any existing ScrollTriggers to avoid duplicates
-  ScrollTrigger.getAll().forEach((t) => t.kill());
+  ScrollTrigger.getAll().forEach((t: any) => t.kill());
 
-  const sections = document.querySelectorAll('section, .wp-section');
+  const sections = document.querySelectorAll<HTMLElement>('section, .wp-section');
   if (!prefersReducedMotion) {
     sections.forEach((section) => {
       // Clear inline styles that may have been set when motion was reduced
@@ -37,7 +40,7 @@ function initHeroAnimation() {
   const fancy = document.querySelector('.hero-title');
   // Disable fancy hero animation if reduced motion is requested
   if (hero && fancy && !prefersReducedMotion) {
-    hero.addEventListener('mousemove', (e) => {
+    hero.addEventListener('mousemove', (e: MouseEvent) => {
       const rect = hero.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;

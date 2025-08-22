@@ -1,9 +1,9 @@
-import { initTheme } from './theme.js';
-import { loadStakingStatus } from './staking.js';
-import { initI18n, loadLanguage, translate, DEFAULT_LANG } from './i18n.js';
-import { initNav } from './nav.js';
-import { applyFancyTitles } from './fancy-title.js';
-import { initAnimations, prefersReducedMotion } from './animations.js';
+import { initTheme } from './theme.ts';
+import { loadStakingStatus } from './staking.ts';
+import { initI18n, loadLanguage, translate, DEFAULT_LANG } from './i18n.ts';
+import { initNav } from './nav.ts';
+import { applyFancyTitles } from './fancy-title.ts';
+import { initAnimations, prefersReducedMotion } from './animations.ts';
 
 // Hide decorative icons from screen readers
 document
