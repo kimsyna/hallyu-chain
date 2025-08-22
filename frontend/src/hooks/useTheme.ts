@@ -14,8 +14,7 @@ export function useTheme() {
   })
 
   useEffect(() => {
-    document.body.classList.toggle('dark-mode', theme === 'dark')
-    document.body.classList.toggle('light-mode', theme === 'light')
+    document.body.dataset.theme = theme
     localStorage.setItem(THEME_KEY, theme)
   }, [theme])
 

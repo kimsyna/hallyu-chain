@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useCallback, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
+import styles from './NoticeProvider.module.css'
 
 const NoticeContext = createContext<(msg: string, delay?: number) => void>(() => {})
 
@@ -21,7 +22,7 @@ export function NoticeProvider({ children }: { children: ReactNode }) {
     <NoticeContext.Provider value={showNotice}>
       {children}
       {createPortal(
-        <div className="notice" role="status" aria-live="polite" hidden={message === null}>
+        <div className={styles.notice} role="status" aria-live="polite" hidden={message === null}>
           {message}
         </div>,
         document.body

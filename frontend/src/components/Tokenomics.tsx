@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Trans } from 'react-i18next'
 import tok from '../../../tokenomics.json'
+import styles from './Tokenomics.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,11 +27,11 @@ function Tokenomics() {
   }, [])
 
   return (
-    <section id="tokenomics" ref={sectionRef}>
+    <section id="tokenomics" ref={sectionRef} className={styles.section}>
       <h2>
         <Trans i18nKey="tokenomics_title" />
       </h2>
-      <ul className="icon-list">
+      <ul className={styles.iconList}>
         <li>
           <i className="material-symbols-outlined">pie_chart</i>
           <span>
