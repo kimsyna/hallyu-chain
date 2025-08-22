@@ -29,4 +29,16 @@ describe('Bridge', function () {
       ((amount * BigInt(feeRate)) / 10000n * BigInt(burnRate)) / 10000n; // fee burn
     expect(supplyBefore - supplyAfter).to.equal(expectedBurn);
   });
+
+  it('blocks bridge and release when paused', async function () {
+    await bridge.pause();
+
+    await expect(
+      bridge.bridge(amount, 1, owner.address)
+    ).to.be.revertedWithCustomError(bridge, 'EnforcedPause');
+
+    await expect(
+      bridge.release(owner.address, amount)
+    ).to.be.revertedWithCustomError(bridge, 'EnforcedPause');
+  });
 });
