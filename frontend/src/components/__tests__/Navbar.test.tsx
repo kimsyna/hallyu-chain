@@ -23,7 +23,10 @@ vi.mock('../LanguageProvider', () => ({
 }))
 
 vi.mock('react-i18next', () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({
+    t: (key: string, opts?: { mode?: string }) =>
+      key === 'theme_switched' ? `Switched to ${opts?.mode} mode` : key,
+  }),
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }))
 

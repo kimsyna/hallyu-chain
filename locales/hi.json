@@ -106,5 +106,8 @@
   "metaverse_buy": "वर्चुअल तलवार खरीदें",
   "notice_load_fail": "स्थानीयकरण लोड करने में विफल।",
   "notice_lang_unavailable": "चयनित भाषा उपलब्ध नहीं है। डिफ़ॉल्ट भाषा का उपयोग किया जाएगा।",
-  "notice_whitepaper_unavailable": "श्वेतपत्र उपलब्ध नहीं है।"
+  "notice_whitepaper_unavailable": "श्वेतपत्र उपलब्ध नहीं है।",
+  "light": "हल्का",
+  "dark": "गहरा",
+  "theme_switched": "{{mode}} मोड में बदला गया"
 }

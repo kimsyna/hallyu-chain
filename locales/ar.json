@@ -106,5 +106,8 @@
   "metaverse_buy": "شراء سيف افتراضي",
   "notice_load_fail": "فشل تحميل الترجمة.",
   "notice_lang_unavailable": "اللغة المختارة غير متاحة. سيتم استخدام اللغة الافتراضية.",
-  "notice_whitepaper_unavailable": "الورقة البيضاء غير متاحة."
+  "notice_whitepaper_unavailable": "الورقة البيضاء غير متاحة.",
+  "light": "فاتح",
+  "dark": "داكن",
+  "theme_switched": "تم التبديل إلى وضع {{mode}}"
 }

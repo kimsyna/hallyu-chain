@@ -106,5 +106,8 @@
   "metaverse_buy": "Virtuelles Schwert kaufen",
   "notice_load_fail": "Lokalisierung konnte nicht geladen werden.",
   "notice_lang_unavailable": "Ausgewählte Sprache nicht verfügbar. Standardsprache wird verwendet.",
-  "notice_whitepaper_unavailable": "Whitepaper nicht verfügbar."
+  "notice_whitepaper_unavailable": "Whitepaper nicht verfügbar.",
+  "light": "Hell",
+  "dark": "Dunkel",
+  "theme_switched": "Zum {{mode}}-Modus gewechselt"
 }

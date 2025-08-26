@@ -106,5 +106,8 @@
   "metaverse_buy": "Comprar Espada Virtual",
   "notice_load_fail": "No se pudo cargar la localización.",
   "notice_lang_unavailable": "El idioma seleccionado no está disponible. Se usará el idioma predeterminado.",
-  "notice_whitepaper_unavailable": "Libro blanco no disponible."
+  "notice_whitepaper_unavailable": "Libro blanco no disponible.",
+  "light": "Claro",
+  "dark": "Oscuro",
+  "theme_switched": "Se cambió al modo {{mode}}"
 }

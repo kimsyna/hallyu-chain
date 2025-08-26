@@ -106,5 +106,8 @@
   "metaverse_buy": "购买虚拟之剑",
   "notice_load_fail": "加载本地化失败。",
   "notice_lang_unavailable": "所选语言不可用，已使用默认语言。",
-  "notice_whitepaper_unavailable": "白皮书不可用。"
+  "notice_whitepaper_unavailable": "白皮书不可用。",
+  "light": "浅色",
+  "dark": "深色",
+  "theme_switched": "已切换到{{mode}}模式"
 }

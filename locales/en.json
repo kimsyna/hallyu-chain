@@ -106,5 +106,8 @@
   "metaverse_buy": "Buy Virtual Sword",
   "notice_load_fail": "Localization failed to load.",
   "notice_lang_unavailable": "Selected language unavailable. Using default language.",
-  "notice_whitepaper_unavailable": "Whitepaper not available."
+  "notice_whitepaper_unavailable": "Whitepaper not available.",
+  "light": "Light",
+  "dark": "Dark",
+  "theme_switched": "Switched to {{mode}} mode"
 }
