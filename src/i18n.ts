@@ -150,8 +150,12 @@ function handleHash() {
   }
 }
 
-export function initI18n() {
-  setLanguage(currentLang);
+export async function initI18n() {
+  try {
+    await setLanguage(currentLang);
+  } catch (err) {
+    console.error('Failed to initialize i18n:', err);
+  }
   window.addEventListener('hashchange', handleHash);
   handleHash();
   const select = document.querySelector('.lang-select');

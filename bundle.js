@@ -1,10 +1,15 @@
-// src/theme.js
+// src/theme.ts
 function isDark() {
   return document.body.classList.contains("dark-mode") || !document.body.classList.contains("light-mode") && window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 function updateThemeIcon(themeToggle) {
   if (!themeToggle) return;
-  themeToggle.innerHTML = isDark() ? '<i class="material-symbols-outlined" aria-hidden="true">light_mode</i>' : '<i class="material-symbols-outlined" aria-hidden="true">dark_mode</i>';
+  themeToggle.textContent = "";
+  const icon = document.createElement("i");
+  icon.classList.add("material-symbols-outlined");
+  icon.setAttribute("aria-hidden", "true");
+  icon.textContent = isDark() ? "light_mode" : "dark_mode";
+  themeToggle.appendChild(icon);
 }
 function setTheme(theme, themeToggle = document.querySelector(".theme-toggle")) {
   document.body.classList.toggle("dark-mode", theme === "dark");
@@ -26,7 +31,7 @@ function initTheme() {
   });
 }
 
-// src/staking.js
+// src/staking.ts
 async function fetchStakingData(fetchFn = fetch, url = "staking.json") {
   const resp = await fetchFn(url);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -51,7 +56,7 @@ async function loadStakingStatus(fetchFn = fetch) {
   }
 }
 
-// src/notice.js
+// src/notice.ts
 var notice = document.createElement("div");
 notice.className = "notice";
 notice.setAttribute("role", "status");
@@ -72,7 +77,7 @@ if (typeof window !== "undefined") {
   window.showNotice = showNotice;
 }
 
-// src/i18n.js
+// src/i18n.ts
 var translations = {};
 var DEFAULT_LANG = "en";
 var FALLBACK_NOTICES = {
@@ -197,7 +202,7 @@ async function loadWhitepaper(lang) {
     window.applyFancyTitles?.();
   } catch (err) {
     console.error("Failed to load whitepaper:", err);
-    container.innerHTML = "<p>Whitepaper not available.</p>";
+    container.innerHTML = `<p>${translate("notice_whitepaper_unavailable", lang)}</p>`;
   }
 }
 function handleHash() {
@@ -205,8 +210,12 @@ function handleHash() {
     loadWhitepaper(localStorage.getItem("lang") || currentLang);
   }
 }
-function initI18n() {
-  setLanguage(currentLang);
+async function initI18n() {
+  try {
+    await setLanguage(currentLang);
+  } catch (err) {
+    console.error("Failed to initialize i18n:", err);
+  }
   window.addEventListener("hashchange", handleHash);
   handleHash();
   const select = document.querySelector(".lang-select");
@@ -218,7 +227,7 @@ if (typeof window !== "undefined") {
   window.translate = translate;
 }
 
-// src/nav.js
+// src/nav.ts
 function initNav() {
   function updateNavHeight() {
     const navbar = document.querySelector(".navbar");
@@ -278,7 +287,7 @@ function initNav() {
   });
 }
 
-// src/fancy-title.js
+// src/fancy-title.ts
 var HCFancyTitle = class extends HTMLElement {
   static get observedAttributes() {
     return ["text", "size"];
@@ -364,13 +373,29 @@ function applyFancyTitles() {
 }
 window.applyFancyTitles = applyFancyTitles;
 
-// src/animations.js
-gsap.registerPlugin(ScrollTrigger);
-var reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+// src/animations.ts
+var gsap;
+var ScrollTrigger;
+var hasGSAP = false;
+if (typeof window !== "undefined" && window.gsap && window.ScrollTrigger) {
+  gsap = window.gsap;
+  ScrollTrigger = window.ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+  hasGSAP = true;
+}
+var reduceMotionQuery = typeof window !== "undefined" && window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : {
+  matches: false,
+  addEventListener: () => {
+  },
+  removeEventListener: () => {
+  }
+};
 var prefersReducedMotion = reduceMotionQuery.matches;
 function applyAnimations() {
   ScrollTrigger.getAll().forEach((t) => t.kill());
-  const sections = document.querySelectorAll("section, .wp-section");
+  const sections = document.querySelectorAll(
+    "section, .wp-section"
+  );
   if (!prefersReducedMotion) {
     sections.forEach((section) => {
       section.style.opacity = "";
@@ -417,6 +442,10 @@ function initHeroAnimation() {
   }
 }
 function initAnimations() {
+  if (!hasGSAP) {
+    console.warn("GSAP or ScrollTrigger not found. Animations disabled.");
+    return;
+  }
   applyAnimations();
   initHeroAnimation();
   reduceMotionQuery.addEventListener("change", (event) => {
@@ -426,7 +455,7 @@ function initAnimations() {
   });
 }
 
-// src/index.js
+// src/index.ts
 document.querySelectorAll(".material-symbols-outlined").forEach((icon) => icon.setAttribute("aria-hidden", "true"));
 applyFancyTitles();
 initNav();
