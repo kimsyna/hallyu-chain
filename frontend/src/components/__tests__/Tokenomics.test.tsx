@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import Tokenomics from '../Tokenomics'
+import tok from '../../../../tokenomics.json'
 
 vi.mock('gsap', () => ({
   default: {
@@ -25,10 +26,17 @@ vi.mock('react-i18next', () => ({
 }))
 
 describe('Tokenomics', () => {
-  it('renders heading and list items', () => {
+  it('renders tokenomics values', () => {
     render(<Tokenomics />)
     expect(screen.getByText('tokenomics_title')).toBeInTheDocument()
     const items = screen.getAllByRole('listitem')
     expect(items).toHaveLength(7)
+    expect(screen.getByText(`tok_list1 ${tok.supply}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list2 ${tok.dao}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list3 ${tok.community}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list4 ${tok.team}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list5 ${tok.advisors}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list6 ${tok.investors}`)).toBeInTheDocument()
+    expect(screen.getByText(`tok_list7 ${tok.burn}`)).toBeInTheDocument()
   })
 })
