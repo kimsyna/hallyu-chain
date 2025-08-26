@@ -106,5 +106,8 @@
   "metaverse_buy": "Acheter une Épée Virtuelle",
   "notice_load_fail": "Échec du chargement de la localisation.",
   "notice_lang_unavailable": "Langue sélectionnée indisponible. Utilisation de la langue par défaut.",
-  "notice_whitepaper_unavailable": "Livre blanc non disponible."
+  "notice_whitepaper_unavailable": "Livre blanc non disponible.",
+  "light": "Clair",
+  "dark": "Sombre",
+  "theme_switched": "Passé en mode {{mode}}"
 }

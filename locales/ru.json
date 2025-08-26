@@ -106,5 +106,8 @@
   "metaverse_buy": "Купить виртуальный меч",
   "notice_load_fail": "Не удалось загрузить локализацию.",
   "notice_lang_unavailable": "Выбранный язык недоступен. Используется язык по умолчанию.",
-  "notice_whitepaper_unavailable": "Whitepaper недоступен."
+  "notice_whitepaper_unavailable": "Whitepaper недоступен.",
+  "light": "Светлый",
+  "dark": "Тёмный",
+  "theme_switched": "Переключено в {{mode}} режим"
 }

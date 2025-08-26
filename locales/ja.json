@@ -106,5 +106,8 @@
   "metaverse_buy": "バーチャルソードを購入",
   "notice_load_fail": "ローカライゼーションの読み込みに失敗しました。",
   "notice_lang_unavailable": "選択した言語は利用できません。デフォルトの言語を使用します。",
-  "notice_whitepaper_unavailable": "ホワイトペーパーは利用できません。"
+  "notice_whitepaper_unavailable": "ホワイトペーパーは利用できません。",
+  "light": "ライト",
+  "dark": "ダーク",
+  "theme_switched": "{{mode}}モードに切り替えました"
 }

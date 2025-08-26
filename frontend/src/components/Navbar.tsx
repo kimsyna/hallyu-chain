@@ -17,7 +17,11 @@ function Navbar() {
 
   const handleTheme = () => {
     toggleTheme()
-    showNotice(`Switched to ${theme === 'dark' ? 'light' : 'dark'} mode`)
+    showNotice(
+      t('theme_switched', {
+        mode: theme === 'dark' ? t('light') : t('dark'),
+      })
+    )
   }
 
   return (
