@@ -7,9 +7,15 @@ export function isDark() {
 }
 export function updateThemeIcon(themeToggle) {
   if (!themeToggle) return;
-  themeToggle.innerHTML = isDark()
-    ? '<i class="material-symbols-outlined" aria-hidden="true">light_mode</i>'
-    : '<i class="material-symbols-outlined" aria-hidden="true">dark_mode</i>';
+  // Clear existing icon/content
+  themeToggle.textContent = '';
+
+  const icon = document.createElement('i');
+  icon.classList.add('material-symbols-outlined');
+  icon.setAttribute('aria-hidden', 'true');
+  icon.textContent = isDark() ? 'light_mode' : 'dark_mode';
+
+  themeToggle.appendChild(icon);
 }
 export function setTheme(theme, themeToggle = document.querySelector('.theme-toggle')) {
   document.body.classList.toggle('dark-mode', theme === 'dark');
