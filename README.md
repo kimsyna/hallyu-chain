@@ -19,7 +19,7 @@ The site is fully static and can be served by any web server.
 
 ## Features
 
-- Multi-language interface (Korean, English, Chinese) with dynamic text switching.
+- Multi-language interface (Arabic, German, English, Spanish, French, Hindi, Japanese, Korean, Portuguese, Russian, and Chinese) with dynamic text switching. When adding support for a new language, be sure to update this list.
 - Animated hero titles implemented as a reusable Web Component.
 - Scroll-triggered section reveals powered by GSAP.
 - Responsive layout driven by modern CSS.
