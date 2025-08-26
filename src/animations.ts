@@ -13,7 +13,14 @@ if (
   hasGSAP = true;
 }
 
-const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const reduceMotionQuery =
+  typeof window !== 'undefined' && window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)')
+    : ({
+        matches: false,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+      } as MediaQueryList);
 export let prefersReducedMotion = reduceMotionQuery.matches;
 
 function applyAnimations() {
