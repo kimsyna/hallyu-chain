@@ -1,4 +1,6 @@
 import { showNotice } from './notice.ts';
+import createDOMPurify from 'dompurify';
+const DOMPurify = createDOMPurify(window);
 
 export const translations = {};
 export const DEFAULT_LANG = 'en';
@@ -135,12 +137,14 @@ export async function loadWhitepaper(lang) {
   try {
     const resp = await fetch(`whitepaper/${lang}/index.html`);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    container.innerHTML = await resp.text();
+    const html = await resp.text();
+    container.innerHTML = DOMPurify.sanitize(html);
     await applyTokenomics(container);
     window.applyFancyTitles?.();
   } catch (err) {
     console.error('Failed to load whitepaper:', err);
-    container.innerHTML = `<p>${translate('notice_whitepaper_unavailable', lang)}</p>`;
+    const fallback = `<p>${translate('notice_whitepaper_unavailable', lang)}</p>`;
+    container.innerHTML = DOMPurify.sanitize(fallback);
   }
 }
 
