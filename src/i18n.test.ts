@@ -8,6 +8,7 @@ const dom = new JSDOM('<!doctype html><html><body></body></html>', {
 global.window = dom.window;
 global.document = dom.window.document;
 global.localStorage = dom.window.localStorage;
+global.location = dom.window.location;
 
 test('translate returns key when missing', async () => {
   const { translations, translate } = await import('./i18n.ts');
@@ -35,4 +36,27 @@ test('loadWhitepaper uses translated fallback', async () => {
     container.innerHTML,
     `<p>${translate('notice_whitepaper_unavailable')}</p>`
   );
+});
+
+test('setLanguage fetches and applies translations', async () => {
+  const { setLanguage } = await import('./i18n.ts');
+  const el = document.createElement('h2');
+  el.setAttribute('data-i18n', 'metaverse_title');
+  document.body.appendChild(el);
+  const originalFetch = global.fetch;
+  global.fetch = async (url) => {
+    if (String(url).includes('locales')) {
+      return { ok: true, json: async () => ({ metaverse_title: 'Metaverse Market' }) };
+    }
+    if (String(url).includes('tokenomics.json')) {
+      return { ok: true, json: async () => ({}) };
+    }
+    throw new Error('unexpected url');
+  };
+  try {
+    await setLanguage('test');
+  } finally {
+    global.fetch = originalFetch;
+  }
+  assert.equal(el.textContent, 'Metaverse Market');
 });

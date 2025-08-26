@@ -96,6 +96,9 @@
   "staking_title": "Staking & Rewards",
   "staking_total": "Total Staked",
   "staking_rewards": "Your Rewards",
+  "metaverse_title": "Metaverse Market",
+  "metaverse_desc": "Purchase virtual items using HALL tokens.",
+  "metaverse_buy": "Buy Virtual Sword",
   "notice_load_fail": "Localization failed to load.",
   "notice_lang_unavailable": "Selected language unavailable. Using default language.",
   "notice_whitepaper_unavailable": "Whitepaper not available."
