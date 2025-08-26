@@ -151,7 +151,7 @@ function Navbar() {
       </button>
       <select
         className={styles.langSelect}
-        aria-label="Change language"
+        aria-label={t('nav_change_lang')}
         value={lang}
         onChange={(e) => changeLang(e.target.value)}
       >
