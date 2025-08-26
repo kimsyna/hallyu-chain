@@ -30,6 +30,8 @@
   "feat2_text": "팬이 좋아하는 아티스트를 직접 후원할 수 있는 투명한 시스템",
   "feat3_title": "글로벌 커뮤니티",
   "feat3_text": "언어와 국경을 초월한 글로벌 팬 커뮤니티 형성",
+  "feat4_title": "스테이킹·NFT 혜택",
+  "feat4_text": "토큰을 스테이킹하거나 NFT를 보유하면 특별한 보상을 받을 수 있습니다",
   "tokenomics_title": "토큰 이코노미",
   "tok_list1": "총 발행량: {supply} HALL",
   "tok_list2": "DAO 재무금고: {dao}%",
