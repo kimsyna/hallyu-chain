@@ -31,6 +31,8 @@
   "feat2_text": "お気に入りのアーティストを支援するための透明なシステム",
   "feat3_title": "グローバルコミュニティ",
   "feat3_text": "言語と国境を越えた世界的なファンコミュニティ",
+  "feat4_title": "ステーキング・NFT特典",
+  "feat4_text": "トークンをステーキングするかNFTを保有すると限定報酬が得られます",
   "tokenomics_title": "トークノミクス",
   "tok_list1": "総供給量：{supply} HALL",
   "tok_list2": "DAO トレジャリー：{dao}%",
