@@ -4,8 +4,6 @@ const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 
 describe("StakingPool", function () {
   it("emits InterestRateUpdated when rate changes", async function () {
-    const [owner] = await ethers.getSigners();
-
     const Token = await ethers.getContractFactory("TestToken");
     const token = await Token.deploy();
     await token.waitForDeployment();
@@ -44,7 +42,7 @@ describe("StakingPool", function () {
   });
 
   it("allows users to claim rewards after funding", async function () {
-    const [owner, user] = await ethers.getSigners();
+    const [, user] = await ethers.getSigners();
 
     const Token = await ethers.getContractFactory("TestToken");
     const token = await Token.deploy();
