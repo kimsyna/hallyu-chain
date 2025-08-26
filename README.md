@@ -39,12 +39,12 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 ## Tokenomics
 
 - Total supply: 10,000,000,000 HALL
-- DAO treasury: 50%
-- Community rewards: 20%
-- Team: 15%
-- Advisors: 5%
-- Investors: 10%
-- Transfer burn: 3%
+- DAO treasury: 48.54%
+- Community rewards: 19.42%
+- Team: 14.56%
+- Advisors: 4.86%
+- Investors: 9.71%
+- Transfer burn: 2.91%
 
 ## Roadmap
 
