@@ -9,6 +9,7 @@ This repository contains the marketing website for **Hallyu Chain (HALL)**, a co
 ## Structure
 
 - `index.html`: Single-page layout introducing the protocol, technology and token model, with sections for the Team, Corporate Identity, and Whitepaper.
+- `frontend/`: React-based frontend offering a dynamic version of the site. See [frontend/README.md](frontend/README.md) for details.
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
 - Navigation within the page is handled through in-page anchors.
 
@@ -87,6 +88,24 @@ npm run build:web
 ```
 
 This command outputs `bundle.js` from `src/index.ts`, and the static site loads that file.
+
+## React Frontend
+
+An interactive version of the site lives in [`frontend/`](frontend) and is built with React and Vite.
+
+Run the development server:
+
+```bash
+npm run dev --workspace frontend
+```
+
+Create a production build:
+
+```bash
+npm run build --workspace frontend
+```
+
+For more comprehensive instructions, see [frontend/README.md](frontend/README.md).
 
 ## Testing
 
