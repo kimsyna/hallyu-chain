@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar} ref={navRef}>
-      <a href="index.html" className={styles.logo}>
+      <a href="/" className={styles.logo}>
         <img src="/assets/hall-symbol.svg" alt="HALL logo" width="24" height="24" />
         Hallyu Chain
       </a>
