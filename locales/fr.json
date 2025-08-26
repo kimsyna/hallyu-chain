@@ -99,6 +99,9 @@
   "staking_title": "Staking et Récompenses",
   "staking_total": "Total Staké",
   "staking_rewards": "Vos Récompenses",
+  "metaverse_title": "Marché du Métaverse",
+  "metaverse_desc": "Achetez des objets virtuels avec des jetons HALL.",
+  "metaverse_buy": "Acheter une Épée Virtuelle",
   "notice_load_fail": "Échec du chargement de la localisation.",
   "notice_lang_unavailable": "Langue sélectionnée indisponible. Utilisation de la langue par défaut.",
   "notice_whitepaper_unavailable": "Livre blanc non disponible."

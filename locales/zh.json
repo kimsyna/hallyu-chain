@@ -99,6 +99,9 @@
   "staking_title": "质押与奖励",
   "staking_total": "总质押量",
   "staking_rewards": "你的奖励",
+  "metaverse_title": "元宇宙市场",
+  "metaverse_desc": "使用 HALL 代币购买虚拟物品。",
+  "metaverse_buy": "购买虚拟之剑",
   "notice_load_fail": "加载本地化失败。",
   "notice_lang_unavailable": "所选语言不可用，已使用默认语言。",
   "notice_whitepaper_unavailable": "白皮书不可用。"

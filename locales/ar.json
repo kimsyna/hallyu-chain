@@ -99,6 +99,9 @@
   "staking_title": "التخزين والمكافآت",
   "staking_total": "إجمالي التخزين",
   "staking_rewards": "مكافآتك",
+  "metaverse_title": "سوق الميتافيرس",
+  "metaverse_desc": "اشترِ عناصر افتراضية باستخدام رموز HALL.",
+  "metaverse_buy": "شراء سيف افتراضي",
   "notice_load_fail": "فشل تحميل الترجمة.",
   "notice_lang_unavailable": "اللغة المختارة غير متاحة. سيتم استخدام اللغة الافتراضية.",
   "notice_whitepaper_unavailable": "الورقة البيضاء غير متاحة."

@@ -99,6 +99,9 @@
   "staking_title": "Стейкинг и награды",
   "staking_total": "Всего застейкано",
   "staking_rewards": "Ваши награды",
+  "metaverse_title": "Рынок метавселенной",
+  "metaverse_desc": "Покупайте виртуальные предметы за токены HALL.",
+  "metaverse_buy": "Купить виртуальный меч",
   "notice_load_fail": "Не удалось загрузить локализацию.",
   "notice_lang_unavailable": "Выбранный язык недоступен. Используется язык по умолчанию.",
   "notice_whitepaper_unavailable": "Whitepaper недоступен."
