@@ -8,19 +8,19 @@ function Partners() {
       </h2>
       <div className="logo-grid">
         <div className="logo-item">
-          <i className="material-symbols-outlined">music_note</i>
+          <i className="material-symbols-outlined" aria-hidden="true">music_note</i>
           <span>
             <Trans i18nKey="partner1" />
           </span>
         </div>
         <div className="logo-item">
-          <i className="material-symbols-outlined">sports_esports</i>
+          <i className="material-symbols-outlined" aria-hidden="true">sports_esports</i>
           <span>
             <Trans i18nKey="partner2" />
           </span>
         </div>
         <div className="logo-item">
-          <i className="material-symbols-outlined">movie</i>
+          <i className="material-symbols-outlined" aria-hidden="true">movie</i>
           <span>
             <Trans i18nKey="partner3" />
           </span>
