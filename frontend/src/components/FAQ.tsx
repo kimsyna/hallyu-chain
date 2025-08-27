@@ -27,7 +27,7 @@ function FAQ() {
           <Trans i18nKey="faq_q3" />
         </summary>
         <p>
-          <Trans i18nKey="faq_a3" components={{ a: <a href="staking.html" /> }} />
+          <Trans i18nKey="faq_a3" components={{ a: <a href="#staking" /> }} />
         </p>
       </details>
     </section>
