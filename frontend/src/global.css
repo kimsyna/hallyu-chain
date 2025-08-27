@@ -60,8 +60,19 @@ body[data-theme='dark'] {
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: var(--nav-height);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @media (max-width: 768px) {
