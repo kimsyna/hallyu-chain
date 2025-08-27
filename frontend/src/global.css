@@ -43,7 +43,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'Roboto', sans-serif;
-  font-size: 15px;
+  font-size: 100%;
   line-height: 1.6;
   padding-top: var(--nav-height);
   color-scheme: light;
@@ -85,7 +85,7 @@ html {
 
   html,
   body {
-    font-size: 16px;
+    font-size: 100%;
     line-height: 1.8;
   }
 
