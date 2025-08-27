@@ -3,9 +3,12 @@ export function initNav() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return;
     const height = navbar.getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--nav-height', `${height}px`);
-    document.documentElement.style.scrollPaddingTop = `${height}px`;
-    document.body.style.paddingTop = `${height}px`;
+    const { position } = window.getComputedStyle(navbar);
+    const fixed = position === 'fixed' || window.innerWidth > 768;
+    const value = fixed ? `${height}px` : '0px';
+    document.documentElement.style.setProperty('--nav-height', value);
+    document.documentElement.style.scrollPaddingTop = value;
+    document.body.style.paddingTop = value;
   }
 
   updateNavHeight();
