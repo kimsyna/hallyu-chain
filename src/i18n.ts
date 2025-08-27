@@ -104,6 +104,13 @@ export async function setLanguage(lang) {
       el.setAttribute('placeholder', text);
     }
   });
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    const text = translations[lang][key];
+    if (text) {
+      el.setAttribute('alt', text);
+    }
+  });
   document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
     const key = el.getAttribute('data-i18n-aria-label');
     const text = translations[lang][key];

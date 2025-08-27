@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "श्वेतपत्र उपलब्ध नहीं है।",
   "light": "हल्का",
   "dark": "गहरा",
-  "theme_switched": "{{mode}} मोड में बदला गया"
+  "theme_switched": "{{mode}} मोड में बदला गया",
+  "alt_daniel": "डैनियल किम का चित्र, CEO और सह-संस्थापक",
+  "alt_emily": "एमिली ली का चित्र, CTO",
+  "alt_michael": "माइकल पार्क का चित्र, प्रमुख ब्लॉकचेन इंजीनियर"
 }
