@@ -260,6 +260,20 @@ section h3 {
   font-size: 1.3rem;
 }
 
+#about p {
+  margin-bottom: var(--space-md);
+  line-height: 1.6;
+}
+
+#about .icon-list {
+  margin-top: var(--space-sm);
+}
+
+#about .about-cta {
+  display: inline-block;
+  margin-top: var(--space-md);
+}
+
 ul, ol {
   max-width: 800px;
   margin: 0 auto var(--space-md);
