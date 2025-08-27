@@ -349,6 +349,7 @@ ul, ol {
   justify-content: center;
   gap: var(--space-lg);
   flex-wrap: wrap;
+  align-items: center;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -362,10 +363,11 @@ ul, ol {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.logo-item i {
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: var(--space-xs);
+.logo-item img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto var(--space-xs);
 }
 
 .logo-item:hover {
