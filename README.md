@@ -56,6 +56,7 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - 2027 Q2: Introduce mobile wallet
 - 2027 Q3: Expand staking rewards
 - 2027 Q4: Roll out on-chain governance
+- 2028 Q1: Launch metaverse integration
 
 ## DAO
 
