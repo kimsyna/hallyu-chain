@@ -1,6 +1,6 @@
 .notice {
   position: fixed;
-  bottom: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0));
   left: 50%;
   transform: translateX(-50%);
   background: var(--fg);
