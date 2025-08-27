@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "Whitepaper not available.",
   "light": "Light",
   "dark": "Dark",
-  "theme_switched": "Switched to {{mode}} mode"
+  "theme_switched": "Switched to {{mode}} mode",
+  "alt_daniel": "Portrait of Daniel Kim, CEO & Co-Founder",
+  "alt_emily": "Portrait of Emily Lee, CTO",
+  "alt_michael": "Portrait of Michael Park, Lead Blockchain Engineer"
 }

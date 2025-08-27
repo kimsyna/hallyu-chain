@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "백서를 사용할 수 없습니다.",
   "light": "라이트",
   "dark": "다크",
-  "theme_switched": "{{mode}} 모드로 전환되었습니다"
+  "theme_switched": "{{mode}} 모드로 전환되었습니다",
+  "alt_daniel": "CEO 겸 공동 창립자 Daniel Kim의 초상",
+  "alt_emily": "CTO Emily Lee의 초상",
+  "alt_michael": "수석 블록체인 엔지니어 Michael Park의 초상"
 }

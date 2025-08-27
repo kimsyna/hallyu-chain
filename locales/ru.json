@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "Whitepaper недоступен.",
   "light": "Светлый",
   "dark": "Тёмный",
-  "theme_switched": "Переключено в {{mode}} режим"
+  "theme_switched": "Переключено в {{mode}} режим",
+  "alt_daniel": "Портрет Дэниела Кима, CEO и соучредителя",
+  "alt_emily": "Портрет Эмили Ли, CTO",
+  "alt_michael": "Портрет Майкла Парка, ведущего блокчейн-инженера"
 }

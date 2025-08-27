@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "ホワイトペーパーは利用できません。",
   "light": "ライト",
   "dark": "ダーク",
-  "theme_switched": "{{mode}}モードに切り替えました"
+  "theme_switched": "{{mode}}モードに切り替えました",
+  "alt_daniel": "CEO兼共同創設者ダニエル・キムの肖像",
+  "alt_emily": "CTOエミリー・リーの肖像",
+  "alt_michael": "リードブロックチェーンエンジニア、マイケル・パクの肖像"
 }

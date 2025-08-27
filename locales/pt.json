@@ -119,5 +119,8 @@
   "notice_whitepaper_unavailable": "Whitepaper indisponível.",
   "light": "Claro",
   "dark": "Escuro",
-  "theme_switched": "Mudou para o modo {{mode}}"
+  "theme_switched": "Mudou para o modo {{mode}}",
+  "alt_daniel": "Retrato de Daniel Kim, CEO e cofundador",
+  "alt_emily": "Retrato de Emily Lee, CTO",
+  "alt_michael": "Retrato de Michael Park, engenheiro líder de blockchain"
 }

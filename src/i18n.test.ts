@@ -60,3 +60,33 @@ test('setLanguage fetches and applies translations', async () => {
   }
   assert.equal(el.textContent, 'Metaverse Market');
 });
+
+test('setLanguage applies alt translations', async () => {
+  const { setLanguage, translations } = await import('./i18n.ts');
+  delete translations.en;
+  delete translations.ko;
+  const img = document.createElement('img');
+  img.setAttribute('data-i18n-alt', 'alt_daniel');
+  document.body.appendChild(img);
+  const originalFetch = global.fetch;
+  global.fetch = async (url) => {
+    if (String(url).includes('locales/en')) {
+      return { ok: true, json: async () => ({ alt_daniel: 'Portrait EN' }) };
+    }
+    if (String(url).includes('locales/ko')) {
+      return { ok: true, json: async () => ({ alt_daniel: '초상 KO' }) };
+    }
+    if (String(url).includes('tokenomics.json')) {
+      return { ok: true, json: async () => ({}) };
+    }
+    throw new Error('unexpected url');
+  };
+  try {
+    await setLanguage('en');
+    assert.equal(img.getAttribute('alt'), 'Portrait EN');
+    await setLanguage('ko');
+    assert.equal(img.getAttribute('alt'), '초상 KO');
+  } finally {
+    global.fetch = originalFetch;
+  }
+});
