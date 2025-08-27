@@ -604,7 +604,8 @@ body.dark-mode .footer {
     }
 
   .hero {
-    min-height: calc(100vh - var(--nav-height));
+    min-height: 100vh;
+    min-height: 100svh;
     padding: calc(var(--space-lg) * 3) var(--space-md) calc(var(--space-lg) * 2);
   }
 
