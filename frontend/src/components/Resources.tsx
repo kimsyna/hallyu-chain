@@ -8,13 +8,13 @@ function Resources() {
       </h2>
       <ul className="icon-list">
         <li>
-          <i className="material-symbols-outlined">insert_drive_file</i>
+          <i className="material-symbols-outlined" aria-hidden="true">insert_drive_file</i>
           <a href="#whitepaper">
             <Trans i18nKey="res_whitepaper" />
           </a>
         </li>
         <li>
-          <i className="material-symbols-outlined">code</i>
+          <i className="material-symbols-outlined" aria-hidden="true">code</i>
           <a
             href="https://github.com/hallyu-chain"
             target="_blank"
@@ -24,7 +24,7 @@ function Resources() {
           </a>
         </li>
         <li>
-          <i className="material-symbols-outlined">chat</i>
+          <i className="material-symbols-outlined" aria-hidden="true">chat</i>
           <a
             href="https://discord.gg/example"
             target="_blank"
