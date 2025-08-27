@@ -19,6 +19,7 @@
   :root {
     --bg: #121212;
     --fg: #f5f5f5;
+    --accent: #ff6fa8;
     --surface: rgba(255,255,255,0.1);
     --hero-gradient: linear-gradient(-45deg,#4e54c8,#8f94fb,#232526,#414345);
     --hero-blur: 80px;
@@ -39,6 +40,7 @@ body {
 body.dark-mode {
   --bg: #121212;
   --fg: #f5f5f5;
+  --accent: #ff6fa8;
   --surface: rgba(255,255,255,0.1);
   --hero-gradient: linear-gradient(-45deg,#4e54c8,#8f94fb,#232526,#414345);
   --hero-blur: 80px;
