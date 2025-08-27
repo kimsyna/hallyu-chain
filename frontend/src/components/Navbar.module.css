@@ -106,11 +106,13 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: inherit;
+    background-color: var(--nav-bg);
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
   }
 
   .navLinksOpen {
