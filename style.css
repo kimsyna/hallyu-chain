@@ -570,11 +570,20 @@ body.dark-mode .footer {
     --space-sm: 0.75rem;
     --space-md: 1.25rem;
     --space-lg: 1.75rem;
+    --nav-height: 0px;
   }
 
   html, body {
     font-size: 16px;
     line-height: 1.8;
+  }
+
+  body {
+    padding-top: 0;
+  }
+
+  html {
+    scroll-padding-top: 0;
   }
 
     .navbar {
