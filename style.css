@@ -184,13 +184,23 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100svh - var(--nav-height));
   padding: 0 1rem;
   position: relative;
   overflow: hidden;
   perspective: 800px;
   background-color: #000;
   color: var(--fg);
+}
+@supports (min-height: 100dvh) {
+  .hero {
+    min-height: calc(100dvh - var(--nav-height));
+  }
+}
+@supports not (min-height: 100svh) {
+  .hero {
+    min-height: calc(100vh - var(--nav-height));
+  }
 }
 
 .hero-media {
@@ -604,8 +614,19 @@ body.dark-mode .footer {
     }
 
   .hero {
-    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(100svh - var(--nav-height));
     padding: calc(var(--space-lg) * 3) var(--space-md) calc(var(--space-lg) * 2);
+  }
+
+  @supports (min-height: 100dvh) {
+    .hero {
+      min-height: calc(100dvh - var(--nav-height));
+    }
+  }
+  @supports not (min-height: 100svh) {
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+    }
   }
 
   section {
