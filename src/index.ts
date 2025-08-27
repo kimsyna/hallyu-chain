@@ -5,11 +5,6 @@ import { initNav } from './nav.ts';
 import { applyFancyTitles } from './fancy-title.ts';
 import { initAnimations, prefersReducedMotion } from './animations.ts';
 
-// Hide decorative icons from screen readers
-document
-  .querySelectorAll('.material-symbols-outlined')
-  .forEach((icon) => icon.setAttribute('aria-hidden', 'true'));
-
 applyFancyTitles();
 initNav();
 initAnimations();

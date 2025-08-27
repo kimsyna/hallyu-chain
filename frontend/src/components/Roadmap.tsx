@@ -8,49 +8,49 @@ function Roadmap() {
       </h2>
       <ol className="icon-list">
         <li>
-          <i className="material-symbols-outlined">rocket_launch</i>
+          <i className="material-symbols-outlined" aria-hidden="true">rocket_launch</i>
           <span>
             <Trans i18nKey="road_q1" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">code</i>
+          <i className="material-symbols-outlined" aria-hidden="true">code</i>
           <span>
             <Trans i18nKey="road_q2" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">handshake</i>
+          <i className="material-symbols-outlined" aria-hidden="true">handshake</i>
           <span>
             <Trans i18nKey="road_q3" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">link</i>
+          <i className="material-symbols-outlined" aria-hidden="true">link</i>
           <span>
             <Trans i18nKey="road_q4" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">storefront</i>
+          <i className="material-symbols-outlined" aria-hidden="true">storefront</i>
           <span>
             <Trans i18nKey="road_q5" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">smartphone</i>
+          <i className="material-symbols-outlined" aria-hidden="true">smartphone</i>
           <span>
             <Trans i18nKey="road_q6" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">savings</i>
+          <i className="material-symbols-outlined" aria-hidden="true">savings</i>
           <span>
             <Trans i18nKey="road_q7" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">how_to_vote</i>
+          <i className="material-symbols-outlined" aria-hidden="true">how_to_vote</i>
           <span>
             <Trans i18nKey="road_q8" />
           </span>

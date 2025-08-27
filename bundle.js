@@ -1146,6 +1146,13 @@ async function setLanguage(lang) {
       el.setAttribute("placeholder", text2);
     }
   });
+  document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-alt");
+    const text2 = translations[lang][key];
+    if (text2) {
+      el.setAttribute("alt", text2);
+    }
+  });
   document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
     const key = el.getAttribute("data-i18n-aria-label");
     const text2 = translations[lang][key];
@@ -1439,7 +1446,6 @@ function initAnimations() {
 }
 
 // src/index.ts
-document.querySelectorAll(".material-symbols-outlined").forEach((icon) => icon.setAttribute("aria-hidden", "true"));
 applyFancyTitles();
 initNav();
 initAnimations();

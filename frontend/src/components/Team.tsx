@@ -25,7 +25,7 @@ function Team() {
       </h3>
       <ul className="icon-list">
         <li>
-          <i className="material-symbols-outlined">public</i>
+          <i className="material-symbols-outlined" aria-hidden="true">public</i>
           <a
             href="https://twitter.com/hallyu_chain"
             target="_blank"
@@ -35,7 +35,7 @@ function Team() {
           </a>
         </li>
         <li>
-          <i className="material-symbols-outlined">chat</i>
+          <i className="material-symbols-outlined" aria-hidden="true">chat</i>
           <a
             href="https://discord.gg/example"
             target="_blank"
@@ -45,7 +45,7 @@ function Team() {
           </a>
         </li>
         <li>
-          <i className="material-symbols-outlined">code</i>
+          <i className="material-symbols-outlined" aria-hidden="true">code</i>
           <a
             href="https://github.com/hallyu-chain"
             target="_blank"

@@ -8,25 +8,25 @@ function Technology() {
       </h2>
       <ul className="icon-list">
         <li>
-          <i className="material-symbols-outlined">layers</i>
+          <i className="material-symbols-outlined" aria-hidden="true">layers</i>
           <span>
             <Trans i18nKey="tech_list1" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">gavel</i>
+          <i className="material-symbols-outlined" aria-hidden="true">gavel</i>
           <span>
             <Trans i18nKey="tech_list2" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">shield</i>
+          <i className="material-symbols-outlined" aria-hidden="true">shield</i>
           <span>
             <Trans i18nKey="tech_list3" />
           </span>
         </li>
         <li>
-          <i className="material-symbols-outlined">compare_arrows</i>
+          <i className="material-symbols-outlined" aria-hidden="true">compare_arrows</i>
           <span>
             <Trans i18nKey="tech_list4" />
           </span>
@@ -37,7 +37,7 @@ function Technology() {
       </h2>
       <div className="card-grid">
         <div className="card">
-          <i className="material-symbols-outlined">group</i>
+          <i className="material-symbols-outlined" aria-hidden="true">group</i>
           <h3>
             <Trans i18nKey="feat1_title" />
           </h3>
@@ -46,7 +46,7 @@ function Technology() {
           </p>
         </div>
         <div className="card">
-          <i className="material-symbols-outlined">volunteer_activism</i>
+          <i className="material-symbols-outlined" aria-hidden="true">volunteer_activism</i>
           <h3>
             <Trans i18nKey="feat2_title" />
           </h3>
@@ -55,7 +55,7 @@ function Technology() {
           </p>
         </div>
         <div className="card">
-          <i className="material-symbols-outlined">public</i>
+          <i className="material-symbols-outlined" aria-hidden="true">public</i>
           <h3>
             <Trans i18nKey="feat3_title" />
           </h3>
@@ -64,7 +64,7 @@ function Technology() {
           </p>
         </div>
         <div className="card">
-          <i className="material-symbols-outlined">token</i>
+          <i className="material-symbols-outlined" aria-hidden="true">token</i>
           <h3>
             <Trans i18nKey="feat4_title" />
           </h3>

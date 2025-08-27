@@ -37,7 +37,7 @@ function Navbar() {
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
-        <i className="material-symbols-outlined">menu</i>
+        <i className="material-symbols-outlined" aria-hidden="true">menu</i>
       </button>
       <ul
         className={`${styles.navLinks} ${open ? styles.navLinksOpen : ''}`}
@@ -45,7 +45,7 @@ function Navbar() {
       >
         <li>
           <a href="#about">
-            <i className="material-symbols-outlined">info</i>
+            <i className="material-symbols-outlined" aria-hidden="true">info</i>
             <span>
               <Trans i18nKey="nav_about" />
             </span>
@@ -53,7 +53,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#technology">
-            <i className="material-symbols-outlined">memory</i>
+            <i className="material-symbols-outlined" aria-hidden="true">memory</i>
             <span>
               <Trans i18nKey="nav_technology" />
             </span>
@@ -61,7 +61,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#tokenomics">
-            <i className="material-symbols-outlined">paid</i>
+            <i className="material-symbols-outlined" aria-hidden="true">paid</i>
             <span>
               <Trans i18nKey="nav_tokenomics" />
             </span>
@@ -69,7 +69,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#roadmap">
-            <i className="material-symbols-outlined">map</i>
+            <i className="material-symbols-outlined" aria-hidden="true">map</i>
             <span>
               <Trans i18nKey="nav_roadmap" />
             </span>
@@ -77,7 +77,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#dao">
-            <i className="material-symbols-outlined">groups</i>
+            <i className="material-symbols-outlined" aria-hidden="true">groups</i>
             <span>
               <Trans i18nKey="nav_dao" />
             </span>
@@ -85,7 +85,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#partners">
-            <i className="material-symbols-outlined">handshake</i>
+            <i className="material-symbols-outlined" aria-hidden="true">handshake</i>
             <span>
               <Trans i18nKey="nav_partners" />
             </span>
@@ -93,7 +93,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#resources">
-            <i className="material-symbols-outlined">menu_book</i>
+            <i className="material-symbols-outlined" aria-hidden="true">menu_book</i>
             <span>
               <Trans i18nKey="nav_resources" />
             </span>
@@ -101,7 +101,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#newsletter">
-            <i className="material-symbols-outlined">mail</i>
+            <i className="material-symbols-outlined" aria-hidden="true">mail</i>
             <span>
               <Trans i18nKey="nav_newsletter" />
             </span>
@@ -109,7 +109,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#faq">
-            <i className="material-symbols-outlined">help</i>
+            <i className="material-symbols-outlined" aria-hidden="true">help</i>
             <span>
               <Trans i18nKey="nav_faq" />
             </span>
@@ -117,7 +117,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#corporate">
-            <i className="material-symbols-outlined">apartment</i>
+            <i className="material-symbols-outlined" aria-hidden="true">apartment</i>
             <span>
               <Trans i18nKey="nav_corporate" />
             </span>
@@ -125,7 +125,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#team">
-            <i className="material-symbols-outlined">group</i>
+            <i className="material-symbols-outlined" aria-hidden="true">group</i>
             <span>
               <Trans i18nKey="nav_team" />
             </span>
@@ -133,7 +133,7 @@ function Navbar() {
         </li>
         <li>
           <a href="#whitepaper">
-            <i className="material-symbols-outlined">description</i>
+            <i className="material-symbols-outlined" aria-hidden="true">description</i>
             <span>
               <Trans i18nKey="nav_whitepaper" />
             </span>
@@ -145,7 +145,7 @@ function Navbar() {
         aria-label={t('nav_theme')}
         onClick={handleTheme}
       >
-        <i className="material-symbols-outlined">
+        <i className="material-symbols-outlined" aria-hidden="true">
           {theme === 'dark' ? 'light_mode' : 'dark_mode'}
         </i>
       </button>
