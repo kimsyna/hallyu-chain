@@ -651,11 +651,11 @@ body.dark-mode .footer {
   }
 
   body {
-    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+    padding-top: env(safe-area-inset-top, 0);
   }
 
   html {
-    scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
+    scroll-padding-top: env(safe-area-inset-top, 0);
   }
 
   .navbar {
