@@ -5,5 +5,10 @@
   "team": 14.56,
   "advisors": 4.86,
   "investors": 9.71,
-  "burn": 2.91
+  "burn": 2.91,
+  "utility": "Governance voting, staking rewards, exclusive event access",
+  "teamVesting": 24,
+  "advisorsVesting": 12,
+  "investorsVesting": 18,
+  "burnRate": 2
 }
