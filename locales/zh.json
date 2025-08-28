@@ -117,6 +117,8 @@
   "staking_total": "总质押量",
   "staking_rewards": "你的奖励",
   "staking_percent": "质押百分比",
+  "staking_unavailable": "N/A",
+  "staking_error_unavailable": "Failed to load staking info.",
   "notice_load_fail": "加载本地化失败。",
   "notice_lang_unavailable": "所选语言不可用，已使用默认语言。",
   "notice_whitepaper_unavailable": "白皮书不可用。",

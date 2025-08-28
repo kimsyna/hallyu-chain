@@ -1,11 +1,18 @@
 import { JSDOM } from 'jsdom';
 import { test } from 'node:test';
 import assert from 'node:assert';
-import { loadStakingStatus, fetchStakingData } from './staking.ts';
 
 const dom = new JSDOM('<!doctype html><body><span id="total-staked"></span><span id="user-rewards"></span><span id="staking-percent"></span><div class="staking-progress"><div id="staking-progress-bar"></div></div><div id="staking-error" hidden></div></body>', { url: 'http://localhost' });
 global.window = dom.window;
 global.document = dom.window.document;
+global.localStorage = dom.window.localStorage;
+
+const { loadStakingStatus, fetchStakingData } = await import('./staking.ts');
+const { translations } = await import('./i18n.ts');
+translations.en = {
+  staking_unavailable: 'N/A',
+  staking_error_unavailable: 'Failed to load staking info.',
+};
 
 test('loadStakingStatus populates elements', async () => {
   global.fetch = async () => ({ ok: true, json: async () => ({ totalStaked: '100', userRewards: '5', totalSupply: '200' }) });

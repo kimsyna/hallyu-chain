@@ -1,3 +1,5 @@
+import { translate } from './i18n.ts';
+
 export async function fetchStakingData(fetchFn = fetch, url = 'staking.json') {
   const resp = await fetchFn(url);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -22,12 +24,12 @@ export async function loadStakingStatus(fetchFn = fetch) {
     if (progressBar) progressBar.style.width = `${percent}%`;
   } catch (err) {
     console.error('Failed to fetch staking info', err);
-    if (total) total.textContent = 'N/A';
-    if (rewards) rewards.textContent = 'N/A';
-    if (percentEl) percentEl.textContent = 'N/A';
+    if (total) total.textContent = translate('staking_unavailable');
+    if (rewards) rewards.textContent = translate('staking_unavailable');
+    if (percentEl) percentEl.textContent = translate('staking_unavailable');
     if (progressBar) progressBar.style.width = '0%';
     if (errorEl) {
-      errorEl.textContent = 'Failed to load staking info.';
+      errorEl.textContent = translate('staking_error_unavailable');
       errorEl.hidden = false;
     }
   }
