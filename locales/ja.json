@@ -196,5 +196,14 @@
   "faq_a7": "ステーカーはネットワーク手数料と新たに発行されたトークンの一部を受け取ります。",
   "res_logo_assets": "Logo Assets (hosted externally)",
   "res_hallyu_fonts": "Hallyu Fonts (hosted externally)",
-  "res_layout_samples": "Layout Samples (hosted externally)"
+  "res_layout_samples": "Layout Samples (hosted externally)",
+  "role_marketing": "Marketing Lead",
+  "role_community": "Community Manager",
+  "bio_daniel": "Seasoned blockchain entrepreneur and K-POP fan.",
+  "bio_emily": "Engineer building scalable decentralized systems.",
+  "bio_michael": "Expert in smart contracts and network design.",
+  "bio_soojin": "Marketing strategist connecting global fans.",
+  "bio_alex": "Community builder fostering engagement.",
+  "alt_soojin": "Portrait of Soo-jin Choi, Marketing Lead",
+  "alt_alex": "Portrait of Alex Rivera, Community Manager"
 }

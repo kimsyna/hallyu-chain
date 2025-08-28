@@ -15,15 +15,16 @@ applyFancyTitles();
 initNav();
 initAnimations();
 
-const newsletterForm = document.querySelector<HTMLFormElement>('.newsletter-form');
-const newsletterMessage = document.querySelector<HTMLElement>('.newsletter-success');
+const newsletterForm =
+  document.querySelector<HTMLFormElement>('.newsletter-form');
+const newsletterMessage = document.querySelector<HTMLElement>(
+  '.newsletter-success'
+);
 let newsletterTimeout: number;
 
 if (newsletterForm && newsletterMessage) {
   const endpoint =
-    newsletterForm.dataset.endpoint ||
-    (window as any).NEWSLETTER_API_URL ||
-    '';
+    newsletterForm.dataset.endpoint || (window as any).NEWSLETTER_API_URL || '';
   newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const emailInput = newsletterForm.querySelector<HTMLInputElement>(
@@ -156,8 +157,61 @@ async function loadResources() {
   }
 }
 
+async function loadTeam() {
+  const grid = document.getElementById('team-grid');
+  if (!grid) return;
+  try {
+    await loadLanguage(currentLang);
+    const resp = await fetch('team.json');
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    type TeamMember = {
+      name: string;
+      image: string;
+      roleKey: string;
+      bioKey: string;
+      altKey: string;
+      link: string;
+    };
+    const team: TeamMember[] = await resp.json();
+    team.forEach((m) => {
+      const member = document.createElement('div');
+      member.className = 'member';
+
+      const link = document.createElement('a');
+      link.href = m.link;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      const img = document.createElement('img');
+      img.src = m.image;
+      img.alt = translate(m.altKey);
+      img.loading = 'lazy';
+      img.setAttribute('data-i18n-alt', m.altKey);
+
+      const name = document.createElement('h3');
+      name.textContent = m.name;
+
+      link.append(img, name);
+
+      const role = document.createElement('p');
+      role.setAttribute('data-i18n', m.roleKey);
+      role.textContent = translate(m.roleKey);
+
+      const bio = document.createElement('p');
+      bio.setAttribute('data-i18n', m.bioKey);
+      bio.textContent = translate(m.bioKey);
+
+      member.append(link, role, bio);
+      grid.append(member);
+    });
+  } catch (err) {
+    console.error('Failed to load team:', err);
+  }
+}
+
 initTheme();
 initI18n();
 loadStakingStatus();
 loadPartners();
 loadResources();
+loadTeam();

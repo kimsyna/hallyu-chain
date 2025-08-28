@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Daniel Kim",
+    "image": "./assets/team-daniel-kim.svg",
+    "roleKey": "role_ceo",
+    "bioKey": "bio_daniel",
+    "altKey": "alt_daniel",
+    "link": "https://www.linkedin.com/in/danielkim"
+  },
+  {
+    "name": "Emily Lee",
+    "image": "./assets/team-emily-lee.svg",
+    "roleKey": "role_cto",
+    "bioKey": "bio_emily",
+    "altKey": "alt_emily",
+    "link": "https://www.linkedin.com/in/emilylee"
+  },
+  {
+    "name": "Michael Park",
+    "image": "./assets/team-michael-park.svg",
+    "roleKey": "role_lead",
+    "bioKey": "bio_michael",
+    "altKey": "alt_michael",
+    "link": "https://www.linkedin.com/in/michaelpark"
+  },
+  {
+    "name": "Soo-jin Choi",
+    "image": "./assets/hall-symbol.svg",
+    "roleKey": "role_marketing",
+    "bioKey": "bio_soojin",
+    "altKey": "alt_soojin",
+    "link": "https://www.linkedin.com/in/soojinchoi"
+  },
+  {
+    "name": "Alex Rivera",
+    "image": "./assets/hall-symbol.svg",
+    "roleKey": "role_community",
+    "bioKey": "bio_alex",
+    "altKey": "alt_alex",
+    "link": "https://alexrivera.dev"
+  }
+]
