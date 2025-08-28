@@ -66,6 +66,28 @@ function Corporate() {
           </li>
         </ul>
       </div>
+      <div className="logo-guidelines">
+        <h3>
+          <Trans i18nKey="corporate_logo_title" />
+        </h3>
+        <div className="logo-sample">
+          <img src="./assets/hall-symbol.svg" alt="" data-i18n-alt="corporate_logo_alt" />
+        </div>
+        <p>
+          <Trans i18nKey="corporate_logo_usage" />
+        </p>
+        <ul>
+          <li>
+            <Trans i18nKey="corporate_logo_clearspace" />
+          </li>
+          <li>
+            <Trans i18nKey="corporate_logo_minimum" />
+          </li>
+          <li>
+            <Trans i18nKey="corporate_logo_background" />
+          </li>
+        </ul>
+      </div>
       <div>
         <h3>
           <Trans i18nKey="corporate_typography_title" />

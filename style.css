@@ -594,6 +594,28 @@ ol {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.logo-guidelines {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.logo-sample {
+  max-width: 150px;
+  margin: 1rem auto;
+}
+
+.logo-sample img {
+  width: 100%;
+  height: auto;
+}
+
+.logo-guidelines ul {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  list-style: disc;
+}
+
 .typography .font-sample {
   margin-top: 0.5rem;
 }
