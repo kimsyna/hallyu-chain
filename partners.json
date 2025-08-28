@@ -1,0 +1,26 @@
+[
+  {
+    "nameKey": "partner1",
+    "descKey": "partner1_desc",
+    "logo": "./assets/music-chain-logo.svg",
+    "alt": "MusicChain logo",
+    "icon": "music_note",
+    "url": "https://musicchain.example.com"
+  },
+  {
+    "nameKey": "partner2",
+    "descKey": "partner2_desc",
+    "logo": "./assets/game-world-logo.svg",
+    "alt": "GameWorld logo",
+    "icon": "sports_esports",
+    "url": "https://gameworld.example.com"
+  },
+  {
+    "nameKey": "partner3",
+    "descKey": "partner3_desc",
+    "logo": "./assets/entermedia-logo.svg",
+    "alt": "EnterMedia logo",
+    "icon": "movie",
+    "url": "https://entermedia.example.com"
+  }
+]

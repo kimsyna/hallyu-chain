@@ -177,5 +177,8 @@
   "theme_switched": "{{mode}} मोड में बदला गया",
   "alt_daniel": "डैनियल किम का चित्र, CEO और सह-संस्थापक",
   "alt_emily": "एमिली ली का चित्र, CTO",
-  "alt_michael": "माइकल पार्क का चित्र, प्रमुख ब्लॉकचेन इंजीनियर"
+  "alt_michael": "माइकल पार्क का चित्र, प्रमुख ब्लॉकचेन इंजीनियर",
+  "partner1_desc": "Blockchain platform for music rights and fan engagement",
+  "partner2_desc": "Gaming studio bringing play-to-earn experiences",
+  "partner3_desc": "Entertainment agency exploring decentralized media"
 }

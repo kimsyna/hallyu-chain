@@ -1,6 +1,12 @@
 import { initTheme } from './theme.ts';
 import { loadStakingStatus } from './staking.ts';
-import { initI18n, loadLanguage, translate, DEFAULT_LANG } from './i18n.ts';
+import {
+  initI18n,
+  loadLanguage,
+  translate,
+  DEFAULT_LANG,
+  currentLang,
+} from './i18n.ts';
 import { initNav } from './nav.ts';
 import { applyFancyTitles } from './fancy-title.ts';
 import { initAnimations, prefersReducedMotion } from './animations.ts';
@@ -47,6 +53,51 @@ if (backToTop) {
   });
 }
 
+async function loadPartners() {
+  const container = document.getElementById('partners-grid');
+  if (!container) return;
+  try {
+    await loadLanguage(currentLang);
+    const resp = await fetch('partners.json');
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    const partners = await resp.json();
+    partners.forEach((p) => {
+      const item = document.createElement('div');
+      item.className = 'logo-item';
+
+      const link = document.createElement('a');
+      link.href = p.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+
+      const img = document.createElement('img');
+      img.src = p.logo;
+      img.alt = p.alt;
+      img.loading = 'lazy';
+
+      const icon = document.createElement('i');
+      icon.className = 'material-symbols-outlined';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = p.icon;
+
+      const name = document.createElement('span');
+      name.setAttribute('data-i18n', p.nameKey);
+      name.textContent = translate(p.nameKey);
+
+      const desc = document.createElement('p');
+      desc.setAttribute('data-i18n', p.descKey);
+      desc.textContent = translate(p.descKey);
+
+      link.append(img, icon, name, desc);
+      item.append(link);
+      container.append(item);
+    });
+  } catch (err) {
+    console.error('Failed to load partners:', err);
+  }
+}
+
 initTheme();
 initI18n();
 loadStakingStatus();
+loadPartners();

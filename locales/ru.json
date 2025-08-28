@@ -177,5 +177,8 @@
   "theme_switched": "Переключено в {{mode}} режим",
   "alt_daniel": "Портрет Дэниела Кима, CEO и соучредителя",
   "alt_emily": "Портрет Эмили Ли, CTO",
-  "alt_michael": "Портрет Майкла Парка, ведущего блокчейн-инженера"
+  "alt_michael": "Портрет Майкла Парка, ведущего блокчейн-инженера",
+  "partner1_desc": "Blockchain platform for music rights and fan engagement",
+  "partner2_desc": "Gaming studio bringing play-to-earn experiences",
+  "partner3_desc": "Entertainment agency exploring decentralized media"
 }
