@@ -17,7 +17,7 @@ function Head() {
       <meta property="og:description" content={t('hero_subtitle')} />
       <meta name="twitter:title" content={t('title_index')} />
       <meta name="twitter:description" content={t('hero_subtitle')} />
-      <link rel="icon" type="image/svg+xml" href="/assets/hall-symbol.svg" />
+      <link rel="icon" type="image/svg+xml" href="./assets/hall-symbol.svg" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       <link
