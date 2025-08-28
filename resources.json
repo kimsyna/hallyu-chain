@@ -33,5 +33,15 @@
     "nameKey": "res_forum",
     "icon": "forum",
     "url": "https://forum.hallyuchain.io"
+  },
+  {
+    "nameKey": "res_hallyu_fonts",
+    "icon": "font_download",
+    "url": "./assets/hallyu-fonts.txt"
+  },
+  {
+    "nameKey": "res_layout_samples",
+    "icon": "view_quilt",
+    "url": "./assets/layout-samples.txt"
   }
 ]

@@ -193,5 +193,7 @@
   "faq_q6": "Comment puis-je transférer des actifs vers Hallyu Chain ?",
   "faq_a6": "Utilisez le pont officiel inter-chaînes pour déplacer des jetons depuis d'autres réseaux.",
   "faq_q7": "Quelles récompenses reçoivent les stakers ?",
-  "faq_a7": "Les stakers reçoivent une part des frais du réseau et des nouveaux jetons émis."
+  "faq_a7": "Les stakers reçoivent une part des frais du réseau et des nouveaux jetons émis.",
+  "res_hallyu_fonts": "Hallyu Fonts",
+  "res_layout_samples": "Layout Samples"
 }
