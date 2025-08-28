@@ -185,5 +185,13 @@
   "alt_michael": "リードブロックチェーンエンジニア、マイケル・パクの肖像",
   "partner1_desc": "Blockchain platform for music rights and fan engagement",
   "partner2_desc": "Gaming studio bringing play-to-earn experiences",
-  "partner3_desc": "Entertainment agency exploring decentralized media"
+  "partner3_desc": "Entertainment agency exploring decentralized media",
+  "faq_q4": "Hallyu Chain はどのようなセキュリティ対策を採用していますか？",
+  "faq_a4": "監査済みスマートコントラクトとハイブリッド PoS/DPoS コンセンサスがネットワークを保護します。",
+  "faq_q5": "HALL トークンはどのように分配されますか？",
+  "faq_a5": "HALL トークンは、コミュニティ報酬、チーム、投資家、アドバイザー、DAO トレジャリーにベスティング付きで配分されます。",
+  "faq_q6": "資産を Hallyu Chain にブリッジするにはどうすればよいですか？",
+  "faq_a6": "公式クロスチェーンブリッジを使用して他のネットワークからトークンを移動します。",
+  "faq_q7": "ステーカーはどんな報酬を得られますか？",
+  "faq_a7": "ステーカーはネットワーク手数料と新たに発行されたトークンの一部を受け取ります。"
 }
