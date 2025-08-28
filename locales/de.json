@@ -128,6 +128,7 @@
   "newsletter_button": "Abonnieren",
   "newsletter_placeholder": "E-Mail-Adresse",
   "newsletter_success": "Danke für deine Anmeldung!",
+  "newsletter_error": "Anmeldung fehlgeschlagen. Bitte versuche es erneut.",
   "faq_title": "Häufig gestellte Fragen",
   "faq_q1": "Was ist Hallyu Chain?",
   "faq_a1": "Hallyu Chain ist ein blockchainbasiertes digitales Asset für die K-POP-Community.",

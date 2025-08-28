@@ -128,6 +128,7 @@
   "newsletter_button": "اشترك",
   "newsletter_placeholder": "عنوان البريد الإلكتروني",
   "newsletter_success": "شكرًا لاشتراكك!",
+  "newsletter_error": "فشل الاشتراك. يرجى المحاولة مرة أخرى.",
   "faq_title": "الأسئلة الشائعة",
   "faq_q1": "ما هو Hallyu Chain؟",
   "faq_a1": "Hallyu Chain هو أصل رقمي قائم على البلوكتشين لمجتمع K-POP.",

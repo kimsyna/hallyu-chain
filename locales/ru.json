@@ -128,6 +128,7 @@
   "newsletter_button": "Подписаться",
   "newsletter_placeholder": "Email-адрес",
   "newsletter_success": "Спасибо за подписку!",
+  "newsletter_error": "Не удалось подписаться. Попробуйте еще раз.",
   "faq_title": "Часто задаваемые вопросы",
   "faq_q1": "Что такое Hallyu Chain?",
   "faq_a1": "Hallyu Chain — это цифровой актив на базе блокчейна для сообщества K-POP.",

@@ -128,6 +128,7 @@
   "newsletter_button": "सदस्यता लें",
   "newsletter_placeholder": "ईमेल पता",
   "newsletter_success": "सदस्यता लेने के लिए धन्यवाद!",
+  "newsletter_error": "सदस्यता असफल रही। कृपया पुनः प्रयास करें।",
   "faq_title": "प्रश्नोत्तर",
   "faq_q1": "Hallyu Chain क्या है?",
   "faq_a1": "Hallyu Chain K-POP समुदाय के लिए ब्लॉकचेन आधारित डिजिटल संपत्ति है।",

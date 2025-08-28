@@ -128,6 +128,7 @@
   "newsletter_button": "구독하기",
   "newsletter_placeholder": "이메일 주소",
   "newsletter_success": "구독해주셔서 감사합니다!",
+  "newsletter_error": "구독에 실패했습니다. 다시 시도해주세요.",
   "faq_title": "자주 묻는 질문",
   "faq_q1": "한류 체인은 무엇인가요?",
   "faq_a1": "한류 체인은 K-POP 커뮤니티를 위한 블록체인 기반 디지털 자산입니다.",

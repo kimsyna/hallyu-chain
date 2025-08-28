@@ -15,23 +15,46 @@ applyFancyTitles();
 initNav();
 initAnimations();
 
-const newsletterForm = document.querySelector('.newsletter-form');
-const newsletterMessage = document.querySelector('.newsletter-success');
-let newsletterTimeout;
+const newsletterForm = document.querySelector<HTMLFormElement>('.newsletter-form');
+const newsletterMessage = document.querySelector<HTMLElement>('.newsletter-success');
+let newsletterTimeout: number;
 
 if (newsletterForm && newsletterMessage) {
+  const endpoint =
+    newsletterForm.dataset.endpoint ||
+    (window as any).NEWSLETTER_API_URL ||
+    '';
   newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const emailInput = newsletterForm.querySelector<HTMLInputElement>(
+      'input[type="email"]'
+    );
+    if (!emailInput) return;
+
     const lang = localStorage.getItem('lang') || DEFAULT_LANG;
     // Load the selected language and use the resolved value to handle fallbacks
     const resolvedLang = (await loadLanguage(lang)) || DEFAULT_LANG;
-    newsletterMessage.textContent = translate(
-      'newsletter_success',
-      resolvedLang
-    );
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value }),
+      });
+      if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+      newsletterMessage.textContent = translate(
+        'newsletter_success',
+        resolvedLang
+      );
+    } catch (err) {
+      console.error('Newsletter subscription failed:', err);
+      newsletterMessage.textContent = translate(
+        'newsletter_error',
+        resolvedLang
+      );
+    }
     newsletterMessage.hidden = false;
     clearTimeout(newsletterTimeout);
-    newsletterTimeout = setTimeout(() => {
+    newsletterTimeout = window.setTimeout(() => {
       newsletterMessage.hidden = true;
       newsletterMessage.textContent = '';
     }, 5000);

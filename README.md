@@ -143,7 +143,17 @@ Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for p
 
 ## Configuration
 
+### Newsletter Signup
 
+The newsletter form posts to the URL defined by the `NEWSLETTER_API_URL` environment variable. Set this variable to your backend or third-party subscription endpoint (such as a Mailchimp form action) and ensure it is injected into the `data-endpoint` attribute of the `newsletter-form` in `index.html` during deployment.
+
+Example `.env`:
+
+```bash
+NEWSLETTER_API_URL=https://example.com/subscribe
+```
+
+Without this configuration, newsletter submissions will not reach the subscription service.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
