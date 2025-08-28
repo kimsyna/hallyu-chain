@@ -35,6 +35,11 @@
     "url": "https://forum.hallyuchain.io"
   },
   {
+    "nameKey": "res_logo_assets",
+    "icon": "image",
+    "url": "./assets/logo-assets.txt"
+  },
+  {
     "nameKey": "res_hallyu_fonts",
     "icon": "font_download",
     "url": "./assets/hallyu-fonts.txt"
