@@ -12,6 +12,7 @@ This repository contains the marketing website for **Hallyu Chain (HALL)**, a co
 - `frontend/`: React-based frontend offering a dynamic version of the site. See [frontend/README.md](frontend/README.md) for details.
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
 - Navigation within the page is handled through in-page anchors.
+- `assets/hallyu-fonts.txt` and `assets/layout-samples.txt`: Pointers to externally hosted font and layout resources.
 
 Assets are styled with `style.css` and animations are handled in `bundle.js` using GSAP and a custom Web Component for the animated hero title.
 
