@@ -124,6 +124,7 @@ async function loadPartners() {
 async function loadResources() {
   const list = document.getElementById('resources-list');
   if (!list) return;
+  list.innerHTML = '';
   try {
     await loadLanguage(currentLang);
     const resp = await fetch('resources.json');
