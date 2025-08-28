@@ -619,7 +619,7 @@ body.dark-mode .footer {
     --space-sm: 0.75rem;
     --space-md: 1.25rem;
     --space-lg: 1.75rem;
-    --nav-height: 0px;
+    --nav-height: 60px;
   }
 
   html,
@@ -629,11 +629,11 @@ body.dark-mode .footer {
   }
 
   body {
-    padding-top: env(safe-area-inset-top, 0);
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
 
   html {
-    scroll-padding-top: env(safe-area-inset-top, 0);
+    scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0));
   }
 
   .navbar {
