@@ -177,5 +177,8 @@
   "theme_switched": "Passé en mode {{mode}}",
   "alt_daniel": "Portrait de Daniel Kim, PDG et cofondateur",
   "alt_emily": "Portrait d'Emily Lee, CTO",
-  "alt_michael": "Portrait de Michael Park, ingénieur principal blockchain"
+  "alt_michael": "Portrait de Michael Park, ingénieur principal blockchain",
+  "partner1_desc": "Blockchain platform for music rights and fan engagement",
+  "partner2_desc": "Gaming studio bringing play-to-earn experiences",
+  "partner3_desc": "Entertainment agency exploring decentralized media"
 }

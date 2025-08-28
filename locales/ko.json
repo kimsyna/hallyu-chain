@@ -177,5 +177,8 @@
   "theme_switched": "{{mode}} 모드로 전환되었습니다",
   "alt_daniel": "CEO 겸 공동 창립자 Daniel Kim의 초상",
   "alt_emily": "CTO Emily Lee의 초상",
-  "alt_michael": "수석 블록체인 엔지니어 Michael Park의 초상"
+  "alt_michael": "수석 블록체인 엔지니어 Michael Park의 초상",
+  "partner1_desc": "Blockchain platform for music rights and fan engagement",
+  "partner2_desc": "Gaming studio bringing play-to-earn experiences",
+  "partner3_desc": "Entertainment agency exploring decentralized media"
 }

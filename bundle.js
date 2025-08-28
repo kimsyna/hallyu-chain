@@ -1,3 +1,4 @@
+/* eslint-disable */
 // src/theme.ts
 function isDark() {
   return document.body.classList.contains("dark-mode") || !document.body.classList.contains("light-mode") && window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -1516,9 +1517,47 @@ if (backToTop) {
     });
   });
 }
+async function loadPartners() {
+  const container = document.getElementById("partners-grid");
+  if (!container) return;
+  try {
+    await loadLanguage(currentLang);
+    const resp = await fetch("partners.json");
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    const partners = await resp.json();
+    partners.forEach((p) => {
+      const item = document.createElement("div");
+      item.className = "logo-item";
+      const link = document.createElement("a");
+      link.href = p.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      const img = document.createElement("img");
+      img.src = p.logo;
+      img.alt = p.alt;
+      img.loading = "lazy";
+      const icon = document.createElement("i");
+      icon.className = "material-symbols-outlined";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = p.icon;
+      const name = document.createElement("span");
+      name.setAttribute("data-i18n", p.nameKey);
+      name.textContent = translate(p.nameKey);
+      const desc = document.createElement("p");
+      desc.setAttribute("data-i18n", p.descKey);
+      desc.textContent = translate(p.descKey);
+      link.append(img, icon, name, desc);
+      item.append(link);
+      container.append(item);
+    });
+  } catch (err) {
+    console.error("Failed to load partners:", err);
+  }
+}
 initTheme();
 initI18n();
 loadStakingStatus();
+loadPartners();
 /*! Bundled license information:
 
 dompurify/dist/purify.es.mjs:

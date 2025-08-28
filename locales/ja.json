@@ -177,5 +177,8 @@
   "theme_switched": "{{mode}}モードに切り替えました",
   "alt_daniel": "CEO兼共同創設者ダニエル・キムの肖像",
   "alt_emily": "CTOエミリー・リーの肖像",
-  "alt_michael": "リードブロックチェーンエンジニア、マイケル・パクの肖像"
+  "alt_michael": "リードブロックチェーンエンジニア、マイケル・パクの肖像",
+  "partner1_desc": "Blockchain platform for music rights and fan engagement",
+  "partner2_desc": "Gaming studio bringing play-to-earn experiences",
+  "partner3_desc": "Entertainment agency exploring decentralized media"
 }
