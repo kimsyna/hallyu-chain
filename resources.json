@@ -1,0 +1,37 @@
+[
+  {
+    "nameKey": "res_whitepaper",
+    "icon": "insert_drive_file",
+    "url": "#whitepaper"
+  },
+  {
+    "nameKey": "res_github",
+    "icon": "code",
+    "url": "https://github.com/hallyu-chain"
+  },
+  {
+    "nameKey": "res_discord",
+    "icon": "chat",
+    "url": "https://discord.gg/example"
+  },
+  {
+    "nameKey": "res_tutorials",
+    "icon": "school",
+    "url": "https://hallyuchain.io/tutorials"
+  },
+  {
+    "nameKey": "res_blog",
+    "icon": "rss_feed",
+    "url": "https://hallyuchain.io/blog"
+  },
+  {
+    "nameKey": "res_api_docs",
+    "icon": "api",
+    "url": "https://docs.hallyuchain.io"
+  },
+  {
+    "nameKey": "res_forum",
+    "icon": "forum",
+    "url": "https://forum.hallyuchain.io"
+  }
+]

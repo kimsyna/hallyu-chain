@@ -97,7 +97,44 @@ async function loadPartners() {
   }
 }
 
+async function loadResources() {
+  const list = document.getElementById('resources-list');
+  if (!list) return;
+  try {
+    await loadLanguage(currentLang);
+    const resp = await fetch('resources.json');
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    const resources = await resp.json();
+    resources.forEach((r) => {
+      const li = document.createElement('li');
+
+      const icon = document.createElement('i');
+      icon.className = 'material-symbols-outlined';
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = r.icon;
+
+      const link = document.createElement('a');
+      link.href = r.url;
+      if (r.url.startsWith('http')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+
+      const label = document.createElement('span');
+      label.setAttribute('data-i18n', r.nameKey);
+      label.textContent = translate(r.nameKey);
+
+      link.append(label);
+      li.append(icon, link);
+      list.append(li);
+    });
+  } catch (err) {
+    console.error('Failed to load resources:', err);
+  }
+}
+
 initTheme();
 initI18n();
 loadStakingStatus();
 loadPartners();
+loadResources();
