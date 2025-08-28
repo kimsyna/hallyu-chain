@@ -1,4 +1,6 @@
 class HCFancyTitle extends HTMLElement {
+  private prefersReducedMotion?: MediaQueryList;
+  private handlePreferenceChange?: () => void;
   static get observedAttributes() {
     return ['text', 'size'];
   }
@@ -7,10 +9,35 @@ class HCFancyTitle extends HTMLElement {
     this.attachShadow({ mode: 'open' });
   }
   connectedCallback() {
+    if (typeof window !== 'undefined' && 'matchMedia' in window) {
+      this.prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      );
+      this.handlePreferenceChange = () => this.render();
+      const mql = this.prefersReducedMotion;
+      if (mql.addEventListener) {
+        mql.addEventListener('change', this.handlePreferenceChange);
+      } else {
+        // @ts-ignore - older API
+        mql.addListener(this.handlePreferenceChange);
+      }
+    }
     this.render();
   }
   attributeChangedCallback() {
     this.render();
+  }
+  disconnectedCallback() {
+    const mql = this.prefersReducedMotion;
+    const handler = this.handlePreferenceChange;
+    if (mql && handler) {
+      if (mql.removeEventListener) {
+        mql.removeEventListener('change', handler);
+      } else {
+        // @ts-ignore - older API
+        mql.removeListener(handler);
+      }
+    }
   }
   render() {
     const text = this.getAttribute('text') || '';
@@ -21,6 +48,7 @@ class HCFancyTitle extends HTMLElement {
       root.removeChild(root.firstChild);
     }
 
+    const prefersReduced = this.prefersReducedMotion?.matches ?? false;
     const style = document.createElement('style');
     style.textContent = `
         :host { display: inline-block; }
@@ -39,17 +67,21 @@ class HCFancyTitle extends HTMLElement {
           top: 0; left: 0;
           width: 100%; height: 100%;
           mix-blend-mode: screen;
-          animation: glitch 2s infinite;
+          animation: ${prefersReduced ? 'none' : 'glitch 2s infinite'};
         }
         h1::before { color: #f0f; clip-path: polygon(0 0,100% 0,100% 45%,0 45%); }
         h1::after { color: #0ff; clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%); }
-        @keyframes glitch {
+        ${
+          prefersReduced
+            ? ''
+            : `@keyframes glitch {
           0% { transform: translate(0); }
           20% { transform: translate(-2px,-2px); }
           40% { transform: translate(2px,2px); }
           60% { transform: translate(-2px,2px); }
           80% { transform: translate(2px,-2px); }
           100% { transform: translate(0); }
+        }`
         }
     `;
     root.appendChild(style);
