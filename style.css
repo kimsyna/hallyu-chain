@@ -359,6 +359,23 @@ section h3 {
   font-size: 1.3rem;
 }
 
+#about .about-grid {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+  grid-template-columns: 1fr;
+}
+
+#about .about-grid img {
+  width: 100%;
+  height: auto;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
 #about p {
   margin-bottom: var(--space-md);
   line-height: 1.6;
@@ -371,6 +388,12 @@ section h3 {
 #about .about-cta {
   display: inline-block;
   margin-top: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  #about .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 ul,
