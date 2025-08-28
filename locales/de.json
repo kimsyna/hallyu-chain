@@ -117,6 +117,8 @@
   "staking_total": "Gesamt gestaket",
   "staking_rewards": "Deine Belohnungen",
   "staking_percent": "Staking-Prozentsatz",
+  "staking_unavailable": "N/A",
+  "staking_error_unavailable": "Failed to load staking info.",
   "notice_load_fail": "Lokalisierung konnte nicht geladen werden.",
   "notice_lang_unavailable": "Ausgewählte Sprache nicht verfügbar. Standardsprache wird verwendet.",
   "notice_whitepaper_unavailable": "Whitepaper nicht verfügbar.",

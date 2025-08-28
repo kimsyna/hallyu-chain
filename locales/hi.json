@@ -117,6 +117,8 @@
   "staking_total": "कुल स्टेक",
   "staking_rewards": "आपके रिवॉर्ड",
   "staking_percent": "स्टेकिंग प्रतिशत",
+  "staking_unavailable": "N/A",
+  "staking_error_unavailable": "Failed to load staking info.",
   "notice_load_fail": "स्थानीयकरण लोड करने में विफल।",
   "notice_lang_unavailable": "चयनित भाषा उपलब्ध नहीं है। डिफ़ॉल्ट भाषा का उपयोग किया जाएगा।",
   "notice_whitepaper_unavailable": "श्वेतपत्र उपलब्ध नहीं है।",

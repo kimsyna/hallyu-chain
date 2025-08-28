@@ -117,6 +117,8 @@
   "staking_total": "Total em Staking",
   "staking_rewards": "Suas Recompensas",
   "staking_percent": "Percentual de staking",
+  "staking_unavailable": "N/A",
+  "staking_error_unavailable": "Failed to load staking info.",
   "notice_load_fail": "Falha ao carregar a localização.",
   "notice_lang_unavailable": "Idioma selecionado indisponível. Usando o idioma padrão.",
   "notice_whitepaper_unavailable": "Whitepaper indisponível.",

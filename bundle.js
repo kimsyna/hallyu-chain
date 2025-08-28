@@ -31,38 +31,6 @@ function initTheme() {
   });
 }
 
-// src/staking.ts
-async function fetchStakingData(fetchFn = fetch, url = "staking.json") {
-  const resp = await fetchFn(url);
-  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-  return resp.json();
-}
-async function loadStakingStatus(fetchFn = fetch) {
-  const total = document.getElementById("total-staked");
-  const rewards = document.getElementById("user-rewards");
-  const errorEl = document.getElementById("staking-error");
-  const percentEl = document.getElementById("staking-percent");
-  const progressBar = document.getElementById("staking-progress-bar");
-  try {
-    const data = await fetchStakingData(fetchFn);
-    if (total) total.textContent = data.totalStaked;
-    if (rewards) rewards.textContent = data.userRewards;
-    const percent = data.totalSupply ? Number(data.totalStaked) / Number(data.totalSupply) * 100 : Number(data.stakingPercent ?? 0);
-    if (percentEl) percentEl.textContent = `${percent.toFixed(2)}%`;
-    if (progressBar) progressBar.style.width = `${percent}%`;
-  } catch (err) {
-    console.error("Failed to fetch staking info", err);
-    if (total) total.textContent = "N/A";
-    if (rewards) rewards.textContent = "N/A";
-    if (percentEl) percentEl.textContent = "N/A";
-    if (progressBar) progressBar.style.width = "0%";
-    if (errorEl) {
-      errorEl.textContent = "Failed to load staking info.";
-      errorEl.hidden = false;
-    }
-  }
-}
-
 // src/notice.ts
 var notice = document.createElement("div");
 notice.className = "notice";
@@ -1224,6 +1192,38 @@ if (typeof window !== "undefined") {
   window.translate = translate;
 }
 
+// src/staking.ts
+async function fetchStakingData(fetchFn = fetch, url = "staking.json") {
+  const resp = await fetchFn(url);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+async function loadStakingStatus(fetchFn = fetch) {
+  const total = document.getElementById("total-staked");
+  const rewards = document.getElementById("user-rewards");
+  const errorEl = document.getElementById("staking-error");
+  const percentEl = document.getElementById("staking-percent");
+  const progressBar = document.getElementById("staking-progress-bar");
+  try {
+    const data = await fetchStakingData(fetchFn);
+    if (total) total.textContent = data.totalStaked;
+    if (rewards) rewards.textContent = data.userRewards;
+    const percent = data.totalSupply ? Number(data.totalStaked) / Number(data.totalSupply) * 100 : Number(data.stakingPercent ?? 0);
+    if (percentEl) percentEl.textContent = `${percent.toFixed(2)}%`;
+    if (progressBar) progressBar.style.width = `${percent}%`;
+  } catch (err) {
+    console.error("Failed to fetch staking info", err);
+    if (total) total.textContent = translate("staking_unavailable");
+    if (rewards) rewards.textContent = translate("staking_unavailable");
+    if (percentEl) percentEl.textContent = translate("staking_unavailable");
+    if (progressBar) progressBar.style.width = "0%";
+    if (errorEl) {
+      errorEl.textContent = translate("staking_error_unavailable");
+      errorEl.hidden = false;
+    }
+  }
+}
+
 // src/nav.ts
 function initNav() {
   function updateNavHeight() {
@@ -1297,10 +1297,33 @@ var HCFancyTitle = class extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
   connectedCallback() {
+    if (typeof window !== "undefined" && "matchMedia" in window) {
+      this.prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      );
+      this.handlePreferenceChange = () => this.render();
+      const mql = this.prefersReducedMotion;
+      if (mql.addEventListener) {
+        mql.addEventListener("change", this.handlePreferenceChange);
+      } else {
+        mql.addListener(this.handlePreferenceChange);
+      }
+    }
     this.render();
   }
   attributeChangedCallback() {
     this.render();
+  }
+  disconnectedCallback() {
+    const mql = this.prefersReducedMotion;
+    const handler = this.handlePreferenceChange;
+    if (mql && handler) {
+      if (mql.removeEventListener) {
+        mql.removeEventListener("change", handler);
+      } else {
+        mql.removeListener(handler);
+      }
+    }
   }
   render() {
     const text2 = this.getAttribute("text") || "";
@@ -1309,6 +1332,7 @@ var HCFancyTitle = class extends HTMLElement {
     while (root.firstChild) {
       root.removeChild(root.firstChild);
     }
+    const prefersReduced = this.prefersReducedMotion?.matches ?? false;
     const style = document.createElement("style");
     style.textContent = `
         :host { display: inline-block; }
@@ -1327,18 +1351,18 @@ var HCFancyTitle = class extends HTMLElement {
           top: 0; left: 0;
           width: 100%; height: 100%;
           mix-blend-mode: screen;
-          animation: glitch 2s infinite;
+          animation: ${prefersReduced ? "none" : "glitch 2s infinite"};
         }
         h1::before { color: #f0f; clip-path: polygon(0 0,100% 0,100% 45%,0 45%); }
         h1::after { color: #0ff; clip-path: polygon(0 55%,100% 55%,100% 100%,0 100%); }
-        @keyframes glitch {
+        ${prefersReduced ? "" : `@keyframes glitch {
           0% { transform: translate(0); }
           20% { transform: translate(-2px,-2px); }
           40% { transform: translate(2px,2px); }
           60% { transform: translate(-2px,2px); }
           80% { transform: translate(2px,-2px); }
           100% { transform: translate(0); }
-        }
+        }`}
     `;
     root.appendChild(style);
     this.setAttribute("role", "heading");
