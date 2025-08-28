@@ -572,6 +572,12 @@ ol {
   text-align: center;
 }
 
+.ci-section.mission,
+.ci-section.vision,
+.ci-section.voice {
+  margin-top: 2rem;
+}
+
 .brand-colors .color-grid {
   display: flex;
   justify-content: center;

@@ -19,6 +19,30 @@ function Corporate() {
       </div>
       <div>
         <h3>
+          <Trans i18nKey="corporate_mission_title" />
+        </h3>
+        <p>
+          <Trans i18nKey="corporate_mission_text" />
+        </p>
+      </div>
+      <div>
+        <h3>
+          <Trans i18nKey="corporate_vision_title" />
+        </h3>
+        <p>
+          <Trans i18nKey="corporate_vision_text" />
+        </p>
+      </div>
+      <div>
+        <h3>
+          <Trans i18nKey="corporate_voice_title" />
+        </h3>
+        <p>
+          <Trans i18nKey="corporate_voice_text" />
+        </p>
+      </div>
+      <div>
+        <h3>
           <Trans i18nKey="corporate_color_title" />
         </h3>
         <ul className="color-grid">
