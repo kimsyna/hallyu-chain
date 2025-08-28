@@ -26,6 +26,25 @@ The site is fully static and can be served by any web server.
 - Responsive layout driven by modern CSS.
 - Feature cards highlight fan participation, artist support, and global community building.
 
+## Whitepaper
+
+The whitepaper can be viewed directly on the site. Use the language selector in the Whitepaper section to fetch the document from
+`whitepaper/<lang>/index.html` in your preferred language.
+
+Supported languages:
+
+- Arabic (`ar`)
+- German (`de`)
+- English (`en`)
+- Spanish (`es`)
+- French (`fr`)
+- Hindi (`hi`)
+- Japanese (`ja`)
+- Korean (`ko`)
+- Portuguese (`pt`)
+- Russian (`ru`)
+- Chinese (`zh`)
+
 ## Bridge and Multi-chain Deployment
 
 - `contracts/Bridge.sol` locks HALL for cross-chain transfers. Bridge fees are applied and a configurable portion is burned automatically.

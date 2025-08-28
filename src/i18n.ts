@@ -126,7 +126,11 @@ export async function setLanguage(lang) {
     }
   });
   if (location.hash === '#whitepaper') {
-    await loadWhitepaper(lang);
+    const wpSelect = document.getElementById(
+      'whitepaper-lang'
+    ) as HTMLSelectElement | null;
+    const wpLang = wpSelect?.value || lang;
+    await loadWhitepaper(wpLang);
   }
   await applyTokenomics();
   const page = document.body.dataset.page;
@@ -157,7 +161,12 @@ export async function loadWhitepaper(lang) {
 
 function handleHash() {
   if (location.hash === '#whitepaper') {
-    loadWhitepaper(localStorage.getItem('lang') || currentLang);
+    const wpSelect = document.getElementById(
+      'whitepaper-lang'
+    ) as HTMLSelectElement | null;
+    const wpLang =
+      wpSelect?.value || localStorage.getItem('lang') || currentLang;
+    loadWhitepaper(wpLang);
   }
 }
 
@@ -172,6 +181,12 @@ export async function initI18n() {
   const select = document.querySelector('.lang-select');
   if (select) {
     select.addEventListener('change', (e) => setLanguage(e.target.value));
+  }
+  const wpSelect = document.getElementById('whitepaper-lang');
+  if (wpSelect) {
+    wpSelect.addEventListener('change', (e) =>
+      loadWhitepaper((e.target as HTMLSelectElement).value)
+    );
   }
 }
 
