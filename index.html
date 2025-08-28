@@ -462,14 +462,23 @@
 
     <section id="staking">
       <h2 data-i18n="staking_title">Staking & Rewards</h2>
-      <p>
-        <span data-i18n="staking_total">Total Staked:</span>
-        <span id="total-staked">-</span>
-      </p>
-      <p>
-        <span data-i18n="staking_rewards">Your Rewards:</span>
-        <span id="user-rewards">-</span>
-      </p>
+      <div class="staking-card">
+        <p>
+          <span data-i18n="staking_total">Total Staked:</span>
+          <span id="total-staked">-</span>
+        </p>
+        <p>
+          <span data-i18n="staking_rewards">Your Rewards:</span>
+          <span id="user-rewards">-</span>
+        </p>
+        <p>
+          <span data-i18n="staking_percent">Network Staked:</span>
+          <span id="staking-percent">-</span>
+        </p>
+        <div class="staking-progress">
+          <div id="staking-progress-bar"></div>
+        </div>
+      </div>
       <p id="staking-error" class="error" hidden></p>
     </section>
 
