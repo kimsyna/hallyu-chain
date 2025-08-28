@@ -116,6 +116,7 @@
   "staking_title": "Стейкинг и награды",
   "staking_total": "Всего застейкано",
   "staking_rewards": "Ваши награды",
+  "staking_percent": "Процент стейкинга",
   "notice_load_fail": "Не удалось загрузить локализацию.",
   "notice_lang_unavailable": "Выбранный язык недоступен. Используется язык по умолчанию.",
   "notice_whitepaper_unavailable": "Whitepaper недоступен.",
