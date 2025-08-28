@@ -128,6 +128,7 @@
   "newsletter_button": "購読する",
   "newsletter_placeholder": "メールアドレス",
   "newsletter_success": "ご購読ありがとうございます！",
+  "newsletter_error": "購読に失敗しました。もう一度お試しください。",
   "faq_title": "よくある質問",
   "faq_q1": "Hallyu Chainとは？",
   "faq_a1": "Hallyu ChainはK-POPコミュニティ向けのブロックチェーンベースのデジタル資産です。",

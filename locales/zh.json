@@ -128,6 +128,7 @@
   "newsletter_button": "订阅",
   "newsletter_placeholder": "电子邮件地址",
   "newsletter_success": "感谢订阅！",
+  "newsletter_error": "订阅失败。请稍后再试。",
   "faq_title": "常见问题",
   "faq_q1": "Hallyu Chain 是什么？",
   "faq_a1": "Hallyu Chain 是面向 K-POP 社区的区块链数字资产。",

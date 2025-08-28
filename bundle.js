@@ -1487,17 +1487,36 @@ var newsletterForm = document.querySelector(".newsletter-form");
 var newsletterMessage = document.querySelector(".newsletter-success");
 var newsletterTimeout;
 if (newsletterForm && newsletterMessage) {
+  const endpoint = newsletterForm.dataset.endpoint || window.NEWSLETTER_API_URL || "";
   newsletterForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const emailInput = newsletterForm.querySelector(
+      'input[type="email"]'
+    );
+    if (!emailInput) return;
     const lang = localStorage.getItem("lang") || DEFAULT_LANG;
     const resolvedLang = await loadLanguage(lang) || DEFAULT_LANG;
-    newsletterMessage.textContent = translate(
-      "newsletter_success",
-      resolvedLang
-    );
+    try {
+      const resp = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailInput.value })
+      });
+      if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+      newsletterMessage.textContent = translate(
+        "newsletter_success",
+        resolvedLang
+      );
+    } catch (err) {
+      console.error("Newsletter subscription failed:", err);
+      newsletterMessage.textContent = translate(
+        "newsletter_error",
+        resolvedLang
+      );
+    }
     newsletterMessage.hidden = false;
     clearTimeout(newsletterTimeout);
-    newsletterTimeout = setTimeout(() => {
+    newsletterTimeout = window.setTimeout(() => {
       newsletterMessage.hidden = true;
       newsletterMessage.textContent = "";
     }, 5e3);
