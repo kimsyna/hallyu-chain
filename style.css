@@ -117,6 +117,21 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--bg);
+  color: var(--fg);
+  padding: var(--space-xs) var(--space-sm);
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 .navbar {
   position: fixed;
   top: calc(0px + env(safe-area-inset-top, 0));
