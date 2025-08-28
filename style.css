@@ -178,8 +178,13 @@ body {
   border: 1px solid var(--fg);
   color: var(--fg);
   border-radius: 4px;
-  padding: 0.2rem 0.4rem;
+  padding: 0.875rem 0.75rem;
   margin-left: 1rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle {
@@ -189,6 +194,12 @@ body {
   font-size: 1.2rem;
   cursor: pointer;
   margin-left: 1rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .theme-toggle:focus-visible {
@@ -203,6 +214,11 @@ body {
   color: var(--fg);
   font-size: 1.5rem;
   margin-left: auto;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-toggle:focus-visible {
@@ -646,7 +662,7 @@ body.dark-mode .footer {
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
   }
 
   .navbar .nav-links {
