@@ -199,11 +199,11 @@
   "res_layout_samples": "Layout Samples (hosted externally)",
   "role_marketing": "Marketing Lead",
   "role_community": "Community Manager",
-  "bio_daniel": "Seasoned blockchain entrepreneur and K-POP fan.",
-  "bio_emily": "Engineer building scalable decentralized systems.",
-  "bio_michael": "Expert in smart contracts and network design.",
-  "bio_soojin": "Marketing strategist connecting global fans.",
-  "bio_alex": "Community builder fostering engagement.",
+  "bio_daniel": "资深的区块链企业家和K-POP粉丝。",
+  "bio_emily": "构建可扩展去中心化系统的工程师。",
+  "bio_michael": "智能合约和网络设计专家。",
+  "bio_soojin": "连接全球粉丝的营销策略师。",
+  "bio_alex": "促进参与的社区建设者。",
   "alt_soojin": "Portrait of Soo-jin Choi, Marketing Lead",
   "alt_alex": "Portrait of Alex Rivera, Community Manager"
 }
