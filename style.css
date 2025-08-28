@@ -232,7 +232,9 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: calc(100svh - var(--nav-height));
+  min-height: calc(
+    100svh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+  );
   padding: 0 1rem;
   position: relative;
   overflow: hidden;
@@ -242,12 +244,16 @@ body {
 }
 @supports (min-height: 100dvh) {
   .hero {
-    min-height: calc(100dvh - var(--nav-height));
+    min-height: calc(
+      100dvh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+    );
   }
 }
 @supports not (min-height: 100svh) {
   .hero {
-    min-height: calc(100vh - var(--nav-height));
+    min-height: calc(
+      100vh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+    );
   }
 }
 
@@ -693,18 +699,24 @@ body.dark-mode .footer {
   }
 
   .hero {
-    min-height: calc(100svh - var(--nav-height));
+    min-height: calc(
+      100svh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+    );
     padding: calc(var(--space-lg) * 3) var(--space-md) calc(var(--space-lg) * 2);
   }
 
   @supports (min-height: 100dvh) {
     .hero {
-      min-height: calc(100dvh - var(--nav-height));
+      min-height: calc(
+        100dvh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+      );
     }
   }
   @supports not (min-height: 100svh) {
     .hero {
-      min-height: calc(100vh - var(--nav-height));
+      min-height: calc(
+        100vh - var(--nav-height) - env(safe-area-inset-bottom, 0)
+      );
     }
   }
 
