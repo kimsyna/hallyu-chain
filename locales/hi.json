@@ -196,5 +196,14 @@
   "faq_a7": "स्टेकर्स को नेटवर्क शुल्क और नए जारी टोकन का हिस्सा मिलता है।",
   "res_logo_assets": "Logo Assets (hosted externally)",
   "res_hallyu_fonts": "Hallyu Fonts (hosted externally)",
-  "res_layout_samples": "Layout Samples (hosted externally)"
+  "res_layout_samples": "Layout Samples (hosted externally)",
+  "role_marketing": "Marketing Lead",
+  "role_community": "Community Manager",
+  "bio_daniel": "Seasoned blockchain entrepreneur and K-POP fan.",
+  "bio_emily": "Engineer building scalable decentralized systems.",
+  "bio_michael": "Expert in smart contracts and network design.",
+  "bio_soojin": "Marketing strategist connecting global fans.",
+  "bio_alex": "Community builder fostering engagement.",
+  "alt_soojin": "Portrait of Soo-jin Choi, Marketing Lead",
+  "alt_alex": "Portrait of Alex Rivera, Community Manager"
 }

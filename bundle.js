@@ -1484,7 +1484,9 @@ applyFancyTitles();
 initNav();
 initAnimations();
 var newsletterForm = document.querySelector(".newsletter-form");
-var newsletterMessage = document.querySelector(".newsletter-success");
+var newsletterMessage = document.querySelector(
+  ".newsletter-success"
+);
 var newsletterTimeout;
 if (newsletterForm && newsletterMessage) {
   const endpoint = newsletterForm.dataset.endpoint || window.NEWSLETTER_API_URL || "";
@@ -1603,11 +1605,48 @@ async function loadResources() {
     console.error("Failed to load resources:", err);
   }
 }
+async function loadTeam() {
+  const grid = document.getElementById("team-grid");
+  if (!grid) return;
+  try {
+    await loadLanguage(currentLang);
+    const resp = await fetch("team.json");
+    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
+    const team = await resp.json();
+    team.forEach((m) => {
+      const member = document.createElement("div");
+      member.className = "member";
+      const link = document.createElement("a");
+      link.href = m.link;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      const img = document.createElement("img");
+      img.src = m.image;
+      img.alt = translate(m.altKey);
+      img.loading = "lazy";
+      img.setAttribute("data-i18n-alt", m.altKey);
+      const name = document.createElement("h3");
+      name.textContent = m.name;
+      link.append(img, name);
+      const role = document.createElement("p");
+      role.setAttribute("data-i18n", m.roleKey);
+      role.textContent = translate(m.roleKey);
+      const bio = document.createElement("p");
+      bio.setAttribute("data-i18n", m.bioKey);
+      bio.textContent = translate(m.bioKey);
+      member.append(link, role, bio);
+      grid.append(member);
+    });
+  } catch (err) {
+    console.error("Failed to load team:", err);
+  }
+}
 initTheme();
 initI18n();
 loadStakingStatus();
 loadPartners();
 loadResources();
+loadTeam();
 /*! Bundled license information:
 
 dompurify/dist/purify.es.mjs:
