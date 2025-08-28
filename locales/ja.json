@@ -194,6 +194,7 @@
   "faq_a6": "公式クロスチェーンブリッジを使用して他のネットワークからトークンを移動します。",
   "faq_q7": "ステーカーはどんな報酬を得られますか？",
   "faq_a7": "ステーカーはネットワーク手数料と新たに発行されたトークンの一部を受け取ります。",
-  "res_hallyu_fonts": "Hallyu Fonts",
-  "res_layout_samples": "Layout Samples"
+  "res_logo_assets": "Logo Assets (hosted externally)",
+  "res_hallyu_fonts": "Hallyu Fonts (hosted externally)",
+  "res_layout_samples": "Layout Samples (hosted externally)"
 }
