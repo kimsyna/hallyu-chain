@@ -187,11 +187,16 @@ npm test
 
 ## Staking Data
 
-The app first attempts to load live staking information from `/api/staking`.
-If that request fails it automatically falls back to the static `staking.json`
-file in the project root. When using this fallback, remember to refresh the
-file's contents periodically or plan to replace it with a proper backend API so
-that staking figures do not become outdated.
+The app first attempts to load live staking information from a backend API. If
+you have a live service, expose its base URL via `window.STAKING_API_URL` (for
+example `https://api.example.com/api`) before loading `app/main.js`. The helper
+`fetchStakingData` will request the `/staking` route from that base.
+
+If no backend is configured or the request fails, the code falls back to the
+static `staking.json` file in the project root. Ensure this file is present in
+the deployment root (e.g., GitHub Pages); copy the repository’s version there if
+it is missing. Refresh its contents periodically so staking figures do not
+become outdated.
 
 ## Local Development
 

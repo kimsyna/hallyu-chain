@@ -214,7 +214,7 @@ async function loadTeam() {
 
 initTheme();
 initI18n();
-loadStakingStatus();
+loadStakingStatus(fetch, window.STAKING_API_URL);
 loadPartners();
 loadResources();
 loadTeam();
