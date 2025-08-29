@@ -181,7 +181,7 @@
   "staking_rewards": "Ваши награды",
   "staking_percent": "Процент стейкинга",
   "staking_unavailable": "N/A",
-  "staking_error_unavailable": "Failed to load staking info.",
+  "staking_error_unavailable": "Не удалось получить данные стейкинга. Пожалуйста, попробуйте позже.",
   "notice_load_fail": "Не удалось загрузить локализацию.",
   "notice_lang_unavailable": "Выбранный язык недоступен. Используется язык по умолчанию.",
   "notice_whitepaper_unavailable": "Whitepaper недоступен.",

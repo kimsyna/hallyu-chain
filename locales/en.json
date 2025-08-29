@@ -181,7 +181,7 @@
   "staking_rewards": "Your Rewards",
   "staking_percent": "Network Staked",
   "staking_unavailable": "N/A",
-  "staking_error_unavailable": "Failed to load staking info.",
+  "staking_error_unavailable": "Unable to fetch staking data. Please try again later.",
   "notice_load_fail": "Localization failed to load.",
   "notice_lang_unavailable": "Selected language unavailable. Using default language.",
   "notice_whitepaper_unavailable": "Whitepaper not available.",

@@ -11,7 +11,7 @@ const { loadStakingStatus, fetchStakingData } = await import('./staking.ts');
 const { translations } = await import('./i18n.ts');
 translations.en = {
   staking_unavailable: 'N/A',
-  staking_error_unavailable: 'Failed to load staking info.',
+  staking_error_unavailable: 'Unable to fetch staking data. Please try again later.',
 };
 
 test('loadStakingStatus populates elements', async () => {
@@ -32,7 +32,10 @@ test('loadStakingStatus shows error on failure', async () => {
   assert.equal(document.getElementById('staking-progress-bar').style.width, '0%');
   const err = document.getElementById('staking-error');
   assert.equal(err.hidden, false);
-  assert.equal(err.textContent, 'Failed to load staking info.');
+  assert.equal(
+    err.textContent,
+    'Unable to fetch staking data. Please try again later.'
+  );
 });
 
 test('fetchStakingData throws on non-ok response', async () => {

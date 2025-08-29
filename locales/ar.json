@@ -173,7 +173,7 @@
   "staking_rewards": "مكافآتك",
   "staking_percent": "نسبة التخزين",
   "staking_unavailable": "N/A",
-  "staking_error_unavailable": "Failed to load staking info.",
+  "staking_error_unavailable": "تعذر جلب بيانات الستيكينغ. حاول مرة أخرى لاحقًا.",
   "notice_load_fail": "فشل تحميل الترجمة.",
   "notice_lang_unavailable": "اللغة المختارة غير متاحة. سيتم استخدام اللغة الافتراضية.",
   "notice_whitepaper_unavailable": "الورقة البيضاء غير متاحة.",
