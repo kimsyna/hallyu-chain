@@ -201,7 +201,7 @@
   "faq_q7": "Quelles récompenses reçoivent les stakers ?",
   "faq_a7": "Les stakers reçoivent une part des frais du réseau et des nouveaux jetons émis.",
   "faq_q8": "Quel est le taux de burn du token ?",
-  "faq_a8": "1 % de chaque frais de transfert est automatiquement brûlé, réduisant l'offre totale.",
+  "faq_a8": "3 % de chaque frais de transfert est automatiquement brûlé, réduisant l'offre totale.",
   "faq_q9": "Quelles sont les étapes pour utiliser le bridge ?",
   "faq_a9": "Connectez votre portefeuille, sélectionnez les réseaux source et cible ainsi que le token, vérifiez les frais puis approuvez la transaction.",
   "faq_q10": "Comment Hallyu Chain assure-t-il la conformité réglementaire ?",

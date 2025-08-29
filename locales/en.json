@@ -145,7 +145,7 @@
   "faq_q7": "What rewards do stakers earn?",
   "faq_a7": "Stakers receive a share of network fees and newly issued tokens.",
   "faq_q8": "What is the token burn rate?",
-  "faq_a8": "1% of every transfer fee is permanently burned to reduce total supply.",
+  "faq_a8": "3% of every transfer fee is permanently burned to reduce total supply.",
   "faq_q9": "What steps are involved in using the bridge?",
   "faq_a9": "Connect your wallet, select the source and target networks and token, review the fees, and approve the transaction.",
   "faq_q10": "How does Hallyu Chain ensure regulatory compliance?",
