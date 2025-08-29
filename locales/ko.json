@@ -197,6 +197,8 @@
   "res_logo_assets": "로고 에셋(외부 호스팅)",
   "res_hallyu_fonts": "한류 폰트(외부 호스팅)",
   "res_layout_samples": "레이아웃 샘플(외부 호스팅)",
+  "res_token_contract": "HALL 토큰 컨트랙트",
+  "res_whitepaper_pdf": "백서 (PDF)",
   "role_marketing": "Marketing Lead",
   "role_community": "Community Manager",
   "bio_daniel": "경험 많은 블록체인 기업가이자 K-POP 팬.",

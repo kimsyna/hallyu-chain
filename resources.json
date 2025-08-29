@@ -50,6 +50,16 @@
     "url": "./assets/layout-samples.txt"
   },
   {
+    "nameKey": "res_token_contract",
+    "icon": "token",
+    "url": "https://etherscan.io/token/0x1234567890abcdef1234567890abcdef12345678"
+  },
+  {
+    "nameKey": "res_whitepaper_pdf",
+    "icon": "picture_as_pdf",
+    "url": "https://hallyuchain.io/whitepaper.pdf"
+  },
+  {
     "nameKey": "res_token_mainnet",
     "icon": "token",
     "url": "https://etherscan.io/token/0x1234567890abcdef1234567890abcdef12345678"
