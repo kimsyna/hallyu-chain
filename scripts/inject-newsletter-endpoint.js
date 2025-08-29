@@ -3,10 +3,24 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const filePath = path.join(__dirname, '..', 'index.html');
-const endpoint = process.env.NEWSLETTER_API_URL || '';
+const configPath = path.join(__dirname, '..', 'newsletter.config.json');
+
+let endpoint = process.env.NEWSLETTER_API_URL || '';
+
+// Fall back to config file if environment variable is not set
+if (!endpoint && fs.existsSync(configPath)) {
+  try {
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    endpoint = config.newsletterApiUrl || config.endpoint || '';
+  } catch (err) {
+    console.warn('Failed to parse newsletter.config.json:', err);
+  }
+}
 
 if (!endpoint) {
-  console.warn('NEWSLETTER_API_URL is not set. Skipping newsletter endpoint injection.');
+  console.warn(
+    'Newsletter endpoint not set. Skipping newsletter endpoint injection.'
+  );
   process.exit(0);
 }
 

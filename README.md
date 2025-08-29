@@ -216,7 +216,10 @@ Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for p
 
 ### Newsletter Signup
 
-Set `NEWSLETTER_API_URL` to the URL that should receive signup requests (your backend or a service like Mailchimp). During the build step, `npm run build:web` reads this environment variable and injects it into the `data-endpoint` attribute of the `.newsletter-form` in `index.html`.
+Set the newsletter signup endpoint using either an environment variable or a config file.
+
+- **Environment variable:** Define `NEWSLETTER_API_URL` with the URL that should receive signup requests (your backend or a service like Mailchimp). During the build step, `npm run build:web` reads this variable and injects it into the `data-endpoint` attribute of the `.newsletter-form` in `index.html`.
+- **Config file:** Copy `newsletter.config.example.json` to `newsletter.config.json` and edit `newsletterApiUrl` to your endpoint. This file is used when `NEWSLETTER_API_URL` is not set.
 
 Example deployment:
 
@@ -225,7 +228,7 @@ export NEWSLETTER_API_URL=https://example.com/subscribe
 npm run build:web
 ```
 
-If the variable is unset, the build script leaves the form untouched and newsletter submissions will not reach any endpoint.
+If neither the environment variable nor the config file provides an endpoint, the build script leaves the form untouched and newsletter submissions will not reach any endpoint.
  
 ## Partners
 
@@ -237,7 +240,7 @@ Collects useful links for community members and developers. The list of resource
 
 ## Newsletter
 
-Handles email subscriptions for updates and airdrop news. The signup form in `index.html` and logic in `src/index.ts` post to the endpoint specified by the `NEWSLETTER_API_URL` environment variable. Translations reside under `locales/`.
+Handles email subscriptions for updates and airdrop news. The signup form in `index.html` and logic in `src/index.ts` post to the endpoint provided either by the `NEWSLETTER_API_URL` environment variable or by `newsletter.config.json`. Translations reside under `locales/`.
 
 ## FAQ
 
