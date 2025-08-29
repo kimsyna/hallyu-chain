@@ -80,8 +80,6 @@
           </ul>
         </section>
 <script type="module">
-  import '../../bundle.js';
-  window.addEventListener('DOMContentLoaded', () => {
-    window.applyTokenomics?.();
-  });
+  import { applyTokenomics } from '../../app/i18n.js';
+  applyTokenomics();
 </script>
