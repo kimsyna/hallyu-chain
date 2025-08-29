@@ -3,7 +3,7 @@ import { loadStakingStatus } from './staking.ts';
 import {
   initI18n,
   loadLanguage,
-  translate,
+  t,
   DEFAULT_LANG,
   currentLang,
 } from './i18n.ts';
@@ -44,13 +44,13 @@ if (newsletterForm && newsletterMessage) {
         body: JSON.stringify({ email: emailInput.value }),
       });
       if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-      newsletterMessage.textContent = translate(
+      newsletterMessage.textContent = t(
         'newsletter_success',
         resolvedLang
       );
     } catch (err) {
       console.error('Newsletter subscription failed:', err);
-      newsletterMessage.textContent = translate(
+      newsletterMessage.textContent = t(
         'newsletter_error',
         resolvedLang
       );
@@ -108,11 +108,11 @@ async function loadPartners() {
 
       const name = document.createElement('span');
       name.setAttribute('data-i18n', p.nameKey);
-      name.textContent = translate(p.nameKey);
+      name.textContent = t(p.nameKey);
 
       const desc = document.createElement('p');
       desc.setAttribute('data-i18n', p.descKey);
-      desc.textContent = translate(p.descKey);
+      desc.textContent = t(p.descKey);
 
       link.append(img, icon, name, desc);
       item.append(link);
@@ -169,7 +169,7 @@ async function loadResources() {
 
       const label = document.createElement('span');
       label.setAttribute('data-i18n', r.nameKey);
-      label.textContent = translate(r.nameKey);
+      label.textContent = t(r.nameKey);
 
       link.append(label);
       li.append(icon, link);
@@ -207,7 +207,7 @@ async function loadTeam() {
 
       const img = document.createElement('img');
       img.src = m.image;
-      img.alt = translate(m.altKey);
+      img.alt = t(m.altKey);
       img.loading = 'lazy';
       img.setAttribute('data-i18n-alt', m.altKey);
 
@@ -218,11 +218,11 @@ async function loadTeam() {
 
       const role = document.createElement('p');
       role.setAttribute('data-i18n', m.roleKey);
-      role.textContent = translate(m.roleKey);
+      role.textContent = t(m.roleKey);
 
       const bio = document.createElement('p');
       bio.setAttribute('data-i18n', m.bioKey);
-      bio.textContent = translate(m.bioKey);
+      bio.textContent = t(m.bioKey);
 
       member.append(link, role, bio);
       grid.append(member);

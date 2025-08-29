@@ -67,7 +67,7 @@ export async function loadLanguage(lang) {
   return lang;
 }
 
-export function translate(key, lang = currentLang) {
+export function t(key: string, lang = currentLang) {
   return (
     translations[lang]?.[key] ||
     translations[DEFAULT_LANG]?.[key] ||
@@ -79,11 +79,11 @@ export function translate(key, lang = currentLang) {
 export async function setLanguage(lang) {
   const loadedLang = await loadLanguage(lang);
   if (!loadedLang) {
-    showNotice(translate('notice_load_fail', DEFAULT_LANG));
+    showNotice(t('notice_load_fail', DEFAULT_LANG));
     return;
   }
   if (loadedLang !== lang) {
-    showNotice(translate('notice_lang_unavailable', loadedLang));
+    showNotice(t('notice_lang_unavailable', loadedLang));
   }
   lang = loadedLang;
   currentLang = lang;
@@ -158,7 +158,7 @@ export async function loadWhitepaper(lang) {
     window.applyFancyTitles?.();
   } catch (err) {
     console.error('Failed to load whitepaper:', err);
-    const fallback = `<p>${translate('notice_whitepaper_unavailable', lang)}</p>`;
+    const fallback = `<p>${t('notice_whitepaper_unavailable', lang)}</p>`;
     container.innerHTML = DOMPurify.sanitize(fallback);
   }
 }
@@ -197,12 +197,12 @@ export async function initI18n() {
 // Expose helpers for standalone pages
 declare global {
   interface Window {
-    translate?: typeof translate;
+    t?: typeof t;
     applyTokenomics?: typeof applyTokenomics;
   }
 }
 
 if (typeof window !== 'undefined') {
-  window.translate = translate;
+  window.t = t;
   window.applyTokenomics = applyTokenomics;
 }

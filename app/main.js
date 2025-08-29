@@ -3,7 +3,7 @@ import { loadStakingStatus } from './staking.js';
 import {
   initI18n,
   loadLanguage,
-  translate,
+  t,
   DEFAULT_LANG,
   currentLang,
 } from './i18n.js';
@@ -44,13 +44,13 @@ if (newsletterForm && newsletterMessage) {
         body: JSON.stringify({ email: emailInput.value }),
       });
       if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-      newsletterMessage.textContent = translate(
+      newsletterMessage.textContent = t(
         'newsletter_success',
         resolvedLang
       );
     } catch (err) {
       console.error('Newsletter subscription failed:', err);
-      newsletterMessage.textContent = translate(
+      newsletterMessage.textContent = t(
         'newsletter_error',
         resolvedLang
       );
@@ -107,12 +107,12 @@ async function loadPartners() {
           h(
             'span',
             { 'data-i18n': p.nameKey },
-            translate(p.nameKey)
+            t(p.nameKey)
           ),
           h(
             'p',
             { 'data-i18n': p.descKey },
-            translate(p.descKey)
+            t(p.descKey)
           )
         )
       );
@@ -169,7 +169,7 @@ async function loadResources() {
         h(
           'a',
           linkProps,
-          h('span', { 'data-i18n': r.nameKey }, translate(r.nameKey))
+          h('span', { 'data-i18n': r.nameKey }, t(r.nameKey))
         )
       );
       list.append(li);
@@ -196,14 +196,14 @@ async function loadTeam() {
           { href: m.link, target: '_blank', rel: 'noopener noreferrer' },
           h('img', {
             src: m.image,
-            alt: translate(m.altKey),
+            alt: t(m.altKey),
             loading: 'lazy',
             'data-i18n-alt': m.altKey,
           }),
           h('h3', {}, m.name)
         ),
-        h('p', { 'data-i18n': m.roleKey }, translate(m.roleKey)),
-        h('p', { 'data-i18n': m.bioKey }, translate(m.bioKey))
+        h('p', { 'data-i18n': m.roleKey }, t(m.roleKey)),
+        h('p', { 'data-i18n': m.bioKey }, t(m.bioKey))
       );
       grid.append(member);
     });

@@ -1,4 +1,5 @@
 import { setState } from './state/store.ts';
+import { currentLang, loadLanguage, setLanguage } from './i18n.ts';
 
 const routes: Record<string, () => Promise<HTMLElement>> = {
   '/': async () => {
@@ -66,8 +67,10 @@ async function render() {
   const hash = window.location.hash.replace(/^#/, '') || '/';
   const path = hash.startsWith('/') ? hash : `/${hash}`;
   const loader = routes[path] || routes['/'];
+  await loadLanguage(currentLang);
   const view = await loader();
   mount(root, view);
+  await setLanguage(currentLang);
   setState({ route: path });
 }
 
