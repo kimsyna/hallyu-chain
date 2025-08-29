@@ -1,5 +1,5 @@
 import { h } from './lib/dom.js';
-import { setState, getState } from './state/store.js';
+import { setState } from './state/store.js';
 
 export function isDark() {
   return (
