@@ -1,26 +1,26 @@
 [
   {
-    "nameKey": "partner1",
-    "descKey": "partner1_desc",
-    "logo": "./assets/music-chain-logo.svg",
-    "alt": "MusicChain logo",
+    "nameKey": "partner_hybe",
+    "descKey": "partner_hybe_desc",
+    "logo": "./assets/hybe-logo.svg",
+    "alt": "HYBE logo",
     "icon": "music_note",
-    "url": "https://musicchain.example.com"
+    "url": "https://hybecorp.com"
   },
   {
-    "nameKey": "partner2",
-    "descKey": "partner2_desc",
-    "logo": "./assets/game-world-logo.svg",
-    "alt": "GameWorld logo",
-    "icon": "sports_esports",
-    "url": "https://gameworld.example.com"
+    "nameKey": "partner_sm",
+    "descKey": "partner_sm_desc",
+    "logo": "./assets/sm-ent-logo.svg",
+    "alt": "SM Entertainment logo",
+    "icon": "audiotrack",
+    "url": "https://www.smentertainment.com"
   },
   {
-    "nameKey": "partner3",
-    "descKey": "partner3_desc",
-    "logo": "./assets/entermedia-logo.svg",
-    "alt": "EnterMedia logo",
-    "icon": "movie",
-    "url": "https://entermedia.example.com"
+    "nameKey": "partner_cjenm",
+    "descKey": "partner_cjenm_desc",
+    "logo": "./assets/cj-enm-logo.svg",
+    "alt": "CJ ENM logo",
+    "icon": "live_tv",
+    "url": "https://www.cjenm.com/en"
   }
 ]

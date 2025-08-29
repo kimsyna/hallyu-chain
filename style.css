@@ -490,10 +490,10 @@ ol {
 }
 
 .logo-grid {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: var(--space-lg);
-  flex-wrap: wrap;
+  justify-items: center;
   align-items: center;
   max-width: 800px;
   margin: 0 auto;
@@ -503,11 +503,10 @@ ol {
   background: var(--surface);
   border-radius: 8px;
   padding: var(--space-md);
-  width: 120px;
   text-align: center;
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 120px;
 }
 
 .logo-item img {
