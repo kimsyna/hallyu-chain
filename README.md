@@ -90,10 +90,10 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - Team: 14.56%
 - Advisors: 4.86%
 - Investors: 9.71%
-- Transfer burn: 2.91%
+- Transfer burn: 3%
 - Utility: Governance voting, staking rewards, exclusive event access
 - Vesting: Team 24 months, Advisors 12 months, Investors 18 months
-- Burn rate: 2% of each transfer is burned to reduce supply
+- Burn rate: 3% of each transfer is burned to reduce supply
 
 ## Roadmap
 
