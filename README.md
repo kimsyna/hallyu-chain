@@ -174,6 +174,30 @@ NEWSLETTER_API_URL=https://example.com/subscribe
 ```
 
 Without this configuration, newsletter submissions will not reach the subscription service.
+ 
+## Partners
+
+Showcases key collaborators within the ecosystem. Partner entries are stored in `partners.json` and injected into the `#partners` section of `index.html` and the React frontend. Related logos live in `assets/`.
+
+## Resources
+
+Collects useful links for community members and developers. The list of resources is defined in `resources.json` and rendered in `index.html` and the frontend, with supporting files such as `assets/logo-assets.txt` and `assets/hallyu-fonts.txt`.
+
+## Newsletter
+
+Handles email subscriptions for updates and airdrop news. The signup form in `index.html` and logic in `src/index.ts` post to the endpoint specified by the `NEWSLETTER_API_URL` environment variable. Translations reside under `locales/`.
+
+## FAQ
+
+Provides quick answers to common questions about the project. The FAQ content appears in `index.html` and `frontend/src/components/FAQ.tsx`, with localized strings maintained in `locales/*.json`.
+
+## Corporate Identity
+
+Details branding guidance including colors, typography, and logo usage. The `#corporate` section in `index.html` references brand assets in `assets/` and text from `locales/`.
+
+## Team
+
+Introduces the people behind Hallyu Chain. Team member data is listed in `team.json` and displayed in `index.html` and `frontend/src/components/Team.tsx`, using profile images stored in `assets/`.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
