@@ -1,6 +1,9 @@
 # Hallyu Chain Website
 
-This repository contains the marketing website for **Hallyu Chain (HALL)**, a commercial-grade cryptocurrency project built for the global K-POP community.
+## Introduction
+
+Hallyu Chain (HALL) is a commercial-grade cryptocurrency project tailored for the global K-POP community.
+This repository hosts the marketing website for the network, presenting the protocol, core technology, token economy, and community resources.
 
 ## Requirements
 
@@ -14,9 +17,15 @@ This repository contains the marketing website for **Hallyu Chain (HALL)**, a co
 - Navigation within the page is handled through in-page anchors.
 - `assets/hallyu-fonts.txt` and `assets/layout-samples.txt`: Pointers to externally hosted font and layout resources.
 
-Assets are styled with `style.css` and animations are handled in `bundle.js` using GSAP and a custom Web Component for the animated hero title.
+## Technology
 
-The site is fully static and can be served by any web server.
+- Smart contracts written in Solidity and tested with Hardhat.
+- Cross-chain transfers handled by a Bridge contract and multi-network deployment scripts.
+- Static site assets are styled with `style.css` and animations are powered by `bundle.js` using GSAP and a custom Web Component for the animated hero title.
+- The TypeScript entry point at `src/index.ts` is bundled to `bundle.js` for the static site.
+- A dynamic React frontend powered by Vite resides in `frontend/`.
+- Localization is managed through JSON files in `locales/` with runtime language switching.
+- The site is fully static and can be served by any web server.
 
 ## Features
 
