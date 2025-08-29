@@ -11,8 +11,28 @@ function Resources() {
   const [items, setItems] = useState<Resource[]>([]);
 
   useEffect(() => {
-    fetch('/resources.json')
-      .then((res) => res.json())
+    Promise.all([fetch('/resources.json'), fetch('/token-address.json')])
+      .then(async ([resRes, addrRes]) => {
+        const resources = await resRes.json();
+        if (addrRes.ok) {
+          const addresses = await addrRes.json();
+          if (addresses.mainnet?.HallyuToken) {
+            resources.push({
+              nameKey: 'res_token_mainnet',
+              icon: 'token',
+              url: `https://etherscan.io/token/${addresses.mainnet.HallyuToken}`,
+            });
+          }
+          if (addresses.testnet?.HallyuToken) {
+            resources.push({
+              nameKey: 'res_token_testnet',
+              icon: 'token',
+              url: `https://sepolia.etherscan.io/token/${addresses.testnet.HallyuToken}`,
+            });
+          }
+        }
+        return resources;
+      })
       .then(setItems)
       .catch((err) => console.error('Failed to load resources:', err));
   }, []);

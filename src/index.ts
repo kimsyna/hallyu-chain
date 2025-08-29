@@ -127,9 +127,29 @@ async function loadResources() {
   list.innerHTML = '';
   try {
     await loadLanguage(currentLang);
-    const resp = await fetch('resources.json');
-    if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
-    const resources = await resp.json();
+    const [resResp, addrResp] = await Promise.all([
+      fetch('resources.json'),
+      fetch('token-address.json'),
+    ]);
+    if (!resResp.ok) throw new Error(`HTTP error ${resResp.status}`);
+    const resources = await resResp.json();
+    if (addrResp.ok) {
+      const addresses = await addrResp.json();
+      if (addresses.mainnet?.HallyuToken) {
+        resources.push({
+          nameKey: 'res_token_mainnet',
+          icon: 'token',
+          url: `https://etherscan.io/token/${addresses.mainnet.HallyuToken}`,
+        });
+      }
+      if (addresses.testnet?.HallyuToken) {
+        resources.push({
+          nameKey: 'res_token_testnet',
+          icon: 'token',
+          url: `https://sepolia.etherscan.io/token/${addresses.testnet.HallyuToken}`,
+        });
+      }
+    }
     resources.forEach((r) => {
       const li = document.createElement('li');
 
