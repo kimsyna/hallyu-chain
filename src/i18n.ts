@@ -1,4 +1,5 @@
 import { showNotice } from './notice.ts';
+import { setState, getState } from './state/store.ts';
 import createDOMPurify from 'dompurify';
 const DOMPurify = createDOMPurify(window);
 
@@ -11,7 +12,9 @@ const FALLBACK_NOTICES = {
 };
 let tokenomicsCache = null;
 
-export let currentLang = localStorage.getItem('lang') || DEFAULT_LANG;
+export let currentLang =
+  getState().lang || localStorage.getItem('lang') || DEFAULT_LANG;
+setState({ lang: currentLang });
 
 async function loadTokenomics() {
   if (!tokenomicsCache) {
@@ -85,6 +88,7 @@ export async function setLanguage(lang) {
   lang = loadedLang;
   currentLang = lang;
   localStorage.setItem('lang', lang);
+  setState({ lang });
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');

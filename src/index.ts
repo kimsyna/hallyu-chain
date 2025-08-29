@@ -10,10 +10,12 @@ import {
 import { initNav } from './nav.ts';
 import { applyFancyTitles } from './fancy-title.ts';
 import { initAnimations, prefersReducedMotion } from './animations.ts';
+import { initRouter } from './router.ts';
 
 applyFancyTitles();
 initNav();
 initAnimations();
+initRouter();
 
 const newsletterForm =
   document.querySelector<HTMLFormElement>('.newsletter-form');
