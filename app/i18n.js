@@ -1,7 +1,6 @@
 import { showNotice } from './notice.js';
 import { setState, getState } from './state/store.js';
-import createDOMPurify from 'dompurify';
-const DOMPurify = createDOMPurify(window);
+const DOMPurify = window.DOMPurify;
 
 export const translations = {};
 export const DEFAULT_LANG = 'en';
