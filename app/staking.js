@@ -7,7 +7,7 @@ export async function fetchStakingData(
 ) {
   const endpoint = apiBase
     ? `${apiBase.replace(/\/$/, '')}/staking`
-    : 'api/staking';
+    : 'staking.json';
   const resp = await fetchFn(endpoint);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   return resp.json();
