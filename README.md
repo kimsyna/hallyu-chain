@@ -74,6 +74,9 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - Advisors: 4.86%
 - Investors: 9.71%
 - Transfer burn: 2.91%
+- Utility: Governance voting, staking rewards, exclusive event access
+- Vesting: Team 24 months, Advisors 12 months, Investors 18 months
+- Burn rate: 2% of each transfer is burned to reduce supply
 
 ## Roadmap
 
@@ -85,11 +88,23 @@ RPC URLs and the deployer's private key are read from environment variables (`SE
 - 2027 Q2: Introduce mobile wallet
 - 2027 Q3: Expand staking rewards
 - 2027 Q4: Roll out on-chain governance
-- 2028 Q1: Launch metaverse integration
+- 2028 Q1: Launch decentralized streaming beta
+- 2028 Q2: Add AI-powered fan recommendations
+- 2028 Q3: Expand on-chain governance features
+- 2028 Q4: Form artist DAO partnerships
+- 2029 Q1: Integrate metaverse concerts
+- 2029 Q2: Deploy Layer-2 scaling
+- 2029 Q3: Upgrade to eco-friendly consensus
+- 2029 Q4: Tokenize physical merchandise
 
 ## DAO
 
 Hallyu Chain is governed by a decentralized autonomous organization. HALL token holders can propose and vote on upgrades and community initiatives through on-chain governance.
+
+- Submit proposals on-chain to guide project development
+- Vote with HALL tokens during each voting cycle
+- A 10% quorum of the total supply is required for approval
+- Visit the governance portal to participate
 
 ## Design Tokens
 
