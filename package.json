@@ -2,7 +2,6 @@
   "name": "codexer",
   "version": "1.0.0",
   "description": "This repository contains the marketing website for **Hallyu Chain (HALL)**, a commercial-grade cryptocurrency project built for the global K-POP community.",
-  "main": "bundle.js",
   "scripts": {
     "compile": "npx hardhat compile",
     "pretest": "node scripts/offline-compile.js",
@@ -14,7 +13,6 @@
     "check-locales": "node scripts/check-locales.js",
     "staking-api": "node scripts/staking-api.js",
     "dev:backend": "npx hardhat node",
-    "build:web": "esbuild src/index.ts --bundle --format=esm --outfile=bundle.js && node scripts/inject-newsletter-endpoint.js",
     "build:whitepaper": "node scripts/build-whitepaper-pdf.js",
     "update-tokenomics": "node scripts/update-tokenomics.js"
   },
@@ -31,7 +29,6 @@
     "@types/jsdom": "^21.1.7",
     "@types/node": "^24.3.0",
     "dotenv": "^16.4.5",
-    "esbuild": "^0.21.5",
     "eslint": "^9.33.0",
     "hardhat": "^2.26.3",
     "jsdom": "^24.0.0",
