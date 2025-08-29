@@ -53,6 +53,19 @@ export function initNav() {
     });
   }
 
+  function highlightActive() {
+    if (!navLinks) return;
+    const current = location.hash.replace(/^#\/?/, '');
+    navLinks.querySelectorAll('a[href^="#"]').forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      const path = href.replace(/^#\/?/, '');
+      link.classList.toggle('active', path === current);
+    });
+  }
+
+  window.addEventListener('hashchange', highlightActive);
+  highlightActive();
+
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     const navbar = document.querySelector('.navbar');

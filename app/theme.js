@@ -17,11 +17,17 @@ export function updateThemeIcon(themeToggle) {
 
   themeToggle.appendChild(icon);
 }
-export function setTheme(theme, themeToggle = document.querySelector('.theme-toggle')) {
+import { setState, getState } from './state/store.js';
+
+export function setTheme(
+  theme,
+  themeToggle = document.querySelector('.theme-toggle')
+) {
   document.body.classList.toggle('dark-mode', theme === 'dark');
   document.body.classList.toggle('light-mode', theme === 'light');
   if (theme) {
     localStorage.setItem('theme', theme);
+    setState({ theme });
   }
   updateThemeIcon(themeToggle);
 }
