@@ -1,6 +1,7 @@
 import { translate } from './i18n.ts';
 
-export async function fetchStakingData(fetchFn = fetch, url = 'staking.json') {
+// Default endpoint serves live staking data from the backend API
+export async function fetchStakingData(fetchFn = fetch, url = '/api/staking') {
   const resp = await fetchFn(url);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   return resp.json();

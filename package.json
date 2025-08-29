@@ -15,6 +15,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "check-locales": "node scripts/check-locales.js",
+    "staking-api": "node scripts/staking-api.js",
     "dev:frontend": "npm run dev --workspace frontend",
     "dev:backend": "npx hardhat node",
     "dev": "npm run dev:backend & npm run dev:frontend",

@@ -173,7 +173,7 @@
   "staking_rewards": "Vos Récompenses",
   "staking_percent": "Pourcentage de staking",
   "staking_unavailable": "N/A",
-  "staking_error_unavailable": "Failed to load staking info.",
+  "staking_error_unavailable": "Impossible de récupérer les données de staking. Veuillez réessayer plus tard.",
   "notice_load_fail": "Échec du chargement de la localisation.",
   "notice_lang_unavailable": "Langue sélectionnée indisponible. Utilisation de la langue par défaut.",
   "notice_whitepaper_unavailable": "Livre blanc non disponible.",
