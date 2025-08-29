@@ -34,11 +34,14 @@ Hallyu Chain strives to empower fans and creators with a transparent, community-
 ## Technology
 
 - Smart contracts written in Solidity and tested with Hardhat.
+- Hybrid PoS/DPoS consensus structure coordinating staking and delegation in `contracts/StakingPool.sol` and `contracts/HallyuDAO.sol`.
 - Cross-chain transfers handled by a Bridge contract and multi-network deployment scripts.
+- Bridge fees include configurable burns for supply control, implemented in `contracts/Bridge.sol`.
 - Static site assets are styled with `style.css` and animations are powered by `bundle.js` using GSAP and a custom Web Component for the animated hero title.
 - The TypeScript entry point at `src/index.ts` is bundled to `bundle.js` for the static site.
 - A dynamic React frontend powered by Vite resides in `frontend/`.
 - Localization is managed through JSON files in `locales/` with runtime language switching.
+- Audits and security processes provide external reviews and automated tests for core contracts such as `contracts/HallyuToken.sol`.
 - The site is fully static and can be served by any web server.
 
 ## Features
