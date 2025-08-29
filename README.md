@@ -57,6 +57,8 @@ Hallyu Chain strives to empower fans and creators with a transparent, community-
 The whitepaper can be viewed directly on the site. Use the language selector in the Whitepaper section to fetch the document from
 `whitepaper/<lang>/index.html` in your preferred language.
 
+A combined PDF version of all translations can be generated with `npm run build:whitepaper` and is output to `whitepaper/whitepaper.pdf`.
+
 Supported languages:
 
 - Arabic (`ar`)
