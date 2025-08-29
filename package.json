@@ -20,7 +20,7 @@
     "dev:backend": "npx hardhat node",
     "dev": "npm run dev:backend & npm run dev:frontend",
     "serve": "npm run serve --workspace frontend",
-    "build:web": "esbuild src/index.ts --bundle --format=esm --outfile=bundle.js",
+    "build:web": "esbuild src/index.ts --bundle --format=esm --outfile=bundle.js && node scripts/inject-newsletter-endpoint.js",
     "test:frontend": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.js src/*.test.ts"
   },
   "keywords": [],

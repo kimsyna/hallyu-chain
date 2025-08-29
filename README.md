@@ -206,15 +206,16 @@ Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for p
 
 ### Newsletter Signup
 
-The newsletter form posts to the URL defined by the `NEWSLETTER_API_URL` environment variable. Set this variable to your backend or third-party subscription endpoint (such as a Mailchimp form action) and ensure it is injected into the `data-endpoint` attribute of the `newsletter-form` in `index.html` during deployment.
+Set `NEWSLETTER_API_URL` to the URL that should receive signup requests (your backend or a service like Mailchimp). During the build step, `npm run build:web` reads this environment variable and injects it into the `data-endpoint` attribute of the `.newsletter-form` in `index.html`.
 
-Example `.env`:
+Example deployment:
 
 ```bash
-NEWSLETTER_API_URL=https://example.com/subscribe
+export NEWSLETTER_API_URL=https://example.com/subscribe
+npm run build:web
 ```
 
-Without this configuration, newsletter submissions will not reach the subscription service.
+If the variable is unset, the build script leaves the form untouched and newsletter submissions will not reach any endpoint.
  
 ## Partners
 
