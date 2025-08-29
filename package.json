@@ -5,7 +5,7 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "pretest": "node scripts/offline-compile.js",
-    "test": "npx hardhat test --no-compile && TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.js src/*.test.ts",
+    "test": "npx hardhat test --no-compile",
     "deploy": "npx hardhat run scripts/deploy.js --network hardhat",
     "multi-deploy": "node scripts/multichain-deploy.js",
     "lint": "eslint .",
@@ -25,18 +25,13 @@
   "type": "commonjs",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "@types/gsap": "^3.0.0",
-    "@types/jsdom": "^21.1.7",
-    "@types/node": "^24.3.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.33.0",
     "hardhat": "^2.26.3",
     "jsdom": "^24.0.0",
     "lru-cache": "^10.4.3",
     "pdfkit": "^0.17.1",
-    "prettier": "^3.6.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "prettier": "^3.6.2"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0",

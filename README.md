@@ -5,7 +5,13 @@
 Hallyu Chain (HALL) is a commercial-grade cryptocurrency project tailored for the global K-POP community.
 This repository hosts the marketing website for the network, presenting the protocol, core technology, token economy, and community resources.
 
-**Project Vision**  
+## Migration to Vanilla JS
+
+The site was originally built with React and TypeScript, which required a build step and Node tooling.
+To enable direct hosting on services like GitHub Pages and reduce dependencies, the interface has been
+rewritten as standard HTML and ES modules. All TypeScript sources and React components were removed in favor of plain JavaScript.
+
+**Project Vision**
 Hallyu Chain strives to empower fans and creators with a transparent, community-governed blockchain that unites the global K-POP ecosystem.
 
 **Key Features**
@@ -173,13 +179,11 @@ Key directories and files:
 
 ## Testing
 
-Run contract and app tests together:
+The repository only includes contract tests. Run them with:
 
 ```bash
 npm test
 ```
-
-This runs the Hardhat suite for smart contracts and then executes all app tests in `src/*.test.js` using Node's test runner.
 
 ## Staking Data
 
