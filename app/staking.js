@@ -1,7 +1,7 @@
 import { t } from './i18n.js';
 
 // Default endpoint serves live staking data from the backend API
-export async function fetchStakingData(fetchFn = fetch, url = '/api/staking') {
+export async function fetchStakingData(fetchFn = fetch, url = 'api/staking') {
   const resp = await fetchFn(url);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   return resp.json();
@@ -19,7 +19,7 @@ export async function loadStakingStatus(fetchFn = fetch) {
   } catch (err) {
     console.error('Failed to fetch staking info', err);
     try {
-      const resp = await fetchFn('/staking.json');
+      const resp = await fetchFn('staking.json');
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       data = await resp.json();
     } catch (fallbackErr) {
