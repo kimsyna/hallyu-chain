@@ -30,6 +30,30 @@ function FAQ() {
           <Trans i18nKey="faq_a3" components={{ a: <a href="#staking" /> }} />
         </p>
       </details>
+      <details>
+        <summary>
+          <Trans i18nKey="faq_q8" />
+        </summary>
+        <p>
+          <Trans i18nKey="faq_a8" />
+        </p>
+      </details>
+      <details>
+        <summary>
+          <Trans i18nKey="faq_q9" />
+        </summary>
+        <p>
+          <Trans i18nKey="faq_a9" />
+        </p>
+      </details>
+      <details>
+        <summary>
+          <Trans i18nKey="faq_q10" />
+        </summary>
+        <p>
+          <Trans i18nKey="faq_a10" />
+        </p>
+      </details>
     </section>
   )
 }
