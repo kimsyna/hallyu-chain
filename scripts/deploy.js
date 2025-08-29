@@ -97,6 +97,33 @@ async function main() {
     InvestorVesting: investorVestingAddress,
   };
   fs.writeFileSync(filePath, JSON.stringify(addresses, null, 2));
+
+  const tokenAddressPath = path.join(__dirname, '..', 'token-address.json');
+  let tokenAddresses = {};
+  if (fs.existsSync(tokenAddressPath)) {
+    tokenAddresses = JSON.parse(fs.readFileSync(tokenAddressPath));
+  }
+  if (!tokenAddresses[network.name]) tokenAddresses[network.name] = {};
+  tokenAddresses[network.name].HallyuToken = tokenAddress;
+  fs.writeFileSync(tokenAddressPath, JSON.stringify(tokenAddresses, null, 2));
+
+  const resourcesPath = path.join(__dirname, '..', 'resources.json');
+  const resources = JSON.parse(fs.readFileSync(resourcesPath));
+  const explorers = {
+    mainnet: 'https://etherscan.io/token/',
+    sepolia: 'https://sepolia.etherscan.io/token/',
+    bscTestnet: 'https://testnet.bscscan.com/token/',
+  };
+  const resourceKey = `res_token_${network.name}`;
+  const resourceUrl = (explorers[network.name] || 'https://etherscan.io/token/') + tokenAddress;
+  const resourceEntry = { nameKey: resourceKey, icon: 'token', url: resourceUrl };
+  const existingIndex = resources.findIndex((r) => r.nameKey === resourceKey);
+  if (existingIndex >= 0) {
+    resources[existingIndex] = resourceEntry;
+  } else {
+    resources.push(resourceEntry);
+  }
+  fs.writeFileSync(resourcesPath, JSON.stringify(resources, null, 2));
 }
 
 main().catch((error) => {

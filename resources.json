@@ -48,5 +48,15 @@
     "nameKey": "res_layout_samples",
     "icon": "view_quilt",
     "url": "./assets/layout-samples.txt"
+  },
+  {
+    "nameKey": "res_token_mainnet",
+    "icon": "token",
+    "url": "https://etherscan.io/token/0x1234567890abcdef1234567890abcdef12345678"
+  },
+  {
+    "nameKey": "res_token_testnet",
+    "icon": "token",
+    "url": "https://sepolia.etherscan.io/token/0xabcdef1234567890abcdef1234567890abcdef12"
   }
 ]
