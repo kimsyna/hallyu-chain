@@ -1,2 +1,3 @@
 Sample layout files for Hallyu Chain branding.
-Download: https://example.com/layout-samples.zip
+layout-home.png - Homepage layout sample (external asset; not tracked in repo)
+layout-dashboard.png - Dashboard layout sample (external asset; not tracked in repo)
