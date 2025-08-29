@@ -22,7 +22,8 @@
     "serve": "npm run serve --workspace frontend",
     "build:web": "esbuild src/index.ts --bundle --format=esm --outfile=bundle.js && node scripts/inject-newsletter-endpoint.js",
     "test:frontend": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm --test src/*.test.js src/*.test.ts",
-    "build:whitepaper": "node scripts/build-whitepaper-pdf.js"
+    "build:whitepaper": "node scripts/build-whitepaper-pdf.js",
+    "update-tokenomics": "node scripts/update-tokenomics.js"
   },
   "keywords": [],
   "author": "",
