@@ -5,6 +5,20 @@
 Hallyu Chain (HALL) is a commercial-grade cryptocurrency project tailored for the global K-POP community.
 This repository hosts the marketing website for the network, presenting the protocol, core technology, token economy, and community resources.
 
+**Project Vision**  
+Hallyu Chain strives to empower fans and creators with a transparent, community-governed blockchain that unites the global K-POP ecosystem.
+
+**Key Features**
+- Cross-chain infrastructure for worldwide reach
+- DAO-driven governance through the HALL token
+- Secure staking and reward mechanisms
+- Open tools for artists, partners, and developers
+
+**User Benefits**
+- Earn rewards for supporting favorite artists
+- Help steer the project's direction via on-chain voting
+- Access exclusive events and digital collectibles
+
 ## Requirements
 
 - Node.js >= 18.0.0
