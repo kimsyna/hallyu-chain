@@ -10,15 +10,15 @@ global.document = dom.window.document;
 global.localStorage = dom.window.localStorage;
 global.location = dom.window.location;
 
-test('translate returns key when missing', async () => {
-  const { translations, translate } = await import('./i18n.ts');
+test('t returns key when missing', async () => {
+  const { translations, t } = await import('./i18n.ts');
   translations.en = { hello: 'Hello' };
-  assert.equal(translate('hello', 'en'), 'Hello');
-  assert.equal(translate('unknown', 'en'), 'unknown');
+  assert.equal(t('hello', 'en'), 'Hello');
+  assert.equal(t('unknown', 'en'), 'unknown');
 });
 
 test('loadWhitepaper uses translated fallback', async () => {
-  const { translations, translate, loadWhitepaper } = await import('./i18n.ts');
+  const { translations, t, loadWhitepaper } = await import('./i18n.ts');
   translations.en = {
     notice_whitepaper_unavailable: 'Whitepaper not available.',
   };
@@ -34,7 +34,7 @@ test('loadWhitepaper uses translated fallback', async () => {
   }
   assert.equal(
     container.innerHTML,
-    `<p>${translate('notice_whitepaper_unavailable')}</p>`
+    `<p>${t('notice_whitepaper_unavailable')}</p>`
   );
 });
 

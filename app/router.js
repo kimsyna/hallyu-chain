@@ -1,5 +1,6 @@
 import { setState } from './state/store.js';
 import { mount } from './lib/dom.js';
+import { currentLang, loadLanguage, setLanguage } from './i18n.js';
 
 const routes = {
   '/': async () => {
@@ -62,8 +63,10 @@ async function render() {
   const hash = location.hash.replace(/^#/, '') || '/';
   const path = hash.startsWith('/') ? hash : `/${hash}`;
   const loader = routes[path] || routes['/'];
+  await loadLanguage(currentLang);
   const view = await loader();
   mount(root, view);
+  await setLanguage(currentLang);
   setState({ route: path });
 }
 

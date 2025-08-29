@@ -1,4 +1,4 @@
-import { translate } from './i18n.js';
+import { t } from './i18n.js';
 
 // Default endpoint serves live staking data from the backend API
 export async function fetchStakingData(fetchFn = fetch, url = '/api/staking') {
@@ -24,12 +24,12 @@ export async function loadStakingStatus(fetchFn = fetch) {
       data = await resp.json();
     } catch (fallbackErr) {
       console.error('Failed to fetch fallback staking info', fallbackErr);
-      if (total) total.textContent = translate('staking_unavailable');
-      if (rewards) rewards.textContent = translate('staking_unavailable');
-      if (percentEl) percentEl.textContent = translate('staking_unavailable');
+      if (total) total.textContent = t('staking_unavailable');
+      if (rewards) rewards.textContent = t('staking_unavailable');
+      if (percentEl) percentEl.textContent = t('staking_unavailable');
       if (progressBar) progressBar.style.width = '0%';
       if (errorEl) {
-        errorEl.textContent = translate('staking_error_unavailable');
+        errorEl.textContent = t('staking_error_unavailable');
         errorEl.hidden = false;
       }
       return;
