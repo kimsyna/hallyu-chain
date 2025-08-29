@@ -189,6 +189,14 @@ npm run test:frontend
 
 Both scripts support JavaScript and TypeScript test files.
 
+## Staking Data
+
+The frontend first attempts to load live staking information from `/api/staking`.
+If that request fails it automatically falls back to the static `staking.json`
+file in the project root. When using this fallback, remember to refresh the
+file's contents periodically or plan to replace it with a proper backend API so
+that staking figures do not become outdated.
+
 ## Local Development
 
 1. Clone the repository and change into the project directory:
