@@ -1,3 +1,8 @@
 {
-  "HallyuToken": "0x0000000000000000000000000000000000000000"
+  "mainnet": {
+    "HallyuToken": "0x1234567890abcdef1234567890abcdef12345678"
+  },
+  "testnet": {
+    "HallyuToken": "0xabcdef1234567890abcdef1234567890abcdef12"
+  }
 }
