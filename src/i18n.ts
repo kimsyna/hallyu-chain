@@ -190,7 +190,15 @@ export async function initI18n() {
   }
 }
 
-// Expose translate helper
+// Expose helpers for standalone pages
+declare global {
+  interface Window {
+    translate?: typeof translate;
+    applyTokenomics?: typeof applyTokenomics;
+  }
+}
+
 if (typeof window !== 'undefined') {
   window.translate = translate;
+  window.applyTokenomics = applyTokenomics;
 }
