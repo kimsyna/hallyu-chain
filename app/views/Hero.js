@@ -1,4 +1,4 @@
-import { h } from './h.js';
+import { h } from '../lib/dom.js';
 
 export function Hero() {
   const title = h('hc-fancy-title', {

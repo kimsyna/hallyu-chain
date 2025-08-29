@@ -1,10 +1,12 @@
 import { setState, subscribe } from './state/store.js';
+import { h } from './lib/dom.js';
 
-const notice = document.createElement('div');
-notice.className = 'notice';
-notice.setAttribute('role', 'status');
-notice.setAttribute('aria-live', 'polite');
-notice.hidden = true;
+const notice = h('div', {
+  className: 'notice',
+  role: 'status',
+  'aria-live': 'polite',
+  hidden: '',
+});
 document.body.appendChild(notice);
 let noticeTimeout;
 

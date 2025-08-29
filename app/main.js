@@ -11,6 +11,7 @@ import { initNav } from './nav.js';
 import { applyFancyTitles } from './fancy-title.js';
 import { initAnimations, prefersReducedMotion } from './animations.js';
 import { initRouter } from './router.js';
+import { h } from './lib/dom.js';
 
 applyFancyTitles();
 initNav();
@@ -87,34 +88,34 @@ async function loadPartners() {
     if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
     const partners = await resp.json();
     partners.forEach((p) => {
-      const item = document.createElement('div');
-      item.className = 'logo-item';
-
-      const link = document.createElement('a');
-      link.href = p.url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-
-      const img = document.createElement('img');
-      img.src = p.logo;
-      img.alt = p.alt;
-      img.loading = 'lazy';
-
-      const icon = document.createElement('i');
-      icon.className = 'material-symbols-outlined';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = p.icon;
-
-      const name = document.createElement('span');
-      name.setAttribute('data-i18n', p.nameKey);
-      name.textContent = translate(p.nameKey);
-
-      const desc = document.createElement('p');
-      desc.setAttribute('data-i18n', p.descKey);
-      desc.textContent = translate(p.descKey);
-
-      link.append(img, icon, name, desc);
-      item.append(link);
+      const item = h(
+        'div',
+        { className: 'logo-item' },
+        h(
+          'a',
+          {
+            href: p.url,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          },
+          h('img', { src: p.logo, alt: p.alt, loading: 'lazy' }),
+          h(
+            'i',
+            { className: 'material-symbols-outlined', 'aria-hidden': 'true' },
+            p.icon
+          ),
+          h(
+            'span',
+            { 'data-i18n': p.nameKey },
+            translate(p.nameKey)
+          ),
+          h(
+            'p',
+            { 'data-i18n': p.descKey },
+            translate(p.descKey)
+          )
+        )
+      );
       container.append(item);
     });
   } catch (err) {
@@ -152,26 +153,25 @@ async function loadResources() {
       }
     }
     resources.forEach((r) => {
-      const li = document.createElement('li');
-
-      const icon = document.createElement('i');
-      icon.className = 'material-symbols-outlined';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = r.icon;
-
-      const link = document.createElement('a');
-      link.href = r.url;
+      const linkProps = { href: r.url };
       if (r.url.startsWith('http')) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+        linkProps.target = '_blank';
+        linkProps.rel = 'noopener noreferrer';
       }
-
-      const label = document.createElement('span');
-      label.setAttribute('data-i18n', r.nameKey);
-      label.textContent = translate(r.nameKey);
-
-      link.append(label);
-      li.append(icon, link);
+      const li = h(
+        'li',
+        {},
+        h(
+          'i',
+          { className: 'material-symbols-outlined', 'aria-hidden': 'true' },
+          r.icon
+        ),
+        h(
+          'a',
+          linkProps,
+          h('span', { 'data-i18n': r.nameKey }, translate(r.nameKey))
+        )
+      );
       list.append(li);
     });
   } catch (err) {
@@ -188,34 +188,23 @@ async function loadTeam() {
     if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
     const team = await resp.json();
     team.forEach((m) => {
-      const member = document.createElement('div');
-      member.className = 'member';
-
-      const link = document.createElement('a');
-      link.href = m.link;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-
-      const img = document.createElement('img');
-      img.src = m.image;
-      img.alt = translate(m.altKey);
-      img.loading = 'lazy';
-      img.setAttribute('data-i18n-alt', m.altKey);
-
-      const name = document.createElement('h3');
-      name.textContent = m.name;
-
-      link.append(img, name);
-
-      const role = document.createElement('p');
-      role.setAttribute('data-i18n', m.roleKey);
-      role.textContent = translate(m.roleKey);
-
-      const bio = document.createElement('p');
-      bio.setAttribute('data-i18n', m.bioKey);
-      bio.textContent = translate(m.bioKey);
-
-      member.append(link, role, bio);
+      const member = h(
+        'div',
+        { className: 'member' },
+        h(
+          'a',
+          { href: m.link, target: '_blank', rel: 'noopener noreferrer' },
+          h('img', {
+            src: m.image,
+            alt: translate(m.altKey),
+            loading: 'lazy',
+            'data-i18n-alt': m.altKey,
+          }),
+          h('h3', {}, m.name)
+        ),
+        h('p', { 'data-i18n': m.roleKey }, translate(m.roleKey)),
+        h('p', { 'data-i18n': m.bioKey }, translate(m.bioKey))
+      );
       grid.append(member);
     });
   } catch (err) {

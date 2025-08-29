@@ -1,3 +1,5 @@
+import { h } from './lib/dom.js';
+
 class HCFancyTitle extends HTMLElement {
   static get observedAttributes() {
     return ['text', 'size'];
@@ -48,7 +50,7 @@ class HCFancyTitle extends HTMLElement {
     }
 
     const prefersReduced = this.prefersReducedMotion?.matches ?? false;
-    const style = document.createElement('style');
+    const style = h('style');
     style.textContent = `
         :host { display: inline-block; }
         h1 {
@@ -88,9 +90,7 @@ class HCFancyTitle extends HTMLElement {
     this.setAttribute('role', 'heading');
     this.setAttribute('aria-level', size === 'medium' ? '2' : '1');
 
-    const h1 = document.createElement('h1');
-    h1.textContent = text;
-    h1.setAttribute('data-text', text);
+    const h1 = h('h1', { 'data-text': text }, text);
     root.appendChild(h1);
   }
 }
@@ -100,7 +100,7 @@ customElements.define('hc-fancy-title', HCFancyTitle);
 export function applyFancyTitles() {
   document.querySelectorAll('h1').forEach((h1) => {
     if (h1.closest('hc-fancy-title')) return;
-    const fancy = document.createElement('hc-fancy-title');
+    const fancy = h('hc-fancy-title');
     fancy.setAttribute('size', 'large');
     fancy.setAttribute('text', h1.textContent.trim());
     if (h1.className) fancy.className = h1.className;
@@ -109,7 +109,7 @@ export function applyFancyTitles() {
   });
   document.querySelectorAll('h2').forEach((h2) => {
     if (h2.closest('hc-fancy-title')) return;
-    const fancy = document.createElement('hc-fancy-title');
+    const fancy = h('hc-fancy-title');
     fancy.setAttribute('size', 'medium');
     fancy.setAttribute('text', h2.textContent.trim());
     if (h2.className) fancy.className = h2.className;
