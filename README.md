@@ -26,7 +26,7 @@ Hallyu Chain strives to empower fans and creators with a transparent, community-
 ## Structure
 
 - `index.html`: Single-page layout introducing the protocol, technology and token model, with sections for the Team, Corporate Identity, and Whitepaper.
-- `frontend/`: React-based frontend offering a dynamic version of the site. See [frontend/README.md](frontend/README.md) for details.
+- `/app/`: Vanilla JavaScript modules providing hash-based routing, views, state management, and DOM helpers.
 - Icon-driven lists and a new resources section provide quick links to the whitepaper, GitHub repository and community channels.
 - Navigation within the page is handled through in-page anchors.
 - `assets/hallyu-fonts.txt` and `assets/layout-samples.txt`: Pointers to externally hosted font and layout resources.
@@ -38,8 +38,7 @@ Hallyu Chain strives to empower fans and creators with a transparent, community-
 - Cross-chain transfers handled by a Bridge contract and multi-network deployment scripts.
 - Bridge fees include configurable burns for supply control, implemented in `contracts/Bridge.sol`.
 - Static site assets are styled with `style.css` and animations are powered by `bundle.js` using GSAP and a custom Web Component for the animated hero title.
-- The TypeScript entry point at `src/index.ts` is bundled to `bundle.js` for the static site.
-- A dynamic React frontend powered by Vite resides in `frontend/`.
+- Client-side behavior is handled by standard JavaScript modules in `/app/`, loaded via `app/main.js`.
 - Localization is managed through JSON files in `locales/` with runtime language switching.
 - Audits and security processes provide external reviews and automated tests for core contracts such as `contracts/HallyuToken.sol`.
 - The site is fully static and can be served by any web server.
@@ -145,53 +144,46 @@ These tokens drive margins, paddings and gaps for common layout components. The 
 
 ## Build
 
-Bundle the TypeScript entry point for the static site:
+Bundle the static site's JavaScript entry point:
 
 ```bash
 npm run build:web
 ```
 
-This command outputs `bundle.js` from `src/index.ts`, and the static site loads that file.
+This command outputs `bundle.js` from the source files in `src/`, and the static site loads that file.
 
-## React Frontend
+## App Structure
 
-An interactive version of the site lives in [`frontend/`](frontend) and is built with React and Vite.
+The previous React/Vite setup has been replaced by a lightweight JavaScript application in [`/app/`](app).
+Key directories and files:
 
-Run the development server:
+- `main.js` bootstraps the app and hooks up navigation and forms.
+- `views/` contains rendering functions for each page section.
+- `router.js` handles hash-based routing and lazy-loads views.
+- `lib/dom.js` provides DOM helpers that replace JSX templates.
+- `state/store.js` implements a tiny global state container.
 
-```bash
-npm run dev --workspace frontend
-```
+### Major Conversion Rules
 
-Create a production build:
-
-```bash
-npm run build --workspace frontend
-```
-
-For more comprehensive instructions, see [frontend/README.md](frontend/README.md).
+- TypeScript sources were converted to plain JavaScript modules.
+- JSX and React components were removed in favor of DOM helper functions.
+- Routing now relies on `location.hash` instead of React Router.
+- Shared DOM utilities live in `app/lib/dom.js`.
+- Global state is managed through `app/state/store.js` rather than React state.
 
 ## Testing
 
-Run contract and frontend tests together:
+Run contract and app tests together:
 
 ```bash
 npm test
 ```
 
-This runs the Hardhat suite for smart contracts and then executes all frontend tests in `src/*.test.{js,ts}` using Node's test runner.
-
-To run only the frontend tests:
-
-```bash
-npm run test:frontend
-```
-
-Both scripts support JavaScript and TypeScript test files.
+This runs the Hardhat suite for smart contracts and then executes all app tests in `src/*.test.js` using Node's test runner.
 
 ## Staking Data
 
-The frontend first attempts to load live staking information from `/api/staking`.
+The app first attempts to load live staking information from `/api/staking`.
 If that request fails it automatically falls back to the static `staking.json`
 file in the project root. When using this fallback, remember to refresh the
 file's contents periodically or plan to replace it with a proper backend API so
@@ -202,15 +194,21 @@ that staking figures do not become outdated.
 1. Clone the repository and change into the project directory:
    ```bash
    git clone <repo-url>
-   cd codexer
+   cd hallyu-chain
    ```
 2. Launch a simple HTTP server to serve the static files:
    ```bash
-   python3 -m http.server 8080
+   python -m http.server
    ```
-3. Visit `http://localhost:8080` in your browser to explore the site locally.
+3. Visit `http://localhost:8000` in your browser to explore the site locally.
 
 Any web server (e.g., Nginx, Apache, GitHub Pages) can host the built site for production use.
+
+## GitHub Pages Deployment
+
+1. Push your changes to GitHub.
+2. In your repository settings, enable **GitHub Pages** for the `main` branch and root (`/`) directory.
+3. The site will be published at `https://<username>.github.io/<repo>/` after the Pages build completes.
 
 ## Configuration
 
@@ -232,19 +230,19 @@ If neither the environment variable nor the config file provides an endpoint, th
  
 ## Partners
 
-Showcases key collaborators within the ecosystem. Partner entries are stored in `partners.json` and injected into the `#partners` section of `index.html` and the React frontend. Related logos live in `assets/`.
+Showcases key collaborators within the ecosystem. Partner entries are stored in `partners.json` and injected into the `#partners` section of `index.html` and the view in `app/views/Partners.js`. Related logos live in `assets/`.
 
 ## Resources
 
-Collects useful links for community members and developers. The list of resources is defined in `resources.json` and rendered in `index.html` and the frontend, with supporting files such as `assets/logo-assets.txt` and `assets/hallyu-fonts.txt`.
+Collects useful links for community members and developers. The list of resources is defined in `resources.json` and rendered in `index.html` and the view in `app/views/Resources.js`, with supporting files such as `assets/logo-assets.txt` and `assets/hallyu-fonts.txt`.
 
 ## Newsletter
 
-Handles email subscriptions for updates and airdrop news. The signup form in `index.html` and logic in `src/index.ts` post to the endpoint provided either by the `NEWSLETTER_API_URL` environment variable or by `newsletter.config.json`. Translations reside under `locales/`.
+Handles email subscriptions for updates and airdrop news. The signup form in `index.html` is wired up by `app/main.js` and posts to the endpoint provided either by the `NEWSLETTER_API_URL` environment variable or by `newsletter.config.json`. Translations reside under `locales/`.
 
 ## FAQ
 
-Provides quick answers to common questions about the project. The FAQ content appears in `index.html` and `frontend/src/components/FAQ.tsx`, with localized strings maintained in `locales/*.json`.
+Provides quick answers to common questions about the project. The FAQ content appears in `index.html` and `app/views/FAQ.js`, with localized strings maintained in `locales/*.json`.
 
 ## Corporate Identity
 
@@ -252,7 +250,7 @@ Details branding guidance including colors, typography, and logo usage. The `#co
 
 ## Team
 
-Introduces the people behind Hallyu Chain. Team member data is listed in `team.json` and displayed in `index.html` and `frontend/src/components/Team.tsx`, using profile images stored in `assets/`.
+Introduces the people behind Hallyu Chain. Team member data is listed in `team.json` and displayed in `index.html` and `app/views/Team.js`, using profile images stored in `assets/`.
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
