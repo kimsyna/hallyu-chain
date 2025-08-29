@@ -1,4 +1,5 @@
 import { setState } from './state/store.js';
+import { mount } from './lib/dom.js';
 
 const routes = {
   '/': async () => {
@@ -54,11 +55,6 @@ const routes = {
     return Whitepaper();
   },
 };
-
-function mount(root, component) {
-  root.innerHTML = '';
-  root.appendChild(component);
-}
 
 async function render() {
   const root = document.getElementById('app');

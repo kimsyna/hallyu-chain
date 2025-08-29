@@ -1,4 +1,4 @@
-export function h(tag, props = {}, ...children) {
+export const h = (tag, props = {}, ...children) => {
   const el = document.createElement(tag);
   for (const [key, value] of Object.entries(props || {})) {
     if (key === 'className') {
@@ -18,4 +18,9 @@ export function h(tag, props = {}, ...children) {
     }
   }
   return el;
-}
+};
+
+export const mount = (root, node) => {
+  root.innerHTML = '';
+  root.appendChild(node);
+};

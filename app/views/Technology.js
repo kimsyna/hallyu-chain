@@ -1,4 +1,4 @@
-import { h } from './h.js';
+import { h } from '../lib/dom.js';
 
 export function Technology() {
   return h(

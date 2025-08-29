@@ -1,3 +1,6 @@
+import { h } from './lib/dom.js';
+import { setState, getState } from './state/store.js';
+
 export function isDark() {
   return (
     document.body.classList.contains('dark-mode') ||
@@ -10,14 +13,14 @@ export function updateThemeIcon(themeToggle) {
   // Clear existing icon/content
   themeToggle.textContent = '';
 
-  const icon = document.createElement('i');
-  icon.classList.add('material-symbols-outlined');
-  icon.setAttribute('aria-hidden', 'true');
-  icon.textContent = isDark() ? 'light_mode' : 'dark_mode';
-
-  themeToggle.appendChild(icon);
+  themeToggle.appendChild(
+    h(
+      'i',
+      { className: 'material-symbols-outlined', 'aria-hidden': 'true' },
+      isDark() ? 'light_mode' : 'dark_mode'
+    )
+  );
 }
-import { setState, getState } from './state/store.js';
 
 export function setTheme(
   theme,
