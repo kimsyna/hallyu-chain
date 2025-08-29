@@ -25,7 +25,7 @@
   },
   {
     "name": "Soo-jin Choi",
-    "image": "./assets/hall-symbol.svg",
+    "image": "./assets/team-soojin-choi.svg",
     "roleKey": "role_marketing",
     "bioKey": "bio_soojin",
     "altKey": "alt_soojin",
@@ -33,7 +33,7 @@
   },
   {
     "name": "Alex Rivera",
-    "image": "./assets/hall-symbol.svg",
+    "image": "./assets/team-alex-rivera.svg",
     "roleKey": "role_community",
     "bioKey": "bio_alex",
     "altKey": "alt_alex",
