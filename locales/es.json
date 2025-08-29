@@ -145,7 +145,7 @@
   "faq_q7": "¿Qué recompensas obtienen los stakers?",
   "faq_a7": "Los stakers reciben una parte de las comisiones de la red y de los nuevos tokens emitidos.",
   "faq_q8": "¿Cuál es la tasa de quema de tokens?",
-  "faq_a8": "Se quema automáticamente el 1% de cada comisión de transferencia, reduciendo el suministro total.",
+  "faq_a8": "Se quema automáticamente el 3% de cada comisión de transferencia, reduciendo el suministro total.",
   "faq_q9": "¿Qué pasos requiere usar el puente?",
   "faq_a9": "Conecta tu billetera, elige las redes de origen y destino y el token, revisa las tarifas y aprueba la transacción.",
   "faq_q10": "¿Cómo garantiza Hallyu Chain el cumplimiento normativo?",
