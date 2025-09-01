@@ -120,6 +120,7 @@ async function loadPartners() {
     });
   } catch (err) {
     console.error('Failed to load partners:', err);
+    container.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
@@ -176,6 +177,7 @@ async function loadResources() {
     });
   } catch (err) {
     console.error('Failed to load resources:', err);
+    list.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
@@ -209,6 +211,7 @@ async function loadTeam() {
     });
   } catch (err) {
     console.error('Failed to load team:', err);
+    grid.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
