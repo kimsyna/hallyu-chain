@@ -2,15 +2,7 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
-interface IHallyuToken is IERC20 {
-    function mint(address to, uint256 amount) external;
-    function getPastVotes(address account, uint256 blockNumber)
-        external
-        view
-        returns (uint256);
-}
+import "./interfaces/IHallyuToken.sol";
 
 /// @title HallyuDAO
 /// @notice Simple token-based governance for HallyuToken

@@ -6,8 +6,9 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
+import "./interfaces/IHallyuToken.sol";
 
-contract HallyuToken is ERC20Capped, ERC20Burnable, ERC20Votes, Ownable {
+contract HallyuToken is ERC20Capped, ERC20Burnable, ERC20Votes, Ownable, IHallyuToken {
     uint256 public constant INITIAL_SUPPLY = 10_000_000_000 * 10 ** 18;
     uint256 public constant CAP = INITIAL_SUPPLY;
 
