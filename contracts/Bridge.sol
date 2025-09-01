@@ -22,6 +22,10 @@ contract Bridge is Ownable, ReentrancyGuard, Pausable {
     uint256 public feeRate;
     // part of the fee to burn in basis points
     uint256 public burnRate;
+    // address that receives collected fees
+    address public feeCollector;
+    // accumulated, withdrawable fees
+    uint256 public collectedFees;
 
     event BridgeInitiated(
         address indexed from,
@@ -33,11 +37,14 @@ contract Bridge is Ownable, ReentrancyGuard, Pausable {
     event TokensReleased(address indexed to, uint256 amount);
     event FeeRateUpdated(uint256 newFeeRate);
     event BurnRateUpdated(uint256 newBurnRate);
+    event FeeCollectorUpdated(address newFeeCollector);
+    event FeesWithdrawn(address indexed collector, uint256 amount);
 
     constructor(address tokenAddress, uint256 _feeRate, uint256 _burnRate) Ownable(msg.sender) {
         token = IERC20Burnable(tokenAddress);
         feeRate = _feeRate;
         burnRate = _burnRate;
+        feeCollector = msg.sender;
     }
 
     /// @notice set fee rate (in basis points)
@@ -50,6 +57,13 @@ contract Bridge is Ownable, ReentrancyGuard, Pausable {
     function setBurnRate(uint256 _burnRate) external onlyOwner {
         burnRate = _burnRate;
         emit BurnRateUpdated(_burnRate);
+    }
+
+    /// @notice set address that receives collected fees
+    function setFeeCollector(address _feeCollector) external onlyOwner {
+        require(_feeCollector != address(0), "invalid feeCollector");
+        feeCollector = _feeCollector;
+        emit FeeCollectorUpdated(_feeCollector);
     }
 
     /// @notice deposit tokens for bridging to another chain
@@ -65,12 +79,17 @@ contract Bridge is Ownable, ReentrancyGuard, Pausable {
         uint256 fee = (amount * feeRate) / 10_000;
         uint256 burnAmount = (fee * burnRate) / 10_000;
         uint256 amountAfterFee = amount - fee;
+        uint256 feeAfterBurn = fee - burnAmount;
 
         // pull tokens from user
         token.safeTransferFrom(msg.sender, address(this), amount);
 
         if (burnAmount > 0) {
             token.burn(burnAmount);
+        }
+
+        if (feeAfterBurn > 0) {
+            collectedFees += feeAfterBurn;
         }
 
         emit BridgeInitiated(msg.sender, recipient, amountAfterFee, dstChainId, fee);
@@ -85,6 +104,14 @@ contract Bridge is Ownable, ReentrancyGuard, Pausable {
     {
         token.safeTransfer(to, amount);
         emit TokensReleased(to, amount);
+    }
+
+    /// @notice withdraw collected fees
+    function withdrawFees(uint256 amount) external onlyOwner nonReentrant {
+        require(amount <= collectedFees, "insufficient fees");
+        collectedFees -= amount;
+        token.safeTransfer(feeCollector, amount);
+        emit FeesWithdrawn(feeCollector, amount);
     }
 
     /// @notice pause the bridge
