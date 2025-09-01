@@ -38,13 +38,6 @@ contract HallyuDAO is Ownable {
         token = IHallyuToken(tokenAddress);
     }
 
-    function proposeMint(address to, uint256 amount, string calldata description)
-        external
-        returns (uint256)
-    {
-        bytes memory data = abi.encodeWithSelector(IHallyuToken.mint.selector, to, amount);
-        return _propose(address(token), data, description);
-    }
 
     function _propose(address target, bytes memory data, string memory description)
         internal

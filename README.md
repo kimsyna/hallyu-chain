@@ -148,16 +148,6 @@ To maintain consistent spacing across the site, a small scale of custom properti
 
 These tokens drive margins, paddings and gaps for common layout components. The values adjust in media queries to keep spacing proportional on smaller screens.
 
-## Build
-
-Bundle the static site's JavaScript entry point:
-
-```bash
-npm run build:web
-```
-
-This command outputs `bundle.js` from the source files in `src/`, and the static site loads that file.
-
 ## App Structure
 
 The previous React/Vite setup has been replaced by a lightweight JavaScript application in [`/app/`](app).
