@@ -2,9 +2,12 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract VestingVault is Ownable {
+    using SafeERC20 for IERC20;
+
     IERC20 public immutable token;
     address public immutable beneficiary;
     uint64 public immutable start;
@@ -49,7 +52,7 @@ contract VestingVault is Ownable {
         uint256 amount = releasable();
         require(amount > 0, "nothing to release");
         released += amount;
-        require(token.transfer(beneficiary, amount), "transfer failed");
+        token.safeTransfer(beneficiary, amount);
     }
 }
 
