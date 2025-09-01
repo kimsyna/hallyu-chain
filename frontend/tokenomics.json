@@ -1,0 +1,14 @@
+{
+  "supply": 10000000000,
+  "dao": 48.54,
+  "community": 19.42,
+  "team": 14.56,
+  "advisors": 4.86,
+  "investors": 9.71,
+  "burn": 3,
+  "utility": "Governance voting, staking rewards, exclusive event access",
+  "teamVesting": 24,
+  "advisorsVesting": 12,
+  "investorsVesting": 18,
+  "burnRate": 3
+}

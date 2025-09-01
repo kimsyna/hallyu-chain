@@ -1,0 +1,3 @@
+Sample layout files for Hallyu Chain branding.
+layout-home.png - Homepage layout sample (external asset; not tracked in repo)
+layout-dashboard.png - Dashboard layout sample (external asset; not tracked in repo)

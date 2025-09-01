@@ -1,0 +1,26 @@
+[
+  {
+    "nameKey": "partner_hybe",
+    "descKey": "partner_hybe_desc",
+    "logo": "./assets/hybe-logo.svg",
+    "alt": "HYBE logo",
+    "icon": "music_note",
+    "url": "https://hybecorp.com"
+  },
+  {
+    "nameKey": "partner_sm",
+    "descKey": "partner_sm_desc",
+    "logo": "./assets/sm-ent-logo.svg",
+    "alt": "SM Entertainment logo",
+    "icon": "audiotrack",
+    "url": "https://www.smentertainment.com"
+  },
+  {
+    "nameKey": "partner_cjenm",
+    "descKey": "partner_cjenm_desc",
+    "logo": "./assets/cj-enm-logo.svg",
+    "alt": "CJ ENM logo",
+    "icon": "live_tv",
+    "url": "https://www.cjenm.com/en"
+  }
+]
