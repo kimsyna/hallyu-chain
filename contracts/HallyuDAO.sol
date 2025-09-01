@@ -5,8 +5,12 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface IHallyuToken is IERC20 {
-    function mint(address to, uint256 amount) external;
     function getPastVotes(address account, uint256 blockNumber)
+        external
+        view
+        returns (uint256);
+
+    function getPastTotalSupply(uint256 blockNumber)
         external
         view
         returns (uint256);
@@ -46,13 +50,6 @@ contract HallyuDAO is Ownable {
         token = IHallyuToken(tokenAddress);
     }
 
-    function proposeMint(address to, uint256 amount, string calldata description)
-        external
-        returns (uint256)
-    {
-        bytes memory data = abi.encodeWithSelector(IHallyuToken.mint.selector, to, amount);
-        return _propose(address(token), data, description);
-    }
 
     function _propose(address target, bytes memory data, string memory description)
         internal
@@ -91,7 +88,11 @@ contract HallyuDAO is Ownable {
         Proposal storage p = proposals[id];
         require(block.timestamp > p.end, "voting not ended");
         require(!p.executed, "executed");
+
+        uint256 quorum = token.getPastTotalSupply(p.snapshot) * 4 / 100;
+        require(p.forVotes >= quorum, "quorum not met");
         require(p.forVotes > p.againstVotes, "proposal not passed");
+
         p.executed = true;
         (bool ok, ) = p.target.call(p.data);
         require(ok, "call failed");

@@ -10,11 +10,11 @@ contract NonStandardToken is ERC20 {
     }
 
     // Intentionally non-standard: does not revert but returns false instead of transferring
-    function transfer(address, uint256) public override returns (bool) {
+    function transfer(address, uint256) public pure override returns (bool) {
         return false;
     }
 
-    function transferFrom(address, address, uint256) public override returns (bool) {
+    function transferFrom(address, address, uint256) public pure override returns (bool) {
         return false;
     }
 }

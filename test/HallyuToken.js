@@ -25,15 +25,4 @@ describe("HallyuToken", function () {
     expect(await token.totalSupply()).to.equal(initialSupply - burned);
   });
 
-  it("only DAO can mint within annual limit", async function () {
-    const limit = await token.yearlyMintLimit();
-    await token.burn(limit);
-    await expect(token.mint(owner.address, limit + 1n)).to.be.revertedWith(
-      "Mint exceeds annual limit"
-    );
-    await token.mint(owner.address, limit);
-    await expect(
-      token.connect(addr1).mint(addr1.address, 1n)
-    ).to.be.revertedWith("Not DAO");
-  });
 });

@@ -83,7 +83,6 @@ async function loadPartners() {
   const container = document.getElementById('partners-grid');
   if (!container) return;
   try {
-    await loadLanguage(currentLang);
     const resp = await fetch('partners.json');
     if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
     const partners = await resp.json();
@@ -120,6 +119,7 @@ async function loadPartners() {
     });
   } catch (err) {
     console.error('Failed to load partners:', err);
+    container.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
@@ -128,7 +128,6 @@ async function loadResources() {
   if (!list) return;
   list.innerHTML = '';
   try {
-    await loadLanguage(currentLang);
     const [resResp, addrResp] = await Promise.all([
       fetch('resources.json'),
       fetch('token-address.json'),
@@ -176,6 +175,7 @@ async function loadResources() {
     });
   } catch (err) {
     console.error('Failed to load resources:', err);
+    list.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
@@ -183,7 +183,6 @@ async function loadTeam() {
   const grid = document.getElementById('team-grid');
   if (!grid) return;
   try {
-    await loadLanguage(currentLang);
     const resp = await fetch('team.json');
     if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
     const team = await resp.json();
@@ -209,6 +208,7 @@ async function loadTeam() {
     });
   } catch (err) {
     console.error('Failed to load team:', err);
+    grid.innerHTML = `<p class="error-message">${t('error_loading_data')}</p>`;
   }
 }
 
