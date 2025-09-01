@@ -62,6 +62,7 @@ async function render() {
   if (!root) return;
   const hash = location.hash.replace(/^#/, '') || '/';
   const path = hash.startsWith('/') ? hash : `/${hash}`;
+  document.body.dataset.page = path.replace(/^\//, '') || 'index';
   const loader = routes[path] || routes['/'];
   await loadLanguage(currentLang);
   const view = await loader();
