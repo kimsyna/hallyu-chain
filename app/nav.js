@@ -1,6 +1,7 @@
 export function initNav() {
   function updateNavHeight() {
     const navbar = document.querySelector('.navbar');
+    const navLinks = document.getElementById('primary-navigation');
     if (!navbar) return;
     const height = navbar.getBoundingClientRect().height;
     const { position } = window.getComputedStyle(navbar);
@@ -9,6 +10,14 @@ export function initNav() {
     document.documentElement.style.setProperty('--nav-height', value);
     document.documentElement.style.scrollPaddingTop = value;
     document.body.style.paddingTop = value;
+
+    if (navLinks) {
+      if (window.innerWidth > 768) {
+        navLinks.setAttribute('aria-hidden', 'false');
+      } else if (!navbar.classList.contains('open')) {
+        navLinks.setAttribute('aria-hidden', 'true');
+      }
+    }
   }
 
   updateNavHeight();
@@ -16,13 +25,12 @@ export function initNav() {
 
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.getElementById('primary-navigation');
-  if (navLinks) navLinks.setAttribute('aria-hidden', 'true');
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       const navbar = document.querySelector('.navbar');
       const open = navbar.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', open);
-      navLinks.setAttribute('aria-hidden', open ? 'false' : 'true');
+      navLinks.setAttribute('aria-hidden', open || window.innerWidth > 768 ? 'false' : 'true');
       if (open) {
         const firstLink = navLinks.querySelector('a');
         if (firstLink) firstLink.focus();
@@ -33,7 +41,7 @@ export function initNav() {
         const navbar = document.querySelector('.navbar');
         navbar.classList.remove('open');
         menuToggle.setAttribute('aria-expanded', 'false');
-        navLinks.setAttribute('aria-hidden', 'true');
+        navLinks.setAttribute('aria-hidden', window.innerWidth > 768 ? 'false' : 'true');
       }
     });
     navLinks.addEventListener('keydown', (e) => {
@@ -72,6 +80,6 @@ export function initNav() {
     if (!navbar.classList.contains('open')) return;
     navbar.classList.remove('open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-    if (navLinks) navLinks.setAttribute('aria-hidden', 'true');
+    if (navLinks) navLinks.setAttribute('aria-hidden', window.innerWidth > 768 ? 'false' : 'true');
   });
 }
