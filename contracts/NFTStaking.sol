@@ -52,7 +52,7 @@ contract NFTStaking is Ownable, ReentrancyGuard {
         emit Staked(msg.sender, tokenId);
     }
 
-    function unstake(uint256 tokenId) external updateReward(msg.sender) {
+    function unstake(uint256 tokenId) external nonReentrant updateReward(msg.sender) {
         require(tokenOwner[tokenId] == msg.sender, "Not owner");
         stakers[msg.sender].balance -= 1;
         tokenOwner[tokenId] = address(0);
