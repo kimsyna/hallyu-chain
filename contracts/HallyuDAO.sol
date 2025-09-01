@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 interface IHallyuToken is IERC20 {
     function mint(address to, uint256 amount) external;
+    function getPastVotes(address account, uint256 blockNumber)
+        external
+        view
+        returns (uint256);
 }
 
 /// @title HallyuDAO
@@ -18,6 +22,7 @@ contract HallyuDAO is Ownable {
         string description;
         uint256 start;
         uint256 end;
+        uint256 snapshot;
         uint256 forVotes;
         uint256 againstVotes;
         bool executed;
@@ -62,6 +67,7 @@ contract HallyuDAO is Ownable {
         p.description = description;
         p.start = block.timestamp;
         p.end = block.timestamp + VOTING_PERIOD;
+        p.snapshot = block.number - 1;
         emit ProposalCreated(proposalCount, msg.sender, description);
         return proposalCount;
     }
@@ -70,7 +76,7 @@ contract HallyuDAO is Ownable {
         Proposal storage p = proposals[id];
         require(block.timestamp >= p.start && block.timestamp <= p.end, "voting closed");
         require(!p.voted[msg.sender], "already voted");
-        uint256 weight = token.balanceOf(msg.sender);
+        uint256 weight = token.getPastVotes(msg.sender, p.snapshot);
         require(weight > 0, "no voting power");
         if (support) {
             p.forVotes += weight;
