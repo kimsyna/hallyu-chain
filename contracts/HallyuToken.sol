@@ -3,9 +3,11 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Capped.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 
-contract HallyuToken is ERC20Capped, ERC20Burnable, Ownable {
+contract HallyuToken is ERC20Capped, ERC20Burnable, ERC20Votes, Ownable {
     uint256 public constant INITIAL_SUPPLY = 10_000_000_000 * 10 ** 18;
     uint256 public constant CAP = INITIAL_SUPPLY;
 
@@ -17,6 +19,7 @@ contract HallyuToken is ERC20Capped, ERC20Burnable, Ownable {
     constructor(address daoAddress)
         ERC20("Hallyu Chain", "HALL")
         ERC20Capped(CAP)
+        EIP712("Hallyu Chain", "1")
         Ownable(msg.sender)
     {
         dao = daoAddress;
@@ -44,7 +47,7 @@ contract HallyuToken is ERC20Capped, ERC20Burnable, Ownable {
 
     function _update(address from, address to, uint256 value)
         internal
-        override(ERC20, ERC20Capped)
+        override(ERC20, ERC20Capped, ERC20Votes)
     {
         if (from != address(0) && to != address(0)) {
             uint256 burnAmount = (value * 3) / 100;

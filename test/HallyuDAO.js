@@ -18,6 +18,8 @@ describe("HallyuDAO", function () {
     await dao.setToken(await token.getAddress());
     await token.transfer(voter1.address, ethers.parseUnits("100", 18));
     await token.transfer(voter2.address, ethers.parseUnits("100", 18));
+    await token.connect(voter1).delegate(voter1.address);
+    await token.connect(voter2).delegate(voter2.address);
   });
 
   it("mints tokens via passed proposal", async function () {
