@@ -37,5 +37,9 @@ contract HallyuToken is ERC20Capped, ERC20Burnable, ERC20Votes, Ownable, IHallyu
             super._update(from, to, value);
         }
     }
+
+    function mint(address to, uint256 amount) external onlyOwner {
+        _mint(to, amount);
+    }
 }
 
