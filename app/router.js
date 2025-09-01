@@ -1,6 +1,7 @@
 import { setState } from './state/store.js';
 import { mount } from './lib/dom.js';
 import { currentLang, loadLanguage, setLanguage } from './i18n.js';
+import { applyFancyTitles } from './fancy-title.js';
 
 const routes = {
   '/': async () => {
@@ -67,6 +68,7 @@ async function render() {
   await loadLanguage(currentLang);
   const view = await loader();
   mount(root, view);
+  applyFancyTitles();
   await setLanguage(currentLang);
   setState({ route: path });
 }
