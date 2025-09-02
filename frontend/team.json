@@ -4,32 +4,28 @@
     "image": "./assets/team-daniel-kim.svg",
     "roleKey": "role_ceo",
     "bioKey": "bio_daniel",
-    "altKey": "alt_daniel",
-    "link": "https://www.linkedin.com/in/danielkim"
+    "altKey": "alt_daniel"
   },
   {
     "name": "Emily Lee",
     "image": "./assets/team-emily-lee.svg",
     "roleKey": "role_cto",
     "bioKey": "bio_emily",
-    "altKey": "alt_emily",
-    "link": "https://www.linkedin.com/in/emilylee"
+    "altKey": "alt_emily"
   },
   {
     "name": "Michael Park",
     "image": "./assets/team-michael-park.svg",
     "roleKey": "role_lead",
     "bioKey": "bio_michael",
-    "altKey": "alt_michael",
-    "link": "https://www.linkedin.com/in/michaelpark"
+    "altKey": "alt_michael"
   },
   {
     "name": "Soo-jin Choi",
     "image": "./assets/team-soojin-choi.svg",
     "roleKey": "role_marketing",
     "bioKey": "bio_soojin",
-    "altKey": "alt_soojin",
-    "link": "https://www.linkedin.com/in/soojinchoi"
+    "altKey": "alt_soojin"
   },
   {
     "name": "Alex Rivera",
