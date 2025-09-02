@@ -136,6 +136,19 @@ async function loadResources() {
     ]);
     if (!resResp.ok) throw new Error(`HTTP error ${resResp.status}`);
     const resources = await resResp.json();
+    if (typeof window.DISCORD_URL === 'string' && window.DISCORD_URL) {
+      const discordResource = {
+        nameKey: 'res_discord',
+        icon: 'chat',
+        url: window.DISCORD_URL,
+      };
+      const githubIndex = resources.findIndex((r) => r.nameKey === 'res_github');
+      if (githubIndex !== -1) {
+        resources.splice(githubIndex + 1, 0, discordResource);
+      } else {
+        resources.push(discordResource);
+      }
+    }
     if (addrResp.ok) {
       const addresses = await addrResp.json();
       if (addresses.mainnet?.HallyuToken) {
@@ -189,21 +202,37 @@ async function loadTeam() {
     const resp = await fetch('team.json');
     if (!resp.ok) throw new Error(`HTTP error ${resp.status}`);
     const team = await resp.json();
+    const teamConfig = window.TEAM_CONFIG || {};
+
     team.forEach((m) => {
+      const config = teamConfig[m.name] || {};
+      const memberImage = config.image || m.image;
+      const memberLink = config.link || m.link;
+
+      const img = h('img', {
+        src: memberImage,
+        alt: t(m.altKey),
+        loading: 'lazy',
+        'data-i18n-alt': m.altKey,
+      });
+      const name = h('h3', {}, m.name);
+
+      let content;
+      if (typeof memberLink === 'string' && memberLink) {
+        content = h(
+          'a',
+          { href: memberLink, target: '_blank', rel: 'noopener noreferrer' },
+          img,
+          name
+        );
+      } else {
+        content = h('div', {}, img, name);
+      }
+
       const member = h(
         'div',
         { className: 'member' },
-        h(
-          'a',
-          { href: m.link, target: '_blank', rel: 'noopener noreferrer' },
-          h('img', {
-            src: m.image,
-            alt: t(m.altKey),
-            loading: 'lazy',
-            'data-i18n-alt': m.altKey,
-          }),
-          h('h3', {}, m.name)
-        ),
+        content,
         h('p', { 'data-i18n': m.roleKey }, t(m.roleKey)),
         h('p', { 'data-i18n': m.bioKey }, t(m.bioKey))
       );
