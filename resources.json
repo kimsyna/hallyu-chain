@@ -10,11 +10,6 @@
     "url": "https://github.com/hallyu-chain"
   },
   {
-    "nameKey": "res_discord",
-    "icon": "chat",
-    "url": "https://discord.gg/example"
-  },
-  {
     "nameKey": "res_tutorials",
     "icon": "school",
     "url": "https://hallyuchain.io/tutorials"
